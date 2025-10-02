@@ -13,12 +13,14 @@ export default function Home() {
                         <h2>Suas Máterias</h2>
                         <Link to="/add"><img src="/btnAdd.svg" alt="Adicionar Matéria"/></Link>
                     </div>
+                    <Materia />
                 </section>
                 <section id="anotacoes" className="estudos-container">
                     <div className="container-title">
                         <h2>Suas Anotações</h2>
                         <Link to="/add"><img src="/btnAdd.svg" alt="Adicionar Anotação"/></Link>
                     </div>
+                    <Anotacao />
                 </section>
             </main>
         </>
