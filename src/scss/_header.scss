@@ -1,0 +1,49 @@
+@import "variables";
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $primary;
+    height: 64px;
+    padding: 0 20px;
+}
+.btn-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30px;
+    transition: .5s;
+    &:hover {
+        height: 27.5px;
+    }
+    span {
+        display: inline-block;
+        width: 40px;
+        height: 3px;
+        border-radius: 1.5px;
+        background-color: $font;
+    }
+}
+h1 a {
+    display: flex;
+    align-items: center;
+    font-size: 1.75rem;
+    color: $font;
+    text-decoration: none;
+    transition: .5s;
+    &:hover {
+        transform: scale(110%);
+    }
+    img {
+        width: 40px;
+        margin-right: 10px;
+    }
+}
+.foto-perfil {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $contrast;
+    opacity: 30%;
+}

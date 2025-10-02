@@ -1,0 +1,23 @@
+@import "variables";
+
+.barra-pesquisa {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    input {
+        width: 100%;
+        max-width: 800px;
+        padding: 10px;
+        border-radius: 30px;
+        font-size: 15px;
+        font-weight: 500;
+        background-color: $primary;
+        border: 2px solid $secondary;
+        outline: none;
+        &::placeholder {
+            font-style: italic;
+            font-weight: 300;
+            color: $bg;
+        }
+    }
+}

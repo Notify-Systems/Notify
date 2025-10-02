@@ -9,12 +9,12 @@ export default function Header() {
                     <span></span>
                     <span></span>   
                 </div>
-                <h1><Link to="/"><img src="/logo.svg" alt="logo"/></Link></h1>
+                <h1><Link to="/"><img src="/logo.svg" alt="logo"/>Notify</Link></h1>
                 <Link to="/profile"><div className="foto-perfil"></div></Link>
             </header>
 
             <div className="barra-pesquisa">
-                <input type="text" className="pesquisa-input" />
+                <input type="text" id="pesquisa" placeholder="Pesquisar"/>
             </div>
         </>
     )
