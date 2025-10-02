@@ -18,28 +18,28 @@ main {
         justify-content: space-between;
         align-items: center;
         background-color: $secondary;
-        padding: 10px;
+        padding: 15px;
         h3 {
-            font-size: 15px;
+            font-size: 20px;
             font-weight: 600;
         }
         p {
-            font-size: 11px;
+            font-size: 15px;
         }
         .link {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 24px;
+            height: 30px;
             transition: .3s;
             &:hover {
-                height: 28px;
+                height: 35px;
             }
             span {
                 display: inline-block;
-                width: 5px;
-                height: 5px;
-                border-radius: 2.5px;
+                width: 7.5px;
+                height: 7.5px;
+                border-radius: 5px;
                 background-color: $font;
             }
         }
@@ -51,11 +51,11 @@ main {
     align-items: center;
     margin-bottom: 10px;
     h2 {
-        font-size: 20px;
+        font-size: 25px;
         font-weight: 600;
     }
     img {
-        width: 25px;
+        width: 30px;
         transition: .5s;
         &:hover {
             transform: scale(105%);
