@@ -1,14 +1,12 @@
-import { HashRouter, Routes, Route } from "react-router-dom"
-import Home from "./pages/Home"
+import { Outlet } from "react-router-dom"
+import { useContext } from "react";
+import Header from "./components/layout/Header";
 
 export default function App() {
   return (
-    <>
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-        </Routes>
-      </HashRouter>
-    </>
+    <div className="container">
+      <Header />
+      <Outlet />
+    </div>
   )
 }
