@@ -3,9 +3,7 @@ import { createContext, useContext, useState } from "react";
 export const TasksContext = createContext();
 
 export function TasksProvider({ children }) {
-    const [tasks, setTasks] = useState([
-        {id: 1, title: "Tarefa Exemplo", subject: "Matemática", date: "2025-10-18", done: false}
-    ]);
+    const [tasks, setTasks] = useState([]);
 
     function addTask(_title, _subject, _date) {
         const taskList = useContext(TasksContext);
