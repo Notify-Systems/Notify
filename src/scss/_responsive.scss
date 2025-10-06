@@ -53,4 +53,13 @@
             }
         }
     }
+    footer {
+        bottom: 80px;
+        padding: 10px;
+        background-color: $contrast;
+        h6 {
+            margin: 0;
+            font-size: 10px;
+        }
+    }
 }
