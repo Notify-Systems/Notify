@@ -4,8 +4,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    padding: 0 20px;
+    width: 100;
+    padding: 0 30px;
+    margin-left: 200px;
 }
 .estudos-container {
     width: 100%;
@@ -23,8 +24,11 @@ main {
             font-size: 20px;
             font-weight: 600;
         }
-        p {
+        a {
             font-size: 15px;
+            font-weight: 500;
+            color: $font;
+            text-decoration: none;
         }
         .link {
             display: flex;

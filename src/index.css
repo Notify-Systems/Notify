@@ -51,7 +51,7 @@ h1 a img {
 }
 
 .barra-pesquisa {
-  width: 100%;
+  margin-left: 200px;
   text-align: center;
   padding: 10px 20px;
 }
@@ -76,8 +76,9 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  padding: 0 20px;
+  width: 100;
+  padding: 0 30px;
+  margin-left: 200px;
 }
 
 .estudos-container {
@@ -98,8 +99,11 @@ main {
   font-size: 20px;
   font-weight: 600;
 }
-.estudos-container article p {
+.estudos-container article a {
   font-size: 15px;
+  font-weight: 500;
+  color: #1f1f1f;
+  text-decoration: none;
 }
 .estudos-container article .link {
   display: flex;
@@ -137,7 +141,43 @@ main {
   transform: scale(105%);
 }
 
+aside {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 64px;
+  width: 200px;
+  height: 100%;
+  padding: 20px;
+  background: rgb(120.04375, 144.175, 175.45625);
+}
+aside a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 5px;
+  border-radius: 10px;
+  transition: 0.25s;
+}
+aside a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+aside a img {
+  width: 50px;
+}
+aside a h4 {
+  font-size: 15px;
+  color: #eee;
+}
+
 @media (max-width: 768px) {
+  .barra-pesquisa {
+    margin-left: 0;
+  }
+  main {
+    margin-left: 0;
+    padding: 0 20px;
+  }
   .estudos-container article {
     padding: 10px;
   }
@@ -162,6 +202,26 @@ main {
   }
   .container-title img {
     width: 25px;
+  }
+  aside {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    top: auto;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    background: #9cc1d9;
+  }
+  aside a {
+    flex-direction: column;
+  }
+  aside a img {
+    width: 40px;
+  }
+  aside a h4 {
+    font-size: 10px;
   }
 }
 * {

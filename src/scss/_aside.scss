@@ -1,0 +1,30 @@
+@import "variables";
+
+aside {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 64px;
+    width: 200px;
+    height: 100%;
+    padding: 20px;
+    background: lighten($contrast, 5%);
+    a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        padding: 5px;
+        border-radius: 10px;
+        transition: .25s;
+        &:hover {
+            background-color: rgba(0, 0, 0, 5%);
+        }
+        img {
+            width: 50px;
+        }
+        h4 {
+            font-size: 15px;
+            color: $bg;
+        }
+    }
+}
