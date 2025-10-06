@@ -3,9 +3,7 @@ import { createContext, useContext, useState } from "react";
 export const NotesContext = createContext();
 
 export function NotesProvider({ children }) {
-    const [notes, setNotes] = useState([
-        {id: 1, title: "Anotação Exemplo", subject: "Matemática", note: "..."}
-    ]);
+    const [notes, setNotes] = useState([]);
 
     function addNote(_title, _subject, _note) {
         const noteList = useContext(NotesContext);
