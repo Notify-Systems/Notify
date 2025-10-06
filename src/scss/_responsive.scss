@@ -1,0 +1,65 @@
+@media (max-width: 768px) {
+    .barra-pesquisa {
+        margin-left: 0;
+    }
+    main {
+        margin-left: 0;
+        padding: 0 20px;
+    }
+    .estudos-container article {
+        padding: 10px;
+        h3 {
+            font-size: 15px;
+        }
+        p {
+            font-size: 11px;
+        }
+        .link {
+            height: 24px;
+            &:hover {
+                height: 28px;
+            }
+            span {
+                width: 5px;
+                height: 5px;
+            }
+        }
+    }
+    .container-title {
+        h2 {
+            font-size: 20px;
+        }
+        img {
+            width: 25px;
+        }
+    }
+    aside {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        top: auto;
+        bottom: 0;
+        width: 100%;
+        height: 80px;
+        padding: 10px;
+        background: $primary;
+        a {
+            flex-direction: column;
+            img {
+                width: 40px;
+            }
+            h4 {
+                font-size: 10px;
+            }
+        }
+    }
+    footer {
+        bottom: 80px;
+        padding: 10px;
+        background-color: $contrast;
+        h6 {
+            margin: 0;
+            font-size: 10px;
+        }
+    }
+}

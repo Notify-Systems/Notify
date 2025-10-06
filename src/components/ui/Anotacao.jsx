@@ -13,7 +13,7 @@ export default function Anotacao() {
                 <Link to="/materia">{anotacao.materia}</Link>
             </div>
             <Link to="/editar">
-                <div className="link-anotacao">
+                <div className="link">
                     <span></span>
                     <span></span>
                     <span></span>

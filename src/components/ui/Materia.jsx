@@ -13,7 +13,7 @@ export default function Materia() {
                 <Link to="serie">{materia.serie}</Link>
             </div>
             <Link to="/materia">
-                <div className="link-materia">
+                <div className="link">
                     <span></span>
                     <span></span>
                     <span></span>
