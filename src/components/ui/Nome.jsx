@@ -1,7 +1,8 @@
 export default function Nome() {
     return (
         <>
-           <input type="text" className="input-nome" />
+            <h2>Nome: </h2>
+            <input type="text" className="input-nome"/>
         </>
     )
 }
