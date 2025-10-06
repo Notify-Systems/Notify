@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const GradesContext = createContext();
 
@@ -6,9 +6,9 @@ export function GradesProvider({ children }) {
     const [Grades, setGrades] = useState([]);
 
     function addGrades(_title) {
-        const GradesList = useContext(GradesContext);
+        const newId = Grades.length > 0 ? Grades[Grades.length - 1].id + 1 : 1;
         const newGrades = {
-            id: GradesList.length++,
+            id: newId,
             title: _title
         };
         setGrades([...Grades, newGrades]);

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const NotesContext = createContext();
 
@@ -6,9 +6,9 @@ export function NotesProvider({ children }) {
     const [notes, setNotes] = useState([]);
 
     function addNote(_title, _subject, _note) {
-        const noteList = useContext(NotesContext);
+        const newId = notes.length > 0 ? notes[notes.length - 1].id + 1 : 1;
         const newNote = {
-            id: noteList.length++,
+            id: newId,
             title: _title,
             subject: _subject,
             note: _note

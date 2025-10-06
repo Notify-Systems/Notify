@@ -1,29 +1,31 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const TasksContext = createContext();
 
 export function TasksProvider({ children }) {
     const [tasks, setTasks] = useState([]);
 
-    function addTask(_title, _subject, _date) {
-        const taskList = useContext(TasksContext);
+    function addTask(_title, _subject, _date, _time) {
+        const newId = tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1;
         const newTask = {
-            id: taskList.length++,
+            id: newId,
             title: _title,
             subject: _subject,
             date: _date,
+            time: _time,
             done: false
         };
+        setTasks([...tasks, newTask]);
     }
 
     function removeTask(_id) {
         setTasks(tasks.filter((_, i) => i !== _id));
     }
 
-    function editTask(_id, _title, _subject, _date) {
+    function editTask(_id, _title, _subject, _date, _time) {
         setNotes(notes.map(taskI => 
             taskI.id === _id
-            ? { ...taskI, title: _title, subject: _subject, task: _task }
+            ? { ...taskI, title: _title, subject: _subject, date: _date, time: _time }
             : taskI
         ));
     }

@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
 export const SubjectContext = createContext();
 
@@ -6,9 +6,9 @@ export function SubjectProvider({ children }) {
     const [subjects, setSubject] = useState([]);
 
     function addSubject(_title, _grade) {
-        const subjectList = useContext(SubjectContext);
+        const newId = subjects.length > 0 ? subjects[subjects.length - 1].id + 1 : 1;
         const newSubject = {
-            id: subjectList.length++,
+            id: newId,
             title: _title,
             grade: _grade
         };
