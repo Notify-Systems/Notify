@@ -13,7 +13,6 @@ export default function App() {
     <div className={`container ${theme === "dark" ? "dark" : ""}`}>
       <Header />
       <Outlet />
-      <Aside />
       <Footer />
     </div>
   )

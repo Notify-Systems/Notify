@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import Aside from "../components/layout/Aside"
 import Materia from "../components/ui/Materia"
 import Anotacao from "../components/ui/Anotacao"
 
@@ -21,6 +22,7 @@ export default function Home() {
                     <Anotacao />
                 </section>
             </main>
+            <Aside select="Menu" />
         </>
     )
 }
