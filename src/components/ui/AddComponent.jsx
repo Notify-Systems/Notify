@@ -7,7 +7,7 @@ export default function AddComponent({ select }) {
                 <h5>{ select }</h5>
                 <img src="/arrow.svg" />
             </div>
-            <article className="selectComponent">
+            <article id="selectComponent">
                 <div><Link to="/add/grade">Série</Link></div>
                 <div><Link to="/add/subject">Matéria</Link></div>
                 <div><Link to="/add/note">Anotação</Link></div>

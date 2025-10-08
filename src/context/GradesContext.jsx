@@ -3,15 +3,15 @@ import { createContext, useState } from "react";
 export const GradesContext = createContext();
 
 export function GradesProvider({ children }) {
-    const [Grades, setGrades] = useState([]);
+    const [grades, setGrades] = useState([]);
 
     function addGrades(_title) {
-        const newId = Grades.length > 0 ? Grades[Grades.length - 1].id + 1 : 1;
+        const newId = grades.length > 0 ? grades[grades.length - 1].id + 1 : 1;
         const newGrades = {
             id: newId,
             title: _title
         };
-        setGrades([...Grades, newGrades]);
+        setGrades([...grades, newGrades]);
     }
 
     function removeGrades(_id) {
@@ -27,7 +27,7 @@ export function GradesProvider({ children }) {
     }
 
     return (
-        <GradesContext.Provider value={{ Grades, addGrades, removeGrades, editGrades }}>
+        <GradesContext.Provider value={{ grades, addGrades, removeGrades, editGrades }}>
             { children }
         </GradesContext.Provider>
     )
