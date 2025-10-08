@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom"
+import Aside from "../components/layout/Aside"
 import AddComponent from "../components/ui/AddComponent"
 import Nome from "../components/ui/Nome"
 import SelSerie from "../components/ui/SelSerie"
@@ -12,7 +13,7 @@ export default function Add() {
     
     return (
         <>
-            <main className="add">
+            <main>
                 <h2>Adicionar:</h2>
                 <AddComponent select={
                     info === "grade" ? "Série" :
@@ -40,6 +41,7 @@ export default function Add() {
                 }
                 <Botoes />
             </main>
+            <Aside />
         </>
     )
 }
