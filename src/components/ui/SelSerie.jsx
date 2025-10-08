@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react"
 import { GradesContext } from "../../context/GradesContext"
 
-export default function Serie() {
+export default function SelSerie() {
     const { grades } = useContext(GradesContext);
     const [gradeList, setGrades] = useState([]);
 
@@ -14,6 +14,7 @@ export default function Serie() {
 
     return(
         <>
+            <h2>Série:</h2>
             <div id="selectedGrade">
                 <h5>{ grades.length === 0 ? "Não há séries disponíveis" : "Escolha uma série"}</h5>
                 <img src="/arrow.svg" />
