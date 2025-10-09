@@ -7,6 +7,7 @@ import SelMateria from "../components/ui/SelMateria"
 import WriteNote from "../components/ui/WriteNote"
 import Prazo from "../components/ui/Prazo"
 import Botoes from "../components/ui/Botoes"
+import "../add.css"
 
 export default function Add() {
     const { info } = useParams();

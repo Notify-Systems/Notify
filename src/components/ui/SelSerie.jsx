@@ -13,13 +13,13 @@ export default function SelSerie() {
     }, [grades]);
 
     return(
-        <>
+        <section id="serie" className={`select ${grades.length === 0 ? "nothing" : ""}`}>
             <h2>Série:</h2>
-            <div id="selectedGrade">
+            <div id="selectedGrade" className="selected">
                 <h5>{ grades.length === 0 ? "Não há séries disponíveis" : "Escolha uma série"}</h5>
                 <img src="/arrow.svg" />
             </div>
-            <article id="selectGrade">{gradeList}</article>
-        </>
+            <article id="selectGrade" className="select-list">{gradeList}</article>
+        </section>
     )
 }

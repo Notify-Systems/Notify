@@ -2,8 +2,8 @@ export default function Botoes() {
     return (
         <>
             <section className="edit-buttons">
-                <button className="btn-confirmar">Confirmar</button>
-                <button className="btn-cancelar">Cancelar</button>
+                <button id="btnConfirmar">Confirmar</button>
+                <button id="btnCancelar">Cancelar</button>
             </section>
         </>
     )

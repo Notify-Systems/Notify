@@ -1,0 +1,72 @@
+@import "variables";
+@import "select";
+
+main {
+    align-items: baseline;
+    padding-top: 20px;
+}
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+#inputNome {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 2px solid $primary;
+    border-radius: 30px;
+    background: $opacity;
+    font-style: italic;
+    outline-color: $contrast;
+    &:hover {
+        border-color: $contrast;
+    }
+}
+.date-time {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    div {
+        width: 100%;
+        input {
+            width: 90%;
+            padding: 2px 5px;
+            font-style: italic;
+            background: $opacity;
+            border: 2px solid $primary;
+            outline-color: $contrast;
+        }
+    }
+}
+#note {
+    resize: none;
+    width: 100%;
+    height: 150px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid $primary;
+    margin-bottom: 20px;
+    background-color: $opacity;
+    font-style: italic;
+    outline-color: $contrast;
+    &:hover {
+        border-color: $contrast;
+    }
+}
+.edit-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    button {
+        width: 120px;
+        padding: 5px 10px;
+        border: 2px solid $primary;
+        border-radius: 5px;
+        background: $opacity;
+        font-size: .9rem;
+        font-weight: 600;
+        &:hover {
+            border-color: $contrast;
+        }
+    }
+}

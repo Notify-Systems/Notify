@@ -6,6 +6,7 @@ import SelSerie from "../components/ui/SelSerie"
 import SelMateria from "../components/ui/SelMateria"
 import WriteNote from "../components/ui/WriteNote"
 import Prazo from "../components/ui/Prazo"
+import "../add.css"
 
 export default function Edit() {
     const { info } = useParams();
