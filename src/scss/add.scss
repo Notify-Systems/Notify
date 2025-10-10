@@ -1,12 +1,13 @@
 @import "variables";
 @import "select";
+@import "responsive-add";
 
 main {
     align-items: baseline;
     padding-top: 20px;
 }
 h2 {
-    font-size: 20px;
+    font-size: 25px;
     margin-bottom: 10px;
 }
 #inputNome {
@@ -16,7 +17,7 @@ h2 {
     border: 2px solid $primary;
     border-radius: 30px;
     background: $opacity;
-    font-style: italic;
+    font-size: 17px;
     outline-color: $contrast;
     &:hover {
         border-color: $contrast;
@@ -26,11 +27,13 @@ h2 {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 20px;
     div {
         width: 100%;
         input {
             width: 90%;
             padding: 2px 5px;
+            font-size: 17px;
             font-style: italic;
             background: $opacity;
             border: 2px solid $primary;
@@ -41,13 +44,13 @@ h2 {
 #note {
     resize: none;
     width: 100%;
-    height: 150px;
+    height: 200px;
     padding: 10px;
     border-radius: 10px;
     border: 2px solid $primary;
     margin-bottom: 20px;
     background-color: $opacity;
-    font-style: italic;
+    font-size: 15px;
     outline-color: $contrast;
     &:hover {
         border-color: $contrast;
@@ -58,12 +61,12 @@ h2 {
     justify-content: space-around;
     width: 100%;
     button {
-        width: 120px;
-        padding: 5px 10px;
+        width: 150px;
+        padding: 10px;
         border: 2px solid $primary;
         border-radius: 5px;
         background: $opacity;
-        font-size: .9rem;
+        font-size: 1.2rem;
         font-weight: 600;
         &:hover {
             border-color: $contrast;
