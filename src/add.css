@@ -25,7 +25,7 @@
   width: 100%;
   padding: 5px;
   margin-bottom: 10px;
-  background: rgba(98, 96, 166, 0.3);
+  background: #c4c3d8;
   border: 2px solid #9cc1d9;
 }
 .selected h5 {
@@ -46,7 +46,7 @@
 .select-list {
   display: none;
   width: 100%;
-  background: rgba(98, 96, 166, 0.3);
+  background: #c4c3d8;
   border: 2px solid #6883a6;
   transition: 0.5s;
 }
@@ -87,7 +87,7 @@
     font-size: 0.9rem !important;
   }
 }
-main {
+main.add {
   align-items: baseline;
   padding-top: 20px;
 }
@@ -103,7 +103,7 @@ h2 {
   padding: 5px 10px;
   border: 2px solid #9cc1d9;
   border-radius: 30px;
-  background: rgba(98, 96, 166, 0.3);
+  background: #c4c3d8;
   font-size: 17px;
   outline-color: #6883a6;
 }
@@ -125,7 +125,7 @@ h2 {
   padding: 2px 5px;
   font-size: 17px;
   font-style: italic;
-  background: rgba(98, 96, 166, 0.3);
+  background: #c4c3d8;
   border: 2px solid #9cc1d9;
   outline-color: #6883a6;
 }
@@ -138,7 +138,7 @@ h2 {
   border-radius: 10px;
   border: 2px solid #9cc1d9;
   margin-bottom: 20px;
-  background-color: rgba(98, 96, 166, 0.3);
+  background-color: #c4c3d8;
   font-size: 15px;
   outline-color: #6883a6;
 }
@@ -156,7 +156,7 @@ h2 {
   padding: 10px;
   border: 2px solid #9cc1d9;
   border-radius: 5px;
-  background: rgba(98, 96, 166, 0.3);
+  background: #c4c3d8;
   font-size: 1.2rem;
   font-weight: 600;
 }

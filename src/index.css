@@ -83,7 +83,7 @@ main {
 .estudos-container {
   width: 100%;
   max-width: 1000px;
-  background-color: rgba(98, 96, 166, 0.3);
+  background-color: #c4c3d8;
   padding: 20px;
   margin-top: 10px;
 }
@@ -98,11 +98,36 @@ main {
   font-size: 20px;
   font-weight: 600;
 }
-.estudos-container article a {
+.estudos-container article a, .estudos-container article p {
   font-size: 15px;
   font-weight: 500;
   color: #1f1f1f;
   text-decoration: none;
+}
+.estudos-container article .items {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.estudos-container article .toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: #c4c3d8;
+  border: 2px solid #6883a6;
+  margin-right: 15px;
+}
+.estudos-container article .toggle:hover {
+  border-color: #9cc1d9;
+}
+.estudos-container article .toggle:active {
+  border-color: #6883a6;
+}
+.estudos-container article .toggle img {
+  width: 30px;
+  height: 30px;
 }
 .estudos-container article .link {
   display: flex;
@@ -200,6 +225,14 @@ footer h6 {
   }
   .estudos-container article p {
     font-size: 11px;
+  }
+  .estudos-container article .toggle {
+    width: 25px;
+    height: 25px;
+  }
+  .estudos-container article .toggle img {
+    width: 25px;
+    height: 25px;
   }
   .estudos-container article .link {
     height: 24px;

@@ -13,7 +13,7 @@ export default function Edit() {
 
     return (
         <>
-            <main>
+            <main className="add">
                 <h2>Editar:</h2>
                 <Nome />
                 {info === "subject" && 

@@ -14,7 +14,7 @@ export default function Add() {
     
     return (
         <>
-            <main>
+            <main className="add">
                 <h2>Adicionar:</h2>
                 <AddComponent select={
                     info === "grade" ? "Série" :

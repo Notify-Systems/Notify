@@ -23,11 +23,36 @@ main {
             font-size: 20px;
             font-weight: 600;
         }
-        a {
+        a, p {
             font-size: 15px;
             font-weight: 500;
             color: $font;
             text-decoration: none;
+        }
+        .items {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        .toggle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            background: $opacity;
+            border: 2px solid $contrast;
+            margin-right: 15px;
+            &:hover {
+                border-color: $primary;
+            }
+            &:active {
+                border-color: $contrast;
+            }
+            img {
+                width: 30px;
+                height: 30px;
+            }
         }
         .link {
             display: flex;
