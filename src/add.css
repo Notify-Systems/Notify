@@ -49,6 +49,7 @@
   background: #c4c3d8;
   border: 2px solid #6883a6;
   transition: 0.5s;
+  margin-bottom: 10px;
 }
 .select-list div {
   padding: 5px 10px;
@@ -62,6 +63,22 @@
 }
 .select-list div:hover a {
   font-weight: 500;
+}
+.select-list button {
+  width: 100%;
+  text-align: left;
+  padding: 5px 10px;
+  font-size: 15px;
+  background: none;
+  border: none;
+}
+.select-list button:hover {
+  background: #6260a6;
+  font-weight: 500;
+  cursor: pointer;
+}
+.select-list span {
+  display: none;
 }
 
 @media (max-width: 768px) {

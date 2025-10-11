@@ -7,7 +7,10 @@ export default function SelSerie() {
 
     useEffect(() => {
         const newTasks = grades.map(grade => (
-            <button>{grade.title}</button>
+            <section id={`grade${grade.id}`}>
+                <button>{grade.title}</button>
+                <span>{grade.id}</span>
+            </section>
         ));
         setGrades(newTasks);
     }, [grades]);

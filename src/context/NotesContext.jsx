@@ -3,7 +3,9 @@ import { createContext, useState } from "react";
 export const NotesContext = createContext();
 
 export function NotesProvider({ children }) {
-    const [notes, setNotes] = useState([]);
+    const [notes, setNotes] = useState([
+        {id: 1, title: "Funções do 2o Grau", subject: 1, note: "Exemplo nota"}
+    ]);
 
     function addNote(_title, _subject, _note) {
         const newId = notes.length > 0 ? notes[notes.length - 1].id + 1 : 1;

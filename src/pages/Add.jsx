@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import Aside from "../components/layout/Aside"
 import AddComponent from "../components/ui/AddComponent"
 import Nome from "../components/ui/Nome"
@@ -40,7 +40,7 @@ export default function Add() {
                     <Prazo />
                 </>
                 }
-                <Botoes />
+                <Botoes type={info} />
             </main>
             <Aside />
         </>

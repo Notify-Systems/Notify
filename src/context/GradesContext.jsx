@@ -3,7 +3,9 @@ import { createContext, useState } from "react";
 export const GradesContext = createContext();
 
 export function GradesProvider({ children }) {
-    const [grades, setGrades] = useState([]);
+    const [grades, setGrades] = useState([
+        {id: 1, title: "1o Ano Ensino Médio"}
+    ]);
 
     function addGrades(_title) {
         const newId = grades.length > 0 ? grades[grades.length - 1].id + 1 : 1;

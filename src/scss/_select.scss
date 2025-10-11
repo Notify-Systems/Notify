@@ -51,6 +51,7 @@
     background: $opacity;
     border: 2px solid $contrast;
     transition: .5s;
+    margin-bottom: 10px;
     div {
         padding: 5px 10px;
         a {
@@ -63,5 +64,21 @@
                 font-weight: 500;
             }
         }
+    }
+    button {
+        width: 100%;
+        text-align: left;
+        padding: 5px 10px;
+        font-size: 15px;
+        background: none;
+        border: none;
+        &:hover {
+            background: $secondary;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    }
+    span {
+        display: none;
     }
 }

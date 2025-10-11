@@ -5,8 +5,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { AppProviders } from './context/AppProviders.jsx'
 import App from './App.jsx'
 import Home from './pages/Home'
+import Estudos from './pages/Estudos'
 import Add from './pages/Add'
 import Edit from './pages/Edit'
+import Cronograma from "./pages/Cronograma"
+import Perfil from "./pages/Perfil"
 
 const router = createBrowserRouter([
   {
@@ -14,8 +17,11 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {path: "/", element: <Home />},
+      {path: "/estudos", element: <Estudos />},
       {path: "/add/:info", element: <Add />},
-      {path: "/edit/:info", element: <Edit />}
+      {path: "/edit/:info", element: <Edit />},
+      {path: "/cronograma", element: <Cronograma />},
+      {path: "/perfil", element: <Perfil />}
     ]
   }
 ]);

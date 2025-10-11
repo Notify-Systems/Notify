@@ -7,7 +7,10 @@ export default function SelMateria() {
 
     useEffect(() => {
         const newSubjects = subjects.map(subject => (
-            <button>{subject.title}</button>
+            <section id={`subject${subject.id}`}>
+                <button>{subject.title}</button>
+                <span>{subject.id}</span>
+            </section>
         ));
         setGrades(newSubjects);
     }, [subjects]);

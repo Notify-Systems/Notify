@@ -3,7 +3,9 @@ import { createContext, useState } from "react";
 export const SubjectContext = createContext();
 
 export function SubjectProvider({ children }) {
-    const [subjects, setSubject] = useState([]);
+    const [subjects, setSubject] = useState([
+        {id: 1, title: "Matemática", grade: 1}
+    ]);
 
     function addSubject(_title, _grade) {
         const newId = subjects.length > 0 ? subjects[subjects.length - 1].id + 1 : 1;
