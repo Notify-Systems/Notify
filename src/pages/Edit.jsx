@@ -33,7 +33,7 @@ export default function Edit() {
                     <Prazo />
                 </>
                 }
-                <Botoes />
+                <Botoes type={info} func="edit" />
             </main>
             <Aside />
         </>

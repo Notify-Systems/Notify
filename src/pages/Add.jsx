@@ -40,7 +40,7 @@ export default function Add() {
                     <Prazo />
                 </>
                 }
-                <Botoes type={info} />
+                <Botoes type={info} func="add" />
             </main>
             <Aside />
         </>

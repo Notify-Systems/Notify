@@ -17,7 +17,7 @@ export default function Tarefa() {
             </div>
             <div className="items">
                 <div className="toggle">
-                    <img src={tarefa.done === true ? "/check.svg" : ""} onerror="this.style.display='none'" />
+                    <img src={tarefa.done === true ? "/check.svg" : "#"} onError={(e) => e.target.style.display = "none"} />
                 </div>
                 <Link to="/materia">
                     <div className="link">

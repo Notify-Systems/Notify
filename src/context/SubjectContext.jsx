@@ -18,11 +18,11 @@ export function SubjectProvider({ children }) {
     }
 
     function removeSubject(_id) {
-        setNotes(subjects.filter((_, i) => i !== _id));
+        setSubject(subjects.filter((_, i) => i !== _id));
     }
 
     function editSubject(_id, _title, _grade) {
-        setNotes(subjects.map(subjectI => 
+        setSubject(subjects.map(subjectI => 
         subjectI.id === _id
             ? { ...subjectI, title: _title, grade: _grade }
             : subjectI

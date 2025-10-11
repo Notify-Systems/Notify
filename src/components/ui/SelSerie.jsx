@@ -20,6 +20,7 @@ export default function SelSerie() {
             <h2>Série:</h2>
             <div id="selectedGrade" className="selected">
                 <h5>{ grades.length === 0 ? "Não há séries disponíveis" : "Escolha uma série"}</h5>
+                <span></span>
                 <img src="/arrow.svg" />
             </div>
             <article id="selectGrade" className="select-list">{gradeList}</article>

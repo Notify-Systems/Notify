@@ -3,6 +3,9 @@
     &.open {
         .selected {
             border: 2px solid $contrast;
+            span {
+                display: none;
+            }
             img {
                 transform: rotate(180deg);
             }

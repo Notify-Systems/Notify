@@ -4,6 +4,9 @@
 .select.open .selected {
   border: 2px solid #6883a6;
 }
+.select.open .selected span {
+  display: none;
+}
 .select.open .selected img {
   transform: rotate(180deg);
 }

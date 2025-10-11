@@ -7,7 +7,7 @@ export function GradesProvider({ children }) {
         {id: 1, title: "1o Ano Ensino Médio"}
     ]);
 
-    function addGrades(_title) {
+    function addGrade(_title) {
         const newId = grades.length > 0 ? grades[grades.length - 1].id + 1 : 1;
         const newGrades = {
             id: newId,
@@ -16,12 +16,12 @@ export function GradesProvider({ children }) {
         setGrades([...grades, newGrades]);
     }
 
-    function removeGrades(_id) {
-        setNotes(subjects.filter((_, i) => i !== _id));
+    function removeGrade(_id) {
+        setGrades(grades.filter((_, i) => i !== _id));
     }
 
-    function editGrades(_id, _title) {
-        setNotes(subjects.map(GradesI => 
+    function editGrade(_id, _title) {
+        setGrades(grades.map(GradesI => 
         GradesI.id === _id
             ? { ...GradesI, title: _title}
             : GradesI
@@ -29,7 +29,7 @@ export function GradesProvider({ children }) {
     }
 
     return (
-        <GradesContext.Provider value={{ grades, addGrades, removeGrades, editGrades }}>
+        <GradesContext.Provider value={{ grades, addGrade, removeGrade, editGrade }}>
             { children }
         </GradesContext.Provider>
     )

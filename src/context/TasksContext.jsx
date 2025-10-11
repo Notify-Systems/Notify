@@ -4,7 +4,7 @@ export const TasksContext = createContext();
 
 export function TasksProvider({ children }) {
     const [tasks, setTasks] = useState([
-        {id: 1, title: "Lição de Casa", subject: 1, date: "2025-10-18", time: "7:00"}
+        {id: 1, title: "Lição de Casa", subject: 1, date: "2025-10-18", time: "07:00"}
     ]);
 
     function addTask(_title, _subject, _date, _time) {
@@ -25,7 +25,7 @@ export function TasksProvider({ children }) {
     }
 
     function editTask(_id, _title, _subject, _date, _time) {
-        setNotes(notes.map(taskI => 
+        setTasks(tasks.map(taskI => 
             taskI.id === _id
             ? { ...taskI, title: _title, subject: _subject, date: _date, time: _time }
             : taskI
@@ -33,7 +33,7 @@ export function TasksProvider({ children }) {
     }
 
     function toggleTask(_id) {
-        setNotes(notes.map(taskI =>
+        setTasks(tasks.map(taskI =>
             taskI.id === _id
             ? {...taskI, done: !taskI.done}
             : taskI
