@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Estudos from './pages/Estudos'
 import Add from './pages/Add'
 import Edit from './pages/Edit'
+import Cronograma from "./pages/Cronograma"
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,8 @@ const router = createBrowserRouter([
       {path: "/", element: <Home />},
       {path: "/estudos", element: <Estudos />},
       {path: "/add/:info", element: <Add />},
-      {path: "/edit/:info", element: <Edit />}
+      {path: "/edit/:info", element: <Edit />},
+      {path: "/cronograma", element: <Cronograma />}
     ]
   }
 ]);
