@@ -17,7 +17,6 @@ export default function Cronograma() {
                 </section>
             </main>
             <Aside select="Cronograma" />
-            
         </>
     )
 }

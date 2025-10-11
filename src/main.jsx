@@ -9,6 +9,7 @@ import Estudos from './pages/Estudos'
 import Add from './pages/Add'
 import Edit from './pages/Edit'
 import Cronograma from "./pages/Cronograma"
+import Perfil from "./pages/Perfil"
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
       {path: "/estudos", element: <Estudos />},
       {path: "/add/:info", element: <Add />},
       {path: "/edit/:info", element: <Edit />},
-      {path: "/cronograma", element: <Cronograma />}
+      {path: "/cronograma", element: <Cronograma />},
+      {path: "/perfil", element: <Perfil />}
     ]
   }
 ]);
