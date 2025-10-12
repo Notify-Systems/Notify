@@ -7,7 +7,7 @@ export default function SelMateria() {
 
     useEffect(() => {
         const newSubjects = subjects.map(subject => (
-            <section id={`subject${subject.id}`}>
+            <section key={subject.id} id={`subject${subject.id}`}>
                 <button>{subject.title}</button>
                 <span>{subject.id}</span>
             </section>

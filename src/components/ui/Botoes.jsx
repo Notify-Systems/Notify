@@ -14,11 +14,7 @@ export default function Botoes({ type, func }) {
 
     function add() {
         const nome = document.getElementById("inputNome").value;
-        const grade = document.getElementById("selectedGrade").querySelector("span").innerText;
-        const materia = document.getElementById("selectedSubject").querySelector("span").innerText;
-        const note = document.getElementById("note").value;
-        const date = document.getElementById("dateInput").value;
-        const time = document.getElementById("timeInput").value
+        let materia;
         if(nome == "") {
             alert("Preencha o campo de nome");
             return;
@@ -30,12 +26,18 @@ export default function Botoes({ type, func }) {
                         addGrade(nome);
                         break;
                     case "subject":
+                        const grade = document.getElementById("selectedGrade").querySelector("span").innerText;
                         addSubject(nome, grade);
                         break;
                     case "note":
+                        const note = document.getElementById("note").value;
+                        materia = document.getElementById("selectedSubject").querySelector("span").innerText;
                         addNote(nome, materia, note);
                         break;
                     case "task":
+                        const date = document.getElementById("dateInput").value;
+                        const time = document.getElementById("timeInput").value;
+                        materia = document.getElementById("selectedSubject").querySelector("span").innerText;
                         addTask(nome, materia, date, time);
                         break;
                 }
