@@ -1,4 +1,4 @@
-@import 'variables';
+@import './variables';
 
 main.perfil {
     padding-top: 84px;
@@ -6,7 +6,7 @@ main.perfil {
 .usuario-container {
     display: flex;
     align-items: center;
-    padding: 15px 10px;
+    padding: 20px 15px;
     margin-bottom: 20px;
     width: 100%;
     background: $opacity;
@@ -16,24 +16,24 @@ main.perfil {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     background: $secondary;
     img {
-        width: 70px;
+        width: 100px;
     }
 }
 .usuario-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 10px;
+    margin-left: 20px;
     h3 {
-        font-size: 20px;
+        font-size: 25px;
         font-weight: 600;
     }
     h4 {
-        font-size: 10px;
+        font-size: 15px;
         font-weight: 400;
         font-style: italic;
     }
@@ -42,24 +42,24 @@ main.perfil {
     width: 100%;
 }
 h2 {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 600;
 }
 .materias {
     display: flex;
-    max-height: 60px;
+    max-height: 90px;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
     &::-webkit-scrollbar {
-        height: 8px;
+        height: 12px;
     }
     &::-webkit-scrollbar-track {
         background: transparent;
     }
     &::-webkit-scrollbar-thumb {
         background-color: #ccc;
-        border-radius: 4px;
+        border-radius: 6px;
     }
     &::-webkit-scrollbar-button {
         display: none;
@@ -69,17 +69,18 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 5px;
+    padding: 10px;
     margin-right: 10px;
-    width: 90px;
-    height: 40px;
+    width: 160px;
+    height: 70px;
     background: $secondary;
     h3 {
-        font-size: 10px;
+        font-size: 15px;
         font-weight: 600;
     }
     h4 {
-        font-size: 8px;
+        font-size: 10px;
         font-weight: 400;
     }
 }
+@import './responsive-perfil';

@@ -18,6 +18,20 @@ export default function Perfil() {
                     <h2>Matérias</h2>
                     <div className="materias">
                         <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
+                        <MateriaPerfil />
                     </div>
                 </section>
             </main>

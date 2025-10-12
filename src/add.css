@@ -84,29 +84,6 @@
   display: none;
 }
 
-@media (max-width: 768px) {
-  h2 {
-    font-size: 20px !important;
-  }
-  .select h5 {
-    font-size: 15px !important;
-  }
-  #inputNome {
-    font-size: 13px !important;
-  }
-  .date-time input {
-    font-size: 13px !important;
-  }
-  #note {
-    height: 150px !important;
-    font-size: 13px !important;
-  }
-  .edit-buttons button {
-    width: 120px !important;
-    padding: 5px 10px !important;
-    font-size: 0.9rem !important;
-  }
-}
 main.add {
   align-items: baseline;
   padding-top: 84px;
@@ -182,6 +159,30 @@ h2 {
 }
 .edit-buttons button:hover {
   border-color: #6883a6;
+}
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 20px;
+  }
+  .select h5 {
+    font-size: 15px;
+  }
+  #inputNome {
+    font-size: 13px;
+  }
+  .date-time input {
+    font-size: 13px;
+  }
+  #note {
+    height: 150px;
+    font-size: 13px;
+  }
+  .edit-buttons button {
+    width: 120px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
 }
 
 /*# sourceMappingURL=add.css.map */

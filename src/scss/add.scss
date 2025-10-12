@@ -1,6 +1,5 @@
 @import "variables";
 @import "select";
-@import "responsive-add";
 
 main.add {
     align-items: baseline;
@@ -73,3 +72,5 @@ h2 {
         }
     }
 }
+
+@import "responsive-add";
