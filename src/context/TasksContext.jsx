@@ -4,7 +4,7 @@ export const TasksContext = createContext();
 
 export function TasksProvider({ children }) {
     const [tasks, setTasks] = useState([
-        {id: 1, title: "Lição de Casa", subject: 1, date: "2025-10-18", time: "07:00"}
+        {id: 1, title: "Lição de Casa", subject: 1, date: "2025-10-18", time: "07:00", done: false}
     ]);
 
     function addTask(_title, _subject, _date, _time) {

@@ -28,8 +28,18 @@ export function GradesProvider({ children }) {
         ));
     }
 
+    function returnGrade(_id) {
+        let gradeName;
+        setGrades(grades.map(GradesI => 
+        GradesI.id === _id
+            ? gradeName = GradesI.title
+            : GradesI
+        ));
+        return gradeName;
+    }
+
     return (
-        <GradesContext.Provider value={{ grades, addGrade, removeGrade, editGrade }}>
+        <GradesContext.Provider value={{ grades, addGrade, removeGrade, editGrade, returnGrade }}>
             { children }
         </GradesContext.Provider>
     )

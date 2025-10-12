@@ -13,7 +13,7 @@ export function SubjectProvider({ children }) {
             id: newId,
             title: _title,
             grade: _grade
-        };
+        }
         setSubject([...subjects, newSubject]);
     }
 
@@ -29,8 +29,18 @@ export function SubjectProvider({ children }) {
         ));
     }
 
+    function returnSubject(_id) {
+        let subjectName;
+        setSubject(subjects.map(subjectI => 
+        subjectI.id === _id
+            ? subjectName = subjectI.title
+            : subjectI
+        ));
+        return subjectName;
+    }
+
     return (
-        <SubjectContext.Provider value={{ subjects, addSubject, removeSubject, editSubject }}>
+        <SubjectContext.Provider value={{ subjects, addSubject, removeSubject, editSubject, returnSubject }}>
             { children }
         </SubjectContext.Provider>
     )
