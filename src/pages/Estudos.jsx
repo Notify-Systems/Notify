@@ -9,8 +9,8 @@ import Tarefa from "../components/ui/Tarefa"
 export default function Estudos() {
     return (
         <>
-            <BarraPesquisa />
             <main>
+                <BarraPesquisa />
                 <section id="series">
                     <Serie />
                 </section>

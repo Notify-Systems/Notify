@@ -5,8 +5,8 @@ import Tarefa from "../components/ui/Tarefa"
 export default function Cronograma() {
     return (
         <>
-            <BarraPesquisa />
             <main>
+                <BarraPesquisa />
                 <section id="pendentes" className="estudos-container">
                     <h2>Tarefas Pendentes</h2>
                     <Tarefa />

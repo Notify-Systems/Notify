@@ -5,8 +5,8 @@ import MateriaPerfil from "../components/ui/MateriaPerfil"
 export default function Perfil() {
     return (
         <>
-            <BarraPesquisa />
             <main>
+                <BarraPesquisa />
                 <section id="usuario-cotainer">
                     <div id="usuario-img"><img src="/profile.svg" alt="foto perfil" /></div>
                     <div id="usuario-info">

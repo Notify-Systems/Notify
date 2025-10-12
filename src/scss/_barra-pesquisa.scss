@@ -1,9 +1,10 @@
 @import "variables";
 
 .barra-pesquisa {
-    margin-left: 200px;
     text-align: center;
     padding: 10px 20px;
+    padding-top: 74px;
+    width: 100%;
     input {
         width: 100%;
         max-width: 800px;

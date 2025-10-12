@@ -3,7 +3,9 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
   background-color: #9cc1d9;
+  width: 100%;
   height: 64px;
   padding: 0 20px;
 }
@@ -51,9 +53,10 @@ h1 a img {
 }
 
 .barra-pesquisa {
-  margin-left: 200px;
   text-align: center;
   padding: 10px 20px;
+  padding-top: 74px;
+  width: 100%;
 }
 .barra-pesquisa input {
   width: 100%;
@@ -78,6 +81,7 @@ main {
   align-items: center;
   padding: 0 30px;
   margin-left: 200px;
+  min-height: 95vh;
 }
 
 .estudos-container {
@@ -165,6 +169,13 @@ main {
   transform: scale(105%);
 }
 
+#series {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
 aside {
   display: flex;
   flex-direction: column;
@@ -197,11 +208,11 @@ aside a h4 {
 footer {
   display: flex;
   justify-content: center;
-  position: absolute;
   bottom: 0;
   background: #9cc1d9;
   width: 100%;
   padding: 15px;
+  margin-top: 20px;
   z-index: -1;
 }
 footer h6 {
@@ -211,10 +222,12 @@ footer h6 {
 
 @media (max-width: 768px) {
   .barra-pesquisa {
-    margin-left: 0;
+    margin: 0;
   }
   main {
+    margin-bottom: 125px;
     margin-left: 0;
+    margin-top: 0;
     padding: 0 20px;
   }
   .estudos-container article {
@@ -271,8 +284,10 @@ footer h6 {
     font-size: 10px;
   }
   footer {
+    position: fixed;
     bottom: 80px;
     padding: 10px;
+    z-index: 1;
     background-color: #6883a6;
   }
   footer h6 {
@@ -289,6 +304,10 @@ footer h6 {
 
 body {
   background-color: #eee;
+}
+
+.container {
+  min-height: 100vh;
 }
 
 /*# sourceMappingURL=index.css.map */

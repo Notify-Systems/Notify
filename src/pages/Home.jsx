@@ -8,8 +8,8 @@ import Tarefa from "../components/ui/Tarefa"
 export default function Home() {
     return (
         <>
-            <BarraPesquisa />
             <main>
+                <BarraPesquisa />
                 <section id="materias" className="estudos-container">
                     <div className="container-title">
                         <h2>Suas Máterias</h2>
