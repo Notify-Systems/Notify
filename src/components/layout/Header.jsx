@@ -10,7 +10,7 @@ export default function Header() {
                     <span></span>   
                 </div>
                 <h1><Link to="/"><img src="/logo.svg" alt="logo"/>Notify</Link></h1>
-                <Link to="/perfil"><div className="foto-perfil"></div></Link>
+                <Link to="/perfil"><img className="foto-perfil" src="/profile.svg" /></Link>
             </header>
         </>
     )

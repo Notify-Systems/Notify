@@ -5,11 +5,9 @@ export default function MateriaPerfil() {
     }
 
     return (
-        <>
-             <div className="materia">
-                <h1>{materia.nome}</h1>
-                <h4>{materia.serie}</h4>
-            </div>
-        </>
+        <div className="materia-perfil">
+            <h3>{materia.nome}</h3>
+            <h4>{materia.serie}</h4>
+        </div>
     )
 }
