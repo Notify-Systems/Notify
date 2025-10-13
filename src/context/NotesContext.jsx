@@ -19,7 +19,7 @@ export function NotesProvider({ children }) {
     }
 
     function removeNote(_id) {
-        setNotes(notes.filter((_, i) => i !== _id));
+        setNotes(notes.filter(note => note.id !== _id));
     }
 
     function editNote(_id, _title, _subject, _note) {

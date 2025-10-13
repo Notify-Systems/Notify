@@ -21,7 +21,7 @@ export function TasksProvider({ children }) {
     }
 
     function removeTask(_id) {
-        setTasks(tasks.filter((_, i) => i !== _id));
+        setTasks(tasks.filter(task => task.id !== _id));
     }
 
     function editTask(_id, _title, _subject, _date, _time) {

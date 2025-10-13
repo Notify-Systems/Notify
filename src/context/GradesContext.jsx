@@ -17,7 +17,7 @@ export function GradesProvider({ children }) {
     }
 
     function removeGrade(_id) {
-        setGrades(grades.filter((_, i) => i !== _id));
+        setGrades(grades.filter(grade => grade.id !== _id));
     }
 
     function editGrade(_id, _title) {
@@ -29,13 +29,8 @@ export function GradesProvider({ children }) {
     }
 
     function returnGrade(_id) {
-        let gradeName;
-        setGrades(grades.map(GradesI => 
-        GradesI.id === _id
-            ? gradeName = GradesI.title
-            : GradesI
-        ));
-        return gradeName;
+        const grade = grades.find(grade => grade.id === _id);
+        return grade ? grade.title : null;
     }
 
     return (

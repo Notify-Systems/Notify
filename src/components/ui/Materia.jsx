@@ -6,7 +6,7 @@ export default function Materia({ nome, serie }) {
         <article className="materia">
             <div className="info">
                 <h3>{nome}</h3>
-                <Link to="serie">{serie}</Link>
+                <Link to="/serie">{serie}</Link>
             </div>
             <Link to="/materia">
                 <div className="link">

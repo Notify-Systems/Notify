@@ -15,36 +15,6 @@ export default function Home() {
     const { subjects, returnSubject } = useContext(SubjectContext);
     const { notes } = useContext(NotesContext);
     const { tasks } = useContext(TasksContext);
-    const [subjectList, setSubjects] = useState([]);
-    const [noteList, setNotes] = useState([]);
-    const [taskList, setTasks] = useState([]);
-
-    useEffect(() => {
-        const newSubjects = subjects.map(subject => (
-            <Materia key={`materia${subject.id}`} nome={subject.title} serie={returnGrade(subject.grade)} />
-        ));
-        setSubjects(newSubjects);
-    }, [subjects]);
-    
-    useEffect(() => {
-        const newNotes = notes.map(note => (
-            <Anotacao key={`anotacao${note.id}`} nome={note.title} materia={returnSubject(note.subject)} />
-        ));
-        setNotes(newNotes);
-    }, [notes]);
-
-    useEffect(() => {
-        const newTasks = tasks.map(task => (
-            <Tarefa
-                key={`tarefa${task.id}`}
-                nome={task.title}
-                materia={returnSubject(task.subject)}
-                prazo={`${task.date} - ${task.time}`}
-                done={task.done}
-            />
-        ));
-        setTasks(newTasks);
-    }, [tasks]);
 
     return (
         <>
@@ -55,21 +25,34 @@ export default function Home() {
                         <h2>Suas Máterias</h2>
                         <Link to="add/subject"><img src="/btnAdd.svg" alt="Adicionar Matéria"/></Link>
                     </div>
-                    {subjectList}
+                    {Array.isArray(subjects) && subjects.map(subject => (
+                        <Materia key={`materia${subject.id}`} nome={subject.title} serie={returnGrade(subject.grade)} />
+                    ))}
                 </section>
                 <section id="anotacoes" className="estudos-container">
                     <div className="container-title">
                         <h2>Suas Anotações</h2>
                         <Link to="add/note"><img src="/btnAdd.svg" alt="Adicionar Anotação"/></Link>
                     </div>
-                    {noteList}
+                    {Array.isArray(notes) && notes.map(note => (
+                        <Anotacao key={`anotacao${note.id}`} nome={note.title} materia={returnSubject(note.subject)} />
+                    ))}
                 </section>
                 <section id="tarefas" className="estudos-container">
                     <div className="container-title">
                         <h2>Suas Tarefas</h2>
                         <Link to="add/task"><img src="/btnAdd.svg" alt="Adicionar Tarefa"/></Link>
                     </div>
-                    {taskList}
+                    {Array.isArray(tasks) && tasks.map(task => (
+                        <Tarefa
+                            key={`tarefa${task.id}`}
+                            id={task.id}
+                            nome={task.title}
+                            materia={returnSubject(task.subject)}
+                            prazo={`${task.date.split("-").join("/")} - ${task.time}`}
+                            done={task.done}
+                        />
+                    ))}
                 </section>
             </main>
             <Aside select="Menu" />

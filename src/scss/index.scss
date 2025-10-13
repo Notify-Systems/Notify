@@ -5,7 +5,6 @@
 @import "./aside";
 @import "./footer";
 @import "./variables";
-@import "./responsive";
 
 * {
     padding: 0;
@@ -19,3 +18,5 @@ body {
 .container {
     min-height: 100vh;
 }
+
+@import "./responsive";

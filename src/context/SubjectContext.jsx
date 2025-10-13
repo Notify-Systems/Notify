@@ -18,7 +18,7 @@ export function SubjectProvider({ children }) {
     }
 
     function removeSubject(_id) {
-        setSubject(subjects.filter((_, i) => i !== _id));
+        setSubject(subjects.filter(subject => subject.id !== _id));
     }
 
     function editSubject(_id, _title, _grade) {
@@ -30,13 +30,8 @@ export function SubjectProvider({ children }) {
     }
 
     function returnSubject(_id) {
-        let subjectName;
-        setSubject(subjects.map(subjectI => 
-        subjectI.id === _id
-            ? subjectName = subjectI.title
-            : subjectI
-        ));
-        return subjectName;
+        const subject = subjects.find(subject => subject.id === _id);
+        return subject ? subject.title : null;
     }
 
     return (

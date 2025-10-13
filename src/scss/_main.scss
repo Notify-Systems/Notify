@@ -13,6 +13,7 @@ main {
     max-width: 1000px;
     background-color: $opacity;
     padding: 20px;
+    padding-bottom: 10px;
     margin-top: 10px;
     article {
         display: flex;
@@ -20,6 +21,7 @@ main {
         align-items: center;
         background-color: $secondary;
         padding: 15px;
+        margin-bottom: 10px;
         h3 {
             font-size: 20px;
             font-weight: 600;
@@ -49,10 +51,20 @@ main {
             }
             &:active {
                 border-color: $contrast;
+                outline: none;
+                color: inherit;
+            }
+            &:focus {
+                outline: none;
+                color: inherit;
             }
             img {
                 width: 30px;
                 height: 30px;
+                &:focus, &:active {
+                    outline: none;
+                    color: inherit;
+                }
             }
         }
         .link {
