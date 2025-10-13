@@ -35,6 +35,9 @@
   font-size: 18px;
   font-weight: 500;
 }
+.selected span {
+  display: none;
+}
 .selected img {
   width: 30px;
   transition: 0.3s;
@@ -54,18 +57,18 @@
   transition: 0.5s;
   margin-bottom: 10px;
 }
-.select-list div {
-  padding: 5px 10px;
-}
-.select-list div a {
+.select-list a {
   color: #1f1f1f;
   text-decoration: none;
 }
-.select-list div:hover {
-  background: #6260a6;
+.select-list a div {
+  padding: 5px 10px;
 }
-.select-list div:hover a {
+.select-list a:hover {
   font-weight: 500;
+}
+.select-list a:hover div {
+  background: #6260a6;
 }
 .select-list button {
   width: 100%;

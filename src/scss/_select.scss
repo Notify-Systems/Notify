@@ -37,6 +37,9 @@
         font-size: 18px;
         font-weight: 500;
     }
+    span {
+        display: none;
+    }
     img {
         width: 30px;
         transition: .3s;
@@ -55,16 +58,16 @@
     border: 2px solid $contrast;
     transition: .5s;
     margin-bottom: 10px;
-    div {
-        padding: 5px 10px;
-        a {
-            color: $font;
-            text-decoration: none;
+    a {
+        color: $font;
+        text-decoration: none;
+        div {
+            padding: 5px 10px;
         }
         &:hover {
-            background: $secondary;
-            a {
-                font-weight: 500;
+            font-weight: 500;
+            div {
+                background: $secondary;
             }
         }
     }
