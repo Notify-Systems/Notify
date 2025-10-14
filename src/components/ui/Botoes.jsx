@@ -5,11 +5,11 @@ import { SubjectContext } from "../../context/SubjectContext";
 import { NotesContext } from "../../context/NotesContext";
 import { TasksContext } from "../../context/TasksContext"
 
-export default function Botoes({ type, func, nomeRef, gradeRef, subjectRef, noteRef, dateRef, timeRef }) {
-    const { grades, addGrade } = useContext(GradesContext);
-    const { subjects, addSubject } = useContext(SubjectContext);
-    const { notes, addNote } = useContext(NotesContext);
-    const { tasks, addTask } = useContext(TasksContext);
+export default function Botoes({ type, func, id, nomeRef, gradeRef, subjectRef, noteRef, dateRef, timeRef }) {
+    const { addGrade, editGrade } = useContext(GradesContext);
+    const { addSubject, editSubject } = useContext(SubjectContext);
+    const { addNote, editNote } = useContext(NotesContext);
+    const { addTask, editTask } = useContext(TasksContext);
     const navigate = useNavigate();
 
     function add() {
@@ -45,15 +45,45 @@ export default function Botoes({ type, func, nomeRef, gradeRef, subjectRef, note
                         break;
                 }
                 break;
+            case "edit":
+                switch(type) {
+                    case "grade":
+                        editGrade(Number(id), nome);
+                        break;
+                    case "subject":
+                        const grade = Number(gradeRef.current?.innerText);
+                        editSubject (Number(id), nome, grade);
+                        break;
+                    case "note":
+                        const materiaNota = Number(subjectRef.current?.innerText);
+                        const note = noteRef.current?.value;
+                        editNote(Number(id), nome, materiaNota, note);
+                        break;
+                    case "task":
+                        const materiaTarefa = Number(subjectRef.current?.innerText);
+                        const date = dateRef.current?.value;
+                        const time = timeRef.current?.value;
+                        if(!date || !time) {
+                            alert("Preencha os campos de data e hora");
+                            return;
+                        }
+                        editTask(Number(id), nome, materiaTarefa, date, time);
+                        break;
+                }
         }
         navigate("/");
+    }
+
+    function cancel() {
+        if(confirm("Você realmente deseja cancelar a operação?"))
+            navigate("/")
     }
 
     return (
         <>
             <section className="edit-buttons">
                 <button id="btnConfirmar" onClick={add}>Confirmar</button>
-                <button id="btnCancelar">Cancelar</button>
+                <button id="btnCancelar" onClick={cancel}>Cancelar</button>
             </section>
         </>
     ) 
