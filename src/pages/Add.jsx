@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom"
+import { useRef } from "react"
 import Aside from "../components/layout/Aside"
 import AddComponent from "../components/ui/AddComponent"
 import Nome from "../components/ui/Nome"
@@ -11,6 +12,12 @@ import "../add.css"
 
 export default function Add() {
     const { info } = useParams();
+    const nomeRef = useRef();
+    const gradeRef = useRef();
+    const subjectRef = useRef();
+    const noteRef = useRef();
+    const dateRef = useRef();
+    const timeRef = useRef();
     
     return (
         <>
@@ -22,25 +29,34 @@ export default function Add() {
                     info === "note" ? "Anotação" :
                     "Tarefa"
                 } />
-                <Nome />
+                <Nome nomeRef={nomeRef} />
                 {info === "subject" && 
                 <>
-                    <SelSerie />
+                    <SelSerie gradeRef={gradeRef} />
                 </>
                 }
                 {info === "note" && 
                 <>
-                    <SelMateria />
-                    <WriteNote />
+                    <SelMateria subjectRef={subjectRef} />
+                    <WriteNote noteRef={noteRef} />
                 </>
                 }
                 {info === "task" && 
                 <>
-                    <SelMateria />
-                    <Prazo />
+                    <SelMateria subjectRef={subjectRef} />
+                    <Prazo dateRef={dateRef} timeRef={timeRef} />
                 </>
                 }
-                <Botoes type={info} func="add" />
+                <Botoes
+                    type={info}
+                    func="add"
+                    nomeRef={nomeRef}
+                    gradeRef={gradeRef}
+                    subjectRef={subjectRef}
+                    noteRef={noteRef}
+                    dateRef={dateRef}
+                    timeRef={timeRef}
+                />
             </main>
             <Aside />
         </>

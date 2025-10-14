@@ -5,7 +5,7 @@ import { SubjectContext } from "../../context/SubjectContext";
 import { NotesContext } from "../../context/NotesContext";
 import { TasksContext } from "../../context/TasksContext"
 
-export default function Botoes({ type, func }) {
+export default function Botoes({ type, func, nomeRef, gradeRef, subjectRef, noteRef, dateRef, timeRef }) {
     const { grades, addGrade } = useContext(GradesContext);
     const { subjects, addSubject } = useContext(SubjectContext);
     const { notes, addNote } = useContext(NotesContext);
@@ -13,9 +13,8 @@ export default function Botoes({ type, func }) {
     const navigate = useNavigate();
 
     function add() {
-        const nome = document.getElementById("inputNome").value;
-        let materia;
-        if(nome == "") {
+        const nome = nomeRef.current?.value;
+        if(!nome) {
             alert("Preencha o campo de nome");
             return;
         }
@@ -26,19 +25,23 @@ export default function Botoes({ type, func }) {
                         addGrade(nome);
                         break;
                     case "subject":
-                        const grade = document.getElementById("selectedGrade").querySelector("span").innerText;
+                        const grade = Number(gradeRef.current?.innerText);
                         addSubject(nome, grade);
                         break;
                     case "note":
-                        const note = document.getElementById("note").value;
-                        materia = document.getElementById("selectedSubject").querySelector("span").innerText;
-                        addNote(nome, materia, note);
+                        const materiaNota = Number(subjectRef.current?.innerText);
+                        const note = noteRef.current?.value;
+                        addNote(nome, materiaNota, note);
                         break;
                     case "task":
-                        const date = document.getElementById("dateInput").value;
-                        const time = document.getElementById("timeInput").value;
-                        materia = document.getElementById("selectedSubject").querySelector("span").innerText;
-                        addTask(nome, materia, date, time);
+                        const materiaTarefa = Number(subjectRef.current?.innerText);
+                        const date = dateRef.current?.value;
+                        const time = timeRef.current?.value;
+                        if(!date || !time) {
+                            alert("Preencha os campos de data e hora");
+                            return;
+                        }
+                        addTask(nome, materiaTarefa, date, time);
                         break;
                 }
                 break;

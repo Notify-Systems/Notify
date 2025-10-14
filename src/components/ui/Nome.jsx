@@ -1,8 +1,8 @@
-export default function Nome() {
+export default function Nome({ nomeRef }) {
     return (
         <>
             <h2>Nome: </h2>
-            <input type="text" id="inputNome"/>
+            <input ref={nomeRef} type="text" id="inputNome"/>
         </>
     )
 }

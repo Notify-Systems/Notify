@@ -22,7 +22,7 @@ export default function Serie({ nome, id }) {
                 </div>
             </div>
             {Array.isArray(subjects) && subjects.map(subject => (
-                id === subject.id ? <Materia key={`materia${subject.id}`} nome={subject.title}/> : ""
+                id === subject.grade ? <Materia key={`materia${subject.id}`} nome={subject.title}/> : ""
             ))}
         </div>
     )

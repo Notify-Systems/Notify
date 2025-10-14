@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react"
 import { SubjectContext } from "../../context/SubjectContext"
 
-export default function SelMateria() {
+export default function SelMateria({ subjectRef }) {
     const { subjects } = useContext(SubjectContext);
     const [subjectList, setSubjects] = useState([]);
     const [open, setOpen] = useState(false);
@@ -32,7 +32,7 @@ export default function SelMateria() {
             <h2>Matéria:</h2>
             <div id="selectedSubject" className="selected">
                 <h5>{subjectSel != "" ? subjectSel : subjects.length === 0 ? "Não há matérias disponíveis" : "Escolha uma matéria"}</h5>
-                <span>{subjectId}</span>
+                <span ref={subjectRef}>{subjectId}</span>
                 <img src="/arrow.svg" />
             </div>
             <article id="selectGrade" className="select-list">{subjectList}</article>

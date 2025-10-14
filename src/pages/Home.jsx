@@ -44,6 +44,7 @@ export default function Home() {
                         <Link to="add/task"><img src="/btnAdd.svg" alt="Adicionar Tarefa"/></Link>
                     </div>
                     {Array.isArray(tasks) && tasks.map(task => (
+                        task.done === false ?
                         <Tarefa
                             key={`tarefa${task.id}`}
                             id={task.id}
@@ -52,6 +53,19 @@ export default function Home() {
                             prazo={`${task.date.split("-").join("/")} - ${task.time}`}
                             done={task.done}
                         />
+                        : ""
+                    ))}
+                    {Array.isArray(tasks) && tasks.map(task => (
+                        task.done === true ?
+                        <Tarefa
+                            key={`tarefa${task.id}`}
+                            id={task.id}
+                            nome={task.title}
+                            materia={returnSubject(task.subject)}
+                            prazo={`${task.date.split("-").join("/")} - ${task.time}`}
+                            done={task.done}
+                        />
+                        : ""
                     ))}
                 </section>
             </main>
