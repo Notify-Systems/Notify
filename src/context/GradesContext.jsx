@@ -30,7 +30,7 @@ export function GradesProvider({ children }) {
 
     function returnGrade(_id) {
         const grade = grades.find(grade => grade.id === _id);
-        return grade ? grade.title : null;
+        return grade ? {id: grade.id, title: grade.title} : null;
     }
 
     return (

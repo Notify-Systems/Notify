@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export default function Materia({ nome, serie }) {
+export default function Materia({ id, nome, serie }) {
 
     return (
         <article className="materia">
@@ -8,7 +8,7 @@ export default function Materia({ nome, serie }) {
                 <h3>{nome}</h3>
                 <Link to="/serie">{serie}</Link>
             </div>
-            <Link to="/materia">
+            <Link to={`/materia/${id}`}>
                 <div className="link">
                     <span></span>
                     <span></span>

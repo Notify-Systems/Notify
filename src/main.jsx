@@ -26,10 +26,10 @@ const router = createBrowserRouter([
       {path: "/edit/:info/:id", element: <Edit />},
       {path: "/cronograma", element: <Cronograma />},
       {path: "/perfil", element: <Perfil />},
-      {path: "/serie", element: <Series />},
-      {path: "/materia", element: <Materias />},
-      {path: "/anotacao", element: <Anotacoes />},
-      {path: "/tarefa", element: <Tarefas />}
+      {path: "/serie/:id", element: <Series />},
+      {path: "/materia/:id", element: <Materias />},
+      {path: "/anotacao/:id", element: <Anotacoes />},
+      {path: "/tarefa/:id", element: <Tarefas />}
     ]
   }
 ]);

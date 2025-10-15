@@ -1,4 +1,8 @@
+import { useContext } from "react"
 import { useParams, Link } from "react-router-dom"
+import { SubjectContext } from "../context/SubjectContext"
+import { NotesContext } from "../context/NotesContext"
+import { TasksContext } from "../context/TasksContext"
 import Aside from "../components/layout/Aside"
 import BarraPesquisa from "../components/layout/BarraPesquisa"
 import Info from "../components/ui/Info"
@@ -7,25 +11,43 @@ import Tarefa from "../components/ui/Tarefa"
 
 export default function Materias() {
     const { id } = useParams();
+    const { returnSubject } = useContext(SubjectContext);
+    const { notes } = useContext(NotesContext);
+    const { tasks } = useContext(TasksContext);
+    const subjectId = Number(id);
+    const subjectTitle = returnSubject(subjectId).title;
 
     return(
         <>
             <main>
                 <BarraPesquisa />
-                <Info nome={"Matemática"} />
+                <Info type="subject" nome={subjectTitle} id={id} />
                 <section id="anotacoes" className="estudos-container">
                     <div className="container-title">
                         <h2>Anotações</h2>
                         <Link to="add/note"><img src="/btnAdd.svg" alt="Adicionar Anotação"/></Link>
                     </div>
-                    <Anotacao nome={"Funções do 2o Grau"} />
+                    {Array.isArray(notes) && notes.map(note =>
+                        note.subject === subjectId ?
+                        <Anotacao key={`anotacao${note.id}`} id={note.id} nome={note.title} materia={subjectTitle} />
+                        : ""
+                    )}
                 </section>
                 <section id="tarefas" className="estudos-container">
                     <div className="container-title">
                         <h2>Tarefas</h2>
                         <Link to="add/task"><img src="/btnAdd.svg" alt="Adicionar Tarefa"/></Link>
                     </div>
-                    <Tarefa nome={"Matemática"} prazo={"2025/10/18 - 07:00"} done={false} />
+                    {Array.isArray(tasks) && tasks.map(task =>
+                        task.subject === subjectId && task.done === false ?
+                        <Tarefa key={`tarefa${task.id}`} id={task.id} nome={task.title} materia={subjectTitle} prazo={`${task.date} - ${task.title}`} done={task.done} />
+                        : ""
+                    )}
+                    {Array.isArray(tasks) && tasks.map(task =>
+                        task.subject === subjectId && task.done === true ?
+                        <Tarefa key={`tarefa${task.id}`} id={task.id} nome={task.title} materia={subjectTitle} prazo={`${task.date} - ${task.title}`} done={task.done} />
+                        : ""
+                    )}
                 </section>
             </main>
             <Aside />

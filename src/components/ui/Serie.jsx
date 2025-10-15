@@ -12,7 +12,7 @@ export default function Serie({ nome, id }) {
                 <h2>{ nome }</h2>
                 <div>
                     <Link to="/add/subject"><img src="/btnAdd.svg" alt="Adicionar Matéria"/></Link>
-                    <Link to="/serie">
+                    <Link to={`/serie/${id}`}>
                         <div className="link">
                             <span></span>
                             <span></span>
@@ -22,7 +22,7 @@ export default function Serie({ nome, id }) {
                 </div>
             </div>
             {Array.isArray(subjects) && subjects.map(subject => (
-                id === subject.grade ? <Materia key={`materia${subject.id}`} nome={subject.title}/> : ""
+                id === subject.grade ? <Materia key={`materia${subject.id}`} id={subject.id} nome={subject.title}/> : ""
             ))}
         </section>
     )

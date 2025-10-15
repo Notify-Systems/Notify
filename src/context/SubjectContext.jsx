@@ -31,7 +31,7 @@ export function SubjectProvider({ children }) {
 
     function returnSubject(_id) {
         const subject = subjects.find(subject => subject.id === _id);
-        return subject ? subject.title : null;
+        return subject ? {id: subject.id, title: subject.title, grade: subject.grade} : null;
     }
 
     return (

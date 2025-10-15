@@ -40,8 +40,13 @@ export function TasksProvider({ children }) {
         ));
     }
 
+    function returnTask(_id) {
+        const task = tasks.find(task => task.id === _id);
+        return task ? {id: task.id, title: task.title, subject: task.subject, date: task.date, time: task.time, done: task.done} : null;
+    }
+
     return (
-        <TasksContext.Provider value={{ tasks, addTask, removeTask, editTask, toggleTask }}>
+        <TasksContext.Provider value={{ tasks, addTask, removeTask, editTask, toggleTask, returnTask }}>
             { children }
         </TasksContext.Provider>
     );

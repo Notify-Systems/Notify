@@ -30,8 +30,13 @@ export function NotesProvider({ children }) {
         ));
     }
 
+    function returnNote(_id) {
+        const anotacao = notes.find(note => note.id === _id);
+        return anotacao ? {id: anotacao.id, title: anotacao.title, subject: anotacao.subject, note: anotacao.note} : null;
+    }
+
     return (
-        <NotesContext.Provider value={{ notes, addNote, removeNote, editNote }}>
+        <NotesContext.Provider value={{ notes, addNote, removeNote, editNote, returnNote }}>
             { children }
         </NotesContext.Provider>
     )
