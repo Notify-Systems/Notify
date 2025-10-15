@@ -10,6 +10,10 @@ import Add from './pages/Add'
 import Edit from './pages/Edit'
 import Cronograma from "./pages/Cronograma"
 import Perfil from "./pages/Perfil"
+import Series from "./pages/Series"
+import Materias from "./pages/Materias"
+import Anotacoes from "./pages/Anotacoes"
+import Tarefas from "./pages/Tarefas"
 
 const router = createBrowserRouter([
   {
@@ -21,7 +25,11 @@ const router = createBrowserRouter([
       {path: "/add/:info", element: <Add />},
       {path: "/edit/:info/:id", element: <Edit />},
       {path: "/cronograma", element: <Cronograma />},
-      {path: "/perfil", element: <Perfil />}
+      {path: "/perfil", element: <Perfil />},
+      {path: "/serie", element: <Series />},
+      {path: "/materia", element: <Materias />},
+      {path: "/anotacao", element: <Anotacoes />},
+      {path: "/tarefa", element: <Tarefas />}
     ]
   }
 ]);

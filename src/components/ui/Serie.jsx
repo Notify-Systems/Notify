@@ -12,7 +12,7 @@ export default function Serie({ nome, id }) {
                 <h2>{ nome }</h2>
                 <div>
                     <Link to="/add/subject"><img src="/btnAdd.svg" alt="Adicionar Matéria"/></Link>
-                    <Link to="#">
+                    <Link to="/serie">
                         <div className="link">
                             <span></span>
                             <span></span>
