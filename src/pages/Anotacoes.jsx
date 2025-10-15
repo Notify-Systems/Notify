@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom"
 import Aside from "../components/layout/Aside"
-import BarraPesquisa from "../components/layout/BarraPesquisa"
 import Info from "../components/ui/Info"
 
 export default function Anotacoes() {
@@ -9,9 +8,8 @@ export default function Anotacoes() {
     return (
         <>
             <main>
-                <BarraPesquisa />
-                <Info />
-                <textarea className="show-note" readOnly></textarea>
+                <Info nome="Funções do 2o Grau" />
+                <textarea className="show-note" readOnly value={"teste"}></textarea>
             </main>
             <Aside />
         </>

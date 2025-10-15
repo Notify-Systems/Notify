@@ -1,0 +1,70 @@
+@import "./variables";
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    height: 75px;
+    margin-bottom: 20px;
+    h2 {
+        font-size: 25px;
+    }
+}
+.info-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    a {
+        text-decoration: none;
+    }
+}
+.info-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 30px;
+    background-color: $opacity;
+    border: 2px solid $primary;
+    border-radius: 5px;
+    font-size: 15px;
+    color: $font;
+    font-weight: 500;
+    &:hover {
+        border-color: $contrast;
+    }
+}
+.show-note {
+    width: 100%;
+    max-width: 1000px;
+    height: 500px;
+    font-size: 15px;
+    background-color: $opacity;
+    padding: 15px;
+    border: 2px solid $primary;
+    border-radius: 20px;
+    outline: none;
+    &:hover {
+        border-color: $contrast;
+    }
+}
+.status-tarefa {
+    width: 100%;
+    max-width: 1000px;
+    h2 {
+        font-size: 25px;
+    }
+    h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 18px;
+    }
+    &.atraso p {
+        color: red;
+    }
+}

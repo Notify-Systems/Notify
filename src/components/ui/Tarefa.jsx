@@ -16,7 +16,7 @@ export default function Tarefa({ id, nome, materia, prazo, done }) {
                 <div className="toggle" onClick={() => toggleTask(id)} tabIndex={-1}>
                     {done && <img src="/check.svg" tabIndex={-1} />}
                 </div>
-                <Link to="/materia">
+                <Link to="/tarefa">
                     <div className="link">
                         <span></span>
                         <span></span>

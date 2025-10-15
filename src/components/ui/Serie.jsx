@@ -7,7 +7,7 @@ export default function Serie({ nome, id }) {
     const { subjects } = useContext(SubjectContext);
 
     return (
-        <div className="estudos-container">
+        <section className="estudos-container">
             <div className="container-title">
                 <h2>{ nome }</h2>
                 <div>
@@ -24,6 +24,6 @@ export default function Serie({ nome, id }) {
             {Array.isArray(subjects) && subjects.map(subject => (
                 id === subject.grade ? <Materia key={`materia${subject.id}`} nome={subject.title}/> : ""
             ))}
-        </div>
+        </section>
     )
 }
