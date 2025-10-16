@@ -25,7 +25,7 @@ export default function Materias() {
                 <section id="anotacoes" className="estudos-container">
                     <div className="container-title">
                         <h2>Anotações</h2>
-                        <Link to="add/note"><img src={`${import.meta.env.BASE_URL}/btnAdd.svg`} alt="Adicionar Anotação"/></Link>
+                        <Link to="/add/note"><img src={`${import.meta.env.BASE_URL}/btnAdd.svg`} alt="Adicionar Anotação"/></Link>
                     </div>
                     {Array.isArray(notes) && notes.map(note =>
                         note.subject === subjectId ?
@@ -36,7 +36,7 @@ export default function Materias() {
                 <section id="tarefas" className="estudos-container">
                     <div className="container-title">
                         <h2>Tarefas</h2>
-                        <Link to="add/task"><img src={`${import.meta.env.BASE_URL}/btnAdd.svg`} alt="Adicionar Tarefa"/></Link>
+                        <Link to="/add/task"><img src={`${import.meta.env.BASE_URL}/btnAdd.svg`} alt="Adicionar Tarefa"/></Link>
                     </div>
                     {Array.isArray(tasks) && tasks.map(task =>
                         task.subject === subjectId && task.done === false ?
