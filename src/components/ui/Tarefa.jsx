@@ -3,13 +3,13 @@ import { SubjectContext } from "../../context/SubjectContext";
 import { TasksContext } from "../../context/TasksContext"
 import { Link } from "react-router-dom"
 
-export default function Tarefa({ id, nome, materia, prazo, done }) {
+export default function Tarefa({ id, nome, materia, prazo, done, display }) {
     const { returnSubject } = useContext(SubjectContext);
     const { toggleTask } = useContext(TasksContext);
     const linkMateria = returnSubject(Number(id))?.id;
 
     return (
-        <article className="tarefa">
+        <article className={`tarefa ${display ? "" : "disabled"}`}>
             <div className="info">
                 <h3>{nome}</h3>
                 <Link to={`/materia/${linkMateria}`}>{materia}</Link>

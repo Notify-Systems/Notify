@@ -1,13 +1,15 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { SubjectContext } from "../context/SubjectContext"
 import { TasksContext } from "../context/TasksContext"
 import BarraPesquisa from "../components/layout/BarraPesquisa"
 import Aside from "../components/layout/Aside"
 import Tarefa from "../components/ui/Tarefa"
+import normalizeText from "../normalizeText"
 
 export default function Cronograma() {
     const { returnSubject } = useContext(SubjectContext);
     const { tasks } = useContext(TasksContext);
+    const [search, setSearch] = useState("");
 
     function atraso(date) {
         const now = new Date();
@@ -30,7 +32,7 @@ export default function Cronograma() {
     return (
         <>
             <main>
-                <BarraPesquisa />
+                <BarraPesquisa search={search} setSearch={setSearch} />
                 <section id="pendentes" className="estudos-container">
                     <div className="container-title">
                         <h2>Tarefas Pendentes</h2>
@@ -44,6 +46,7 @@ export default function Cronograma() {
                             materia={returnSubject(task.subject) != null ? returnSubject(task.subject).title : ""}
                             prazo={`${task.date.split("-").join("/")} - ${task.time}`}
                             done={task.done}
+                            display={normalizeText(task.title).includes(normalizeText(search)) ? true : false}
                         />
                         : "" : ""
                     ))}
@@ -61,6 +64,7 @@ export default function Cronograma() {
                             materia={returnSubject(task.subject) != null ? returnSubject(task.subject).title : ""}
                             prazo={`${task.date.split("-").join("/")} - ${task.time}`}
                             done={task.done}
+                            display={normalizeText(task.title).includes(normalizeText(search)) ? true : false}
                         />
                         : "" : ""
                     ))}

@@ -1,9 +1,12 @@
 @import "variables";
 
 .barra-pesquisa {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px 20px;
     width: 100%;
+    transition: .5s;
     input {
         width: 100%;
         max-width: 800px;
@@ -18,6 +21,33 @@
             font-style: italic;
             font-weight: 300;
             color: $bg;
+        }
+    }
+    button {
+        background: none;
+        border: none;
+        margin-left: 10px;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: transform .5s, opacity .5s;
+        img {
+            width: 30px;
+            transform: rotate(0deg);
+            transition: transform 0.5s;
+        }
+        &.open {
+            pointer-events: auto;
+            transform: translateX(0);
+            z-index: 1;
+            opacity: 1;
+            img {
+                transform: rotate(45deg) scale(1);
+            }
+            &:hover img {
+                transform: rotate(45deg) scale(1.1);
+            }
         }
     }
 }

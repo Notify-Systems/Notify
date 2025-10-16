@@ -9,17 +9,19 @@ import BarraPesquisa from "../components/layout/BarraPesquisa"
 import Materia from "../components/ui/Materia"
 import Anotacao from "../components/ui/Anotacao"
 import Tarefa from "../components/ui/Tarefa"
+import normalizeText from "../normalizeText"
 
 export default function Home() {
     const { returnGrade }  = useContext(GradesContext);
     const { subjects, returnSubject } = useContext(SubjectContext);
     const { notes } = useContext(NotesContext);
     const { tasks } = useContext(TasksContext);
+    const [ search, setSearch ] = useState("");
 
     return (
         <>
             <main>
-                <BarraPesquisa />
+                <BarraPesquisa search={search} setSearch={setSearch} />
                 <section id="materias" className="estudos-container">
                     <div className="container-title">
                         <h2>Suas Máterias</h2>
@@ -31,6 +33,7 @@ export default function Home() {
                             id={subject.id}
                             nome={subject.title}
                             serie={returnGrade(subject.grade) != null ? returnGrade(subject.grade).title : ""}
+                            display={normalizeText(subject.title).includes(normalizeText(search)) ? true : false}
                         />
                     ))}
                 </section>
@@ -45,6 +48,7 @@ export default function Home() {
                             id={note.id}
                             nome={note.title}
                             materia={returnSubject(note.subject) != null ? returnSubject(note.subject).title : ""}
+                            display={normalizeText(note.title).includes(normalizeText(search)) ? true : false}
                         />
                     ))}
                 </section>
@@ -62,6 +66,7 @@ export default function Home() {
                             materia={returnSubject(task.subject) != null ? returnSubject(task.subject).title : ""}
                             prazo={`${task.date.split("-").join("/")} - ${task.time}`}
                             done={task.done}
+                            display={normalizeText(task.title).includes(normalizeText(search)) ? true : false}
                         />
                         : ""
                     ))}
@@ -74,6 +79,7 @@ export default function Home() {
                             materia={returnSubject(task.subject) != null ? returnSubject(task.subject).title : ""}
                             prazo={`${task.date.split("-").join("/")} - ${task.time}`}
                             done={task.done}
+                            display={normalizeText(task.title).includes(normalizeText(search)) ? true : false}
                         />
                         : ""
                     ))}

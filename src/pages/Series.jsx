@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { useParams, Link } from "react-router-dom"
 import { GradesContext } from "../context/GradesContext"
 import { SubjectContext } from "../context/SubjectContext"
@@ -10,6 +10,7 @@ import Info from "../components/ui/Info"
 import Materia from "../components/ui/Materia"
 import Anotacao from "../components/ui/Anotacao"
 import Tarefa from "../components/ui/Tarefa"
+import normalizeText from "../normalizeText"
 
 export default function Series() {
     const { id } = useParams();
@@ -19,11 +20,12 @@ export default function Series() {
     const { tasks } = useContext(TasksContext);
     const gradeId = Number(id);
     const gradeTitle = returnGrade(gradeId).title;
+    const [search, setSearch] = useState("");
 
     return (
         <>
             <main>
-                <BarraPesquisa />
+                <BarraPesquisa search={search} setSearch={setSearch} />
                 <Info type="grade" nome={gradeTitle} id={id} />
                 <section id="materias" className="estudos-container">
                     <div className="container-title">
@@ -36,6 +38,7 @@ export default function Series() {
                             key={`materia${subject.id}`}
                             id={subject.id}
                             nome={subject.title}
+                            display={normalizeText(subject.title).includes(normalizeText(search)) ? true : false}
                         />
                         : ""
                     )}
@@ -53,6 +56,7 @@ export default function Series() {
                             id={note.id}
                             nome={note.title}
                             materia={returnSubject(note.subject)?.title}
+                            display={normalizeText(note.title).includes(normalizeText(search)) ? true : false}
                         />
                         : "" : ""
                     )}
@@ -72,6 +76,7 @@ export default function Series() {
                             materia={returnSubject(task.subject)?.title}
                             prazo={`${task.date} - ${task.title}`}
                             done={task.done}
+                            display={normalizeText(task.title).includes(normalizeText(search)) ? true : false}
                         />
                         : "" : ""
                     )}
@@ -85,6 +90,7 @@ export default function Series() {
                             materia={returnSubject(task.subject)?.title}
                             prazo={`${task.date} - ${task.title}`}
                             done={task.done}
+                            display={normalizeText(task.title).includes(normalizeText(search)) ? true : false}
                         />
                         : "" : ""
                     )}

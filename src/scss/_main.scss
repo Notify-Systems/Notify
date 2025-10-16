@@ -68,6 +68,9 @@ main {
                 }
             }
         }
+        &.disabled {
+            display: none;
+        }
     }
     .link {
         display: flex;

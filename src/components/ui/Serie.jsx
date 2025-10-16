@@ -1,9 +1,10 @@
 import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { SubjectContext } from "../../context/SubjectContext";
+import { SubjectContext } from "../../context/SubjectContext"
 import Materia from "./Materia"
+import normalizeText from "../../normalizeText"
 
-export default function Serie({ nome, id }) {
+export default function Serie({ nome, id, search }) {
     const { subjects } = useContext(SubjectContext);
 
     return (
@@ -22,7 +23,12 @@ export default function Serie({ nome, id }) {
                 </div>
             </div>
             {Array.isArray(subjects) && subjects.map(subject => (
-                id === subject.grade ? <Materia key={`materia${subject.id}`} id={subject.id} nome={subject.title}/> : ""
+                    id === subject.grade ? <Materia
+                    key={`materia${subject.id}`}
+                    id={subject.id}
+                    nome={subject.title}
+                    display={normalizeText(subject.title).includes(normalizeText(search))}
+                /> : ""
             ))}
         </section>
     )
