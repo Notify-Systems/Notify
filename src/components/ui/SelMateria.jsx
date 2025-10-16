@@ -33,7 +33,7 @@ export default function SelMateria({ subjectRef }) {
             <div id="selectedSubject" className="selected">
                 <h5>{subjectSel != "" ? subjectSel : subjects.length === 0 ? "Não há matérias disponíveis" : "Escolha uma matéria"}</h5>
                 <span ref={subjectRef}>{subjectId}</span>
-                <img src="/arrow.svg" />
+                <img src={`${import.meta.env.BASE_URL}/arrow.svg`} />
             </div>
             <article id="selectGrade" className="select-list">{subjectList}</article>
         </section>

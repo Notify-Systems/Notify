@@ -33,7 +33,7 @@ export default function SelSerie({ gradeRef }) {
             <div id="selectedGrade" className="selected">
                 <h5>{gradeSel != "" ? gradeSel : grades.length === 0 ? "Não há séries disponíveis" : "Escolha uma série"}</h5>
                 <span ref={gradeRef}>{gradeId}</span>
-                <img src="/arrow.svg" />
+                <img src={`${import.meta.env.BASE_URL}/arrow.svg`} />
             </div>
             <article id="selectGrade" className="select-list">{gradeList}</article>
         </section>

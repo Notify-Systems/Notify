@@ -12,7 +12,7 @@ export default function AddComponent({ select }) {
         <section id="addComponent" className={`select ${open === true ? "open" : ""}`} onClick={toggle}>
             <div id="selectedComponent" className="selected">
                 <h5>{ select }</h5>
-                <img src="/arrow.svg" />
+                <img src={`${import.meta.env.BASE_URL}/arrow.svg`} />
             </div>
             <article id="selectComponent" className="select-list">
                 <Link to="/add/grade"><div>Série</div></Link>
