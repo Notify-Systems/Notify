@@ -32,7 +32,9 @@ const router = createBrowserRouter([
       {path: "/tarefa/:id", element: <Tarefas />}
     ]
   }
-]);
+], {
+  basename: "/Notify"
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
