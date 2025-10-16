@@ -1,4 +1,5 @@
 {
+  "homepage": "https://notify-systems.github.io/Notify/",
   "name": "notify",
   "private": true,
   "version": "0.0.0",
@@ -8,7 +9,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "sass": "sass --watch src/scss/index.scss:src/index.css"
+    "sass": "sass --watch src/scss/index.scss:src/index.css",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.2.0",
@@ -23,6 +26,7 @@
     "eslint": "^9.36.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
+    "gh-pages": "^6.3.0",
     "globals": "^16.4.0",
     "vite": "^7.1.7"
   }
