@@ -41,7 +41,7 @@ export default function Cronograma() {
                             key={`tarefa${task.id}`}
                             id={task.id}
                             nome={task.title}
-                            materia={returnSubject(task.subject).title}
+                            materia={returnSubject(task.subject) != null ? returnSubject(task.subject).title : ""}
                             prazo={`${task.date.split("-").join("/")} - ${task.time}`}
                             done={task.done}
                         />
@@ -58,7 +58,7 @@ export default function Cronograma() {
                             key={`tarefa${task.id}`}
                             id={task.id}
                             nome={task.title}
-                            materia={returnSubject(task.subject).title}
+                            materia={returnSubject(task.subject) != null ? returnSubject(task.subject).title : ""}
                             prazo={`${task.date.split("-").join("/")} - ${task.time}`}
                             done={task.done}
                         />

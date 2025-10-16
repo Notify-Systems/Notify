@@ -26,7 +26,11 @@ export default function Perfil() {
                     <h2>Matérias</h2>
                     <div className="materias">
                         {Array.isArray(subjects) && subjects.map(subject => (
-                            <MateriaPerfil key={`materia${subject.id}`} nome={subject.title} serie={returnGrade(subject.grade).title} />
+                            <MateriaPerfil
+                                key={`materia${subject.id}`}
+                                nome={subject.title}
+                                serie={returnGrade(subject.grade) != null ? returnGrade(subject.grade).title : ""}
+                            />
                         ))}
                     </div>
                 </section>
