@@ -46,13 +46,13 @@ export default function Series() {
                         <Link to="add/note"><img src="/btnAdd.svg" alt="Adicionar Anotação"/></Link>
                     </div>
                     {Array.isArray(notes) && notes.map(note =>
-                        returnSubject(note.subject) != null ?
+                        returnSubject(note.subject) ?
                         note.subject === returnSubject(note.subject).id && returnSubject(note.subject).grade === gradeId ?
                         <Anotacao
                             key={`anotacao${note.id}`}
                             id={note.id}
                             nome={note.title}
-                            materia={returnSubject(note.subject) != null ? returnSubject(note.subject).title : ""}
+                            materia={returnSubject(note.subject)?.title}
                         />
                         : "" : ""
                     )}
@@ -63,26 +63,26 @@ export default function Series() {
                         <Link to="add/task"><img src="/btnAdd.svg" alt="Adicionar Tarefa"/></Link>
                     </div>
                     {Array.isArray(tasks) && tasks.map(task =>
-                        returnSubject(task.subject) != null ?
+                        returnSubject(task.subject) ?
                         task.subject === returnSubject(task.subject).id && returnSubject(task.subject).grade === gradeId && task.done === false ?
                         <Tarefa
                             key={`tarefa${task.id}`}
                             id={task.id}
                             nome={task.title}
-                            materia={returnSubject(task.subject) != null ? returnSubject(task.subject) : ""}
+                            materia={returnSubject(task.subject)?.title}
                             prazo={`${task.date} - ${task.title}`}
                             done={task.done}
                         />
                         : "" : ""
                     )}
                     {Array.isArray(tasks) && tasks.map(task =>
-                        returnSubject(task.subject) != null ?
+                        returnSubject(task.subject) ?
                         task.subject === returnSubject(task.subject).id && returnSubject(task.subject).grade === gradeId && task.done === true ?
                         <Tarefa
                             key={`tarefa${task.id}`}
                             id={task.id}
                             nome={task.title}
-                            materia={returnSubject(task.subject) != null ? returnSubject(task.subject) : ""}
+                            materia={returnSubject(task.subject)?.title}
                             prazo={`${task.date} - ${task.title}`}
                             done={task.done}
                         />

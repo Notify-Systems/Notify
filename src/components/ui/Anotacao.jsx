@@ -1,11 +1,16 @@
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import { SubjectContext } from "../../context/SubjectContext"
 
 export default function Anotacao({ id, nome, materia }) {
+    const { returnSubject } = useContext(SubjectContext);
+    const linkMateria = returnSubject(Number(id))?.id;
+
     return(
         <article className="anotacao">
             <div className="info">
                 <h3>{nome}</h3>
-                <Link to="/materia">{materia}</Link>
+                <Link to={`/materia/${linkMateria}`}>{materia}</Link>
             </div>
             <Link to={`/anotacao/${id}`}>
                 <div className="link">

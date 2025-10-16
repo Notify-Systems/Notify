@@ -29,7 +29,7 @@ export default function Materias() {
                     </div>
                     {Array.isArray(notes) && notes.map(note =>
                         note.subject === subjectId ?
-                        <Anotacao key={`anotacao${note.id}`} id={note.id} nome={note.title} materia={subjectTitle} />
+                        <Anotacao key={`anotacao${note.id}`} id={note.id} nome={note.title} />
                         : ""
                     )}
                 </section>
@@ -40,12 +40,12 @@ export default function Materias() {
                     </div>
                     {Array.isArray(tasks) && tasks.map(task =>
                         task.subject === subjectId && task.done === false ?
-                        <Tarefa key={`tarefa${task.id}`} id={task.id} nome={task.title} materia={subjectTitle} prazo={`${task.date} - ${task.title}`} done={task.done} />
+                        <Tarefa key={`tarefa${task.id}`} id={task.id} nome={task.title} prazo={`${task.date} - ${task.title}`} done={task.done} />
                         : ""
                     )}
                     {Array.isArray(tasks) && tasks.map(task =>
                         task.subject === subjectId && task.done === true ?
-                        <Tarefa key={`tarefa${task.id}`} id={task.id} nome={task.title} materia={subjectTitle} prazo={`${task.date} - ${task.title}`} done={task.done} />
+                        <Tarefa key={`tarefa${task.id}`} id={task.id} nome={task.title} prazo={`${task.date} - ${task.title}`} done={task.done} />
                         : ""
                     )}
                 </section>
