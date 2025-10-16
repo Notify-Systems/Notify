@@ -13,11 +13,10 @@
     box-sizing: border-box;
     font-family: Inter, sans-serif;
 }
-body {
-    background-color: $bg;
-}
 .container {
     min-height: 100vh;
+    background-color: var(--bg);
+    transition: .5s
 }
 
 @import "./responsive";

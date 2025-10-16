@@ -1,8 +1,10 @@
 import { useContext, useState, useEffect } from "react"
 import { SubjectContext } from "../../context/SubjectContext"
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function SelMateria({ subjectRef }) {
     const { subjects } = useContext(SubjectContext);
+    const { theme } = useContext(ThemeContext);
     const [subjectList, setSubjects] = useState([]);
     const [open, setOpen] = useState(false);
     const [subjectSel, setSubject] = useState("");
@@ -33,7 +35,7 @@ export default function SelMateria({ subjectRef }) {
             <div id="selectedSubject" className="selected">
                 <h5>{subjectSel != "" ? subjectSel : subjects.length === 0 ? "Não há matérias disponíveis" : "Escolha uma matéria"}</h5>
                 <span ref={subjectRef}>{subjectId}</span>
-                <img src={`${import.meta.env.BASE_URL}/arrow.svg`} />
+                <img src={`${import.meta.env.BASE_URL}/arrow${theme === "dark" ? "Dark" : ""}.svg`} />
             </div>
             <article id="selectGrade" className="select-list">{subjectList}</article>
         </section>

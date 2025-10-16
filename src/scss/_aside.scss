@@ -1,5 +1,3 @@
-@import "variables";
-
 aside {
     display: flex;
     flex-direction: column;
@@ -8,7 +6,7 @@ aside {
     width: 200px;
     height: 100%;
     padding: 20px;
-    background: lighten($contrast, 5%);
+    background-color: var(--contrast);
     a {
         display: flex;
         align-items: center;
@@ -24,7 +22,7 @@ aside {
         }
         h4 {
             font-size: 15px;
-            color: $bg;
+            color: var(--bg);
         }
     }
 }

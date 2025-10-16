@@ -1,10 +1,8 @@
-@import "variables";
-
 footer {
     display: flex;
     justify-content: center;
     bottom: 0;
-    background: $primary;
+    background: var(--primary);
     width: 100%;
     padding: 15px;
     margin-top: 20px;

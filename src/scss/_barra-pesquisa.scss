@@ -1,4 +1,9 @@
-@import "variables";
+:root {
+    --search-bg: var(--primary);
+}
+.dark {
+    --search-bg: var(--contrast);
+}
 
 .barra-pesquisa {
     display: flex;
@@ -14,13 +19,13 @@
         border-radius: 30px;
         font-size: 15px;
         font-weight: 500;
-        background-color: $primary;
-        border: 1.5px solid $secondary;
+        background-color: var(--search-bg);
+        border: 1.5px solid var(--secondary);
         outline: none;
         &::placeholder {
             font-style: italic;
             font-weight: 300;
-            color: $bg;
+            color: var(--bg);
         }
     }
     button {

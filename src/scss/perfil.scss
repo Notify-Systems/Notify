@@ -9,7 +9,7 @@ main.perfil {
     padding: 20px 15px;
     margin-bottom: 20px;
     width: 100%;
-    background: $opacity;
+    background: var(--opacity);
 }
 #usuarioImg {
     display: flex;
@@ -18,7 +18,7 @@ main.perfil {
     border-radius: 50%;
     width: 100px;
     height: 100px;
-    background: $secondary;
+    background: var(--secondary);
     img {
         width: 100px;
     }
@@ -31,11 +31,13 @@ main.perfil {
     h3 {
         font-size: 25px;
         font-weight: 600;
+        color: var(--font);
     }
     h4 {
         font-size: 15px;
         font-weight: 400;
         font-style: italic;
+        color: var(--font);
     }
 }
 .materias-container {
@@ -44,6 +46,7 @@ main.perfil {
 h2 {
     font-size: 20px;
     font-weight: 600;
+    color: var(--font);
 }
 .materias {
     display: flex;
@@ -73,14 +76,16 @@ h2 {
     margin-right: 10px;
     width: 160px;
     height: 70px;
-    background: $secondary;
+    background: var(--secondary);
     h3 {
         font-size: 15px;
         font-weight: 600;
+        color: var(--font);
     }
     h4 {
         font-size: 10px;
         font-weight: 400;
+        color: var(--font);
     }
 }
 @import './responsive-perfil';

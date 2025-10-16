@@ -1,5 +1,3 @@
-@import "./variables";
-
 .info-container {
     display: flex;
     justify-content: space-between;
@@ -27,14 +25,14 @@
     align-items: center;
     width: 100px;
     height: 30px;
-    background-color: $opacity;
-    border: 2px solid $primary;
+    background-color: var(--opacity);
+    border: 2px solid var(--primary);
     border-radius: 5px;
     font-size: 15px;
-    color: $font;
+    color: var(--font);
     font-weight: 500;
     &:hover {
-        border-color: $contrast;
+        border-color: var(--contrast);
     }
 }
 .show-note {
@@ -42,13 +40,14 @@
     max-width: 1000px;
     height: 500px;
     font-size: 15px;
-    background-color: $opacity;
+    background-color: var(--opacity);
+    color: var(--font);
     padding: 15px;
-    border: 2px solid $primary;
+    border: 2px solid var(--primary);
     border-radius: 20px;
     outline: none;
     &:hover {
-        border-color: $contrast;
+        border-color: var(--contrast);
     }
 }
 .status-tarefa {
@@ -56,13 +55,16 @@
     max-width: 1000px;
     h2 {
         font-size: 25px;
+        color: var(--font);
     }
     h3 {
         font-size: 20px;
         margin-bottom: 20px;
+        color: var(--font);
     }
     p {
         font-size: 18px;
+        color: var(--font);
     }
     &.atraso p {
         color: red;

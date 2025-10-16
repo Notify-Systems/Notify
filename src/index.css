@@ -4,7 +4,7 @@ header {
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  background-color: #9cc1d9;
+  background-color: var(--primary);
   width: 100%;
   height: 64px;
   padding: 0 20px;
@@ -25,14 +25,14 @@ header {
   width: 40px;
   height: 3px;
   border-radius: 1.5px;
-  background-color: #1f1f1f;
+  background-color: var(--font);
 }
 
 h1 a {
   display: flex;
   align-items: center;
   font-size: 1.75rem;
-  color: #1f1f1f;
+  color: #000;
   text-decoration: none;
   transition: 0.5s;
 }
@@ -48,8 +48,16 @@ h1 a img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #6883a6;
+  background-color: var(--contrast);
   opacity: 30%;
+}
+
+:root {
+  --search-bg: var(--primary);
+}
+
+.dark {
+  --search-bg: var(--contrast);
 }
 
 .barra-pesquisa {
@@ -67,14 +75,14 @@ h1 a img {
   border-radius: 30px;
   font-size: 15px;
   font-weight: 500;
-  background-color: #9cc1d9;
-  border: 1.5px solid #6260a6;
+  background-color: var(--search-bg);
+  border: 1.5px solid var(--secondary);
   outline: none;
 }
 .barra-pesquisa input::placeholder {
   font-style: italic;
   font-weight: 300;
-  color: #eee;
+  color: var(--bg);
 }
 .barra-pesquisa button {
   background: none;
@@ -117,27 +125,31 @@ main {
 .estudos-container {
   width: 100%;
   max-width: 1000px;
-  background-color: #c4c3d8;
+  background-color: var(--opacity);
   padding: 20px;
   padding-bottom: 10px;
   margin-top: 10px;
+}
+.estudos-container h2 {
+  color: var(--font);
 }
 .estudos-container article {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #6260a6;
+  background-color: var(--secondary);
   padding: 15px;
   margin-bottom: 10px;
 }
 .estudos-container article h3 {
   font-size: 20px;
   font-weight: 600;
+  color: var(--font);
 }
 .estudos-container article a, .estudos-container article p {
   font-size: 15px;
   font-weight: 500;
-  color: #1f1f1f;
+  color: var(--font);
   text-decoration: none;
 }
 .estudos-container article .items {
@@ -151,15 +163,15 @@ main {
   align-items: center;
   width: 30px;
   height: 30px;
-  background: #c4c3d8;
-  border: 2px solid #6883a6;
+  background: var(--opacity);
+  border: 2px solid var(--contrast);
   margin-right: 15px;
 }
 .estudos-container article .toggle:hover {
-  border-color: #9cc1d9;
+  border-color: var(--primary);
 }
 .estudos-container article .toggle:active {
-  border-color: #6883a6;
+  border-color: var(--contrast);
   outline: none;
   color: inherit;
 }
@@ -194,7 +206,7 @@ main {
   width: 7.5px;
   height: 7.5px;
   border-radius: 5px;
-  background-color: #1f1f1f;
+  background-color: var(--font);
 }
 
 .container-title {
@@ -233,7 +245,7 @@ aside {
   width: 200px;
   height: 100%;
   padding: 20px;
-  background: rgb(120.04375, 144.175, 175.45625);
+  background-color: var(--contrast);
 }
 aside a {
   display: flex;
@@ -251,14 +263,14 @@ aside a img {
 }
 aside a h4 {
   font-size: 15px;
-  color: #eee;
+  color: var(--bg);
 }
 
 footer {
   display: flex;
   justify-content: center;
   bottom: 0;
-  background: #9cc1d9;
+  background: var(--primary);
   width: 100%;
   padding: 15px;
   margin-top: 20px;
@@ -298,15 +310,15 @@ footer h6 {
   align-items: center;
   width: 100px;
   height: 30px;
-  background-color: #c4c3d8;
-  border: 2px solid #9cc1d9;
+  background-color: var(--opacity);
+  border: 2px solid var(--primary);
   border-radius: 5px;
   font-size: 15px;
-  color: #1f1f1f;
+  color: var(--font);
   font-weight: 500;
 }
 .info-btn:hover {
-  border-color: #6883a6;
+  border-color: var(--contrast);
 }
 
 .show-note {
@@ -314,14 +326,15 @@ footer h6 {
   max-width: 1000px;
   height: 500px;
   font-size: 15px;
-  background-color: #c4c3d8;
+  background-color: var(--opacity);
+  color: var(--font);
   padding: 15px;
-  border: 2px solid #9cc1d9;
+  border: 2px solid var(--primary);
   border-radius: 20px;
   outline: none;
 }
 .show-note:hover {
-  border-color: #6883a6;
+  border-color: var(--contrast);
 }
 
 .status-tarefa {
@@ -330,16 +343,37 @@ footer h6 {
 }
 .status-tarefa h2 {
   font-size: 25px;
+  color: var(--font);
 }
 .status-tarefa h3 {
   font-size: 20px;
   margin-bottom: 20px;
+  color: var(--font);
 }
 .status-tarefa p {
   font-size: 18px;
+  color: var(--font);
 }
 .status-tarefa.atraso p {
   color: red;
+}
+
+:root {
+  --bg: #eee;
+  --primary: #9cc1d9;
+  --secondary: #6260a6;
+  --contrast: #6883a6;
+  --font: #1f1f1f;
+  --opacity: #c4c3d8;
+}
+
+.dark {
+  --bg: #0b0c10;
+  --primary: #6fb6d6;
+  --secondary: #5b57a0;
+  --contrast: #6b84a8;
+  --font: #e7eef6;
+  --opacity: #23233b;
 }
 
 * {
@@ -349,12 +383,10 @@ footer h6 {
   font-family: Inter, sans-serif;
 }
 
-body {
-  background-color: #eee;
-}
-
 .container {
   min-height: 100vh;
+  background-color: var(--bg);
+  transition: 0.5s;
 }
 
 @media (max-width: 768px) {
@@ -414,7 +446,7 @@ body {
     width: 100%;
     height: 80px;
     padding: 10px;
-    background: #9cc1d9;
+    background: var(--primary);
   }
   aside a {
     flex-direction: column;
@@ -430,7 +462,7 @@ body {
     bottom: 80px;
     padding: 10px;
     z-index: 1;
-    background-color: #6883a6;
+    background-color: var(--contrast);
   }
   footer h6 {
     margin: 0;

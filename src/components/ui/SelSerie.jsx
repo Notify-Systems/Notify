@@ -1,8 +1,10 @@
 import { useContext, useState, useEffect } from "react"
 import { GradesContext } from "../../context/GradesContext"
+import { ThemeContext } from "../../context/ThemeContext";
 
 export default function SelSerie({ gradeRef }) {
     const { grades } = useContext(GradesContext);
+    const { theme } = useContext(ThemeContext);
     const [gradeList, setGrades] = useState([]);
     const [open, setOpen] = useState(false);
     const [gradeSel, setGrade] = useState("");
@@ -33,7 +35,7 @@ export default function SelSerie({ gradeRef }) {
             <div id="selectedGrade" className="selected">
                 <h5>{gradeSel != "" ? gradeSel : grades.length === 0 ? "Não há séries disponíveis" : "Escolha uma série"}</h5>
                 <span ref={gradeRef}>{gradeId}</span>
-                <img src={`${import.meta.env.BASE_URL}/arrow.svg`} />
+                <img src={`${import.meta.env.BASE_URL}/arrow${theme === "dark" ? "Dark" : ""}.svg`} />
             </div>
             <article id="selectGrade" className="select-list">{gradeList}</article>
         </section>
