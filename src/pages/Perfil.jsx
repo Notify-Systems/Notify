@@ -15,7 +15,7 @@ export default function Perfil() {
         <>
             <main className="perfil">
                 <section className="usuario-container">
-                    <div id="usuarioImg"><img src="/profile.svg" alt="foto perfil" /></div>
+                    <div id="usuarioImg"><img src={`${import.meta.env.BASE_URL}/profile.svg`} alt="foto perfil" /></div>
                     <div className="usuario-info">
                         <h3 id="nomeUsuario">Nome do Usuário</h3>
                         <h4 id="numMaterias">{subjects.length === 1 ? `${subjects.length} matéria` : `${subjects.length} matérias`}</h4>

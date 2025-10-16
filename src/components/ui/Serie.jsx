@@ -11,7 +11,7 @@ export default function Serie({ nome, id }) {
             <div className="container-title">
                 <h2>{ nome }</h2>
                 <div>
-                    <Link to="/add/subject"><img src="/btnAdd.svg" alt="Adicionar Matéria"/></Link>
+                    <Link to="/add/subject"><img src={`${import.meta.env.BASE_URL}/btnAdd.svg`} alt="Adicionar Matéria"/></Link>
                     <Link to={`/serie/${id}`}>
                         <div className="link">
                             <span></span>

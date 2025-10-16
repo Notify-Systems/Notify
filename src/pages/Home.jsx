@@ -23,7 +23,7 @@ export default function Home() {
                 <section id="materias" className="estudos-container">
                     <div className="container-title">
                         <h2>Suas Máterias</h2>
-                        <Link to="add/subject"><img src="/btnAdd.svg" alt="Adicionar Matéria"/></Link>
+                        <Link to="add/subject"><img src={`${import.meta.env.BASE_URL}/btnAdd.svg`} alt="Adicionar Matéria"/></Link>
                     </div>
                     {Array.isArray(subjects) && subjects.map(subject => (
                         <Materia
@@ -37,7 +37,7 @@ export default function Home() {
                 <section id="anotacoes" className="estudos-container">
                     <div className="container-title">
                         <h2>Suas Anotações</h2>
-                        <Link to="add/note"><img src="/btnAdd.svg" alt="Adicionar Anotação"/></Link>
+                        <Link to="add/note"><img src={`${import.meta.env.BASE_URL}/btnAdd.svg`} alt="Adicionar Anotação"/></Link>
                     </div>
                     {Array.isArray(notes) && notes.map(note => (
                         <Anotacao
@@ -51,7 +51,7 @@ export default function Home() {
                 <section id="tarefas" className="estudos-container">
                     <div className="container-title">
                         <h2>Suas Tarefas</h2>
-                        <Link to="add/task"><img src="/btnAdd.svg" alt="Adicionar Tarefa"/></Link>
+                        <Link to="add/task"><img src={`${import.meta.env.BASE_URL}/btnAdd.svg`} alt="Adicionar Tarefa"/></Link>
                     </div>
                     {Array.isArray(tasks) && tasks.map(task => (
                         task.done === false ?
