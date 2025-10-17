@@ -1,8 +1,26 @@
+:root {
+  --bg: #eee;
+  --primary: #9cc1d9;
+  --secondary: #6260a6;
+  --contrast: #6883a6;
+  --font: #1f1f1f;
+  --opacity: #c4c3d8;
+}
+
+.dark {
+  --bg: #0b0c10;
+  --primary: #6fb6d6;
+  --secondary: #5b57a0;
+  --contrast: #6b84a8;
+  --font: #e7eef6;
+  --opacity: #23233b;
+}
+
 .select {
   width: 100%;
 }
 .select.open .selected {
-  border: 2px solid #6883a6;
+  border: 2px solid var(--contrast);
 }
 .select.open .selected span {
   display: none;
@@ -16,6 +34,7 @@
 .select.nothing h5 {
   font-weight: 200;
   font-style: italic;
+  color: var(--font);
 }
 .select.nothing img {
   display: none;
@@ -28,12 +47,13 @@
   width: 100%;
   padding: 5px;
   margin-bottom: 10px;
-  background: #c4c3d8;
-  border: 2px solid #9cc1d9;
+  background: var(--opacity);
+  border: 2px solid var(--primary);
 }
 .selected h5 {
   font-size: 18px;
   font-weight: 500;
+  color: var(--font);
 }
 .selected span {
   display: none;
@@ -43,7 +63,7 @@
   transition: 0.3s;
 }
 .selected:hover {
-  border-color: #6883a6;
+  border-color: var(--contrast);
 }
 .selected:hover img {
   transform: scale(110%);
@@ -52,13 +72,13 @@
 .select-list {
   display: none;
   width: 100%;
-  background: #c4c3d8;
-  border: 2px solid #6883a6;
+  background: var(--opacity);
+  border: 2px solid var(--contrast);
   transition: 0.5s;
   margin-bottom: 10px;
 }
 .select-list a {
-  color: #1f1f1f;
+  color: var(--font);
   text-decoration: none;
 }
 .select-list a div {
@@ -68,7 +88,7 @@
   font-weight: 500;
 }
 .select-list a:hover div {
-  background: #6260a6;
+  background: var(--secondary);
 }
 .select-list button {
   width: 100%;
@@ -76,10 +96,11 @@
   padding: 5px 10px;
   font-size: 15px;
   background: none;
+  color: var(--font);
   border: none;
 }
 .select-list button:hover {
-  background: #6260a6;
+  background: var(--secondary);
   font-weight: 500;
   cursor: pointer;
 }
@@ -95,20 +116,22 @@ main.add {
 h2 {
   font-size: 25px;
   margin-bottom: 10px;
+  color: var(--font);
 }
 
 #inputNome {
   width: 100%;
   margin-bottom: 10px;
   padding: 5px 10px;
-  border: 2px solid #9cc1d9;
+  border: 2px solid var(--primary);
   border-radius: 30px;
-  background: #c4c3d8;
+  background: var(--opacity);
+  color: var(--font);
   font-size: 17px;
-  outline-color: #6883a6;
+  outline-color: var(--contrast);
 }
 #inputNome:hover {
-  border-color: #6883a6;
+  border-color: var(--contrast);
 }
 
 .date-time {
@@ -125,9 +148,10 @@ h2 {
   padding: 2px 5px;
   font-size: 17px;
   font-style: italic;
-  background: #c4c3d8;
-  border: 2px solid #9cc1d9;
-  outline-color: #6883a6;
+  background: var(--opacity);
+  color: var(--font);
+  border: 2px solid var(--primary);
+  outline-color: var(--contrast);
 }
 
 #note {
@@ -136,14 +160,15 @@ h2 {
   height: 200px;
   padding: 10px;
   border-radius: 10px;
-  border: 2px solid #9cc1d9;
+  border: 2px solid var(--primary);
   margin-bottom: 20px;
-  background-color: #c4c3d8;
+  background-color: var(--opacity);
+  color: var(--font);
   font-size: 15px;
-  outline-color: #6883a6;
+  outline-color: var(--contrast);
 }
 #note:hover {
-  border-color: #6883a6;
+  border-color: var(--contrast);
 }
 
 .edit-buttons {
@@ -154,14 +179,15 @@ h2 {
 .edit-buttons button {
   width: 150px;
   padding: 10px;
-  border: 2px solid #9cc1d9;
+  border: 2px solid var(--primary);
   border-radius: 5px;
-  background: #c4c3d8;
+  background: var(--opacity);
+  color: var(--font);
   font-size: 1.2rem;
   font-weight: 600;
 }
 .edit-buttons button:hover {
-  border-color: #6883a6;
+  border-color: var(--contrast);
 }
 
 @media (max-width: 768px) {

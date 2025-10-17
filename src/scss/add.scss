@@ -8,18 +8,20 @@ main.add {
 h2 {
     font-size: 25px;
     margin-bottom: 10px;
+    color: var(--font);
 }
 #inputNome {
     width: 100%;
     margin-bottom: 10px;
     padding: 5px 10px;
-    border: 2px solid $primary;
+    border: 2px solid var(--primary);
     border-radius: 30px;
-    background: $opacity;
+    background: var(--opacity);
+    color: var(--font);
     font-size: 17px;
-    outline-color: $contrast;
+    outline-color: var(--contrast);
     &:hover {
-        border-color: $contrast;
+        border-color: var(--contrast);
     }
 }
 .date-time {
@@ -34,9 +36,10 @@ h2 {
             padding: 2px 5px;
             font-size: 17px;
             font-style: italic;
-            background: $opacity;
-            border: 2px solid $primary;
-            outline-color: $contrast;
+            background: var(--opacity);
+            color: var(--font);
+            border: 2px solid var(--primary);
+            outline-color: var(--contrast);
         }
     }
 }
@@ -46,13 +49,14 @@ h2 {
     height: 200px;
     padding: 10px;
     border-radius: 10px;
-    border: 2px solid $primary;
+    border: 2px solid var(--primary);
     margin-bottom: 20px;
-    background-color: $opacity;
+    background-color: var(--opacity);
+    color: var(--font);
     font-size: 15px;
-    outline-color: $contrast;
+    outline-color: var(--contrast);
     &:hover {
-        border-color: $contrast;
+        border-color: var(--contrast);
     }
 }
 .edit-buttons {
@@ -62,13 +66,14 @@ h2 {
     button {
         width: 150px;
         padding: 10px;
-        border: 2px solid $primary;
+        border: 2px solid var(--primary);
         border-radius: 5px;
-        background: $opacity;
+        background: var(--opacity);
+        color: var(--font);
         font-size: 1.2rem;
         font-weight: 600;
         &:hover {
-            border-color: $contrast;
+            border-color: var(--contrast);
         }
     }
 }

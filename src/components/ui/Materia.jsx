@@ -2,12 +2,12 @@ import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { GradesContext } from "../../context/GradesContext"
 
-export default function Materia({ id, nome, serie }) {
+export default function Materia({ id, nome, serie, display }) {
     const { returnGrade } = useContext(GradesContext);
     const linkSerie = returnGrade(Number(id))?.id;
 
     return (
-        <article className="materia">
+        <article className={`materia ${display ? "" : "disabled"}`}>
             <div className="info">
                 <h3>{nome}</h3>
                 <Link to={`/serie/${linkSerie}`}>{serie}</Link>

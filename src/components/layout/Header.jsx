@@ -1,10 +1,18 @@
+import { useContext } from "react"
 import { Link } from "react-router-dom"
+import { ConfigContext } from "../../context/ConfigContext"
 
 export default function Header() {
+    const { toggleOpen } = useContext(ConfigContext)
+
+    function openConfig() {
+        toggleOpen()
+    }
+
     return (
         <>
             <header>
-                <div className="btn-menu">
+                <div className="btn-menu" onClick={openConfig}>
                     <span></span>
                     <span></span>
                     <span></span>   
