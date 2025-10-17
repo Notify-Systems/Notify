@@ -10,11 +10,13 @@ export default function App() {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <div className={`container ${theme === "dark" ? "dark" : ""}`}>
+    <>
       <Config />
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+      <div className={`container open ${theme === "dark" ? "dark" : ""}`}>
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </>
   )
 }
