@@ -9,6 +9,7 @@ class Validation {
             message: issue.message,
           })),
         });
+        req.body = success.data
       }
 
       next();
