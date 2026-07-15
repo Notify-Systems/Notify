@@ -17,4 +17,4 @@ class Validation {
   }
 }
 
-export const validation = new Validation
+export const validation = new Validation()
