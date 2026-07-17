@@ -1,5 +1,5 @@
 import AppError from "../errors/AppError";
-import { UnauthorizedError } from "../errors/errorIndex";
+import { UnauthorizedError } from "../errors/errorIndex.js";
 
 const jwt = require("jsonwebtoken");
 

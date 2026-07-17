@@ -1,4 +1,4 @@
-import { ConflictError, NotFoundError } from "../errors/errorIndex.js";
+import { ConflictError, NotFoundError, UnauthorizedError } from "../errors/errorIndex.js";
 import repository from "../repository/user.repository.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
@@ -63,6 +63,40 @@ class UserService{
         { id: user.id },
         { refreshToken: refreshToken },
       );
+
+      const result = {
+        message: `Usuario logado com sucesso`,
+        acessToken: accessToken,
+        refreshToken: refreshToken,
+      };
+      return result;
+    }
+
+    async refresh(auth){
+      if(!auth)
+        throw new UnauthorizedError("Token não encontrado");
+      const token = auth.split(" ")[1];
+      try{
+        var decoded = jwt.verify(token, process.env.REFRESH_SECRET);
+      }catch{
+        throw new UnauthorizedError("Token invalido");
+      }
+      const user = await repository.findById(decoded.id)
+      if(!user || token !== user.refreshToken)
+        throw new UnauthorizedError("Token invalido");
+
+      const accessToken = jwt.sign(
+        { id: user.id, role: user.role },
+        process.env.ACCESS_SECRET,
+        { expiresIn: "15min" },
+      );
+      const refreshToken = jwt.sign(
+        { id: user.id },
+        process.env.REFRESH_SECRET,
+        { expiresIn: "30d" },
+      );
+
+      await repository.update({ id: user.id }, { refreshToken: refreshToken });
 
       const result = {
         message: `Usuario logado com sucesso`,

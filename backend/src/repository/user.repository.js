@@ -15,6 +15,11 @@ class UserRepository{
     }
     async update(id, data){
         const user = await prisma.user.update({where: id, data: data})
+        return user
+    }
+    async findById(id){
+        const user = await prisma.user.findUnique({where:{id: id}})
+        return user
     }
 }
 
