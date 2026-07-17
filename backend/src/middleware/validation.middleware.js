@@ -1,3 +1,5 @@
+import AppError from "../errors/AppError.js";
+
 class Validation {
   body(schema) {
     return (req, res, next) => {
