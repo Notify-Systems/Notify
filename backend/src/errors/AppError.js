@@ -9,4 +9,4 @@ class AppError extends Error {
   }
 }
 
-export default new AppError()
+export default AppError

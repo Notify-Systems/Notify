@@ -1,0 +1,21 @@
+import { prisma } from "../lib/db.js";
+
+class UserRepository{
+    async findByEmail(email){
+        const user = await prisma.user.findUnique({where: {email: email}})
+        return user
+    }
+    async findByUsername(username){
+        const user = await prisma.user.findUnique({where: {username: username} });
+        return user;
+    }
+    async create(data){
+        const newUser = await prisma.user.create({data:data})
+        return newUser
+    }
+    async update(id, data){
+        const user = await prisma.user.update({where: id, data: data})
+    }
+}
+
+export default new UserRepository()
