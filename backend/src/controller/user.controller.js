@@ -2,7 +2,7 @@ import { prisma } from "../lib/db.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
-export class UserController {
+class UserController {
   async create(req, res) {
     const { username, nickname, email, senha, biografia } = req.body;
     try {
@@ -59,3 +59,5 @@ export class UserController {
     }
   }
 }
+
+export default new UserController()

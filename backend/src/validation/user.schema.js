@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const userSchema = {
+const userSchema = {
   create: z.object({
       username: z
         .string({
@@ -62,3 +62,5 @@ export const userSchema = {
       path: ["senhaconfirm"],
     }),
 };
+
+export default userSchema

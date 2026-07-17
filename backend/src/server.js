@@ -1,20 +1,9 @@
-import express from "express"
-import dotenv from "dotenv"
+import app from "./app.js"
+import dotenv from "dotenv";
+dotenv.config();
 
-dotenv.config()
-const app = express()
+const PORT = 3939
 
-import userRoute from "./routes/user.route.js"
-import errorHandler from "./middleware/error.middleware.js"
-
-app.use(express.json())
-
-
-app.use("/user", userRoute)
-
-app.use(errorHandler)
-
-const PORT = 8080
 app.listen(PORT, ()=>{
     console.log(`Servidor rodando na porta ${PORT}`)
 })

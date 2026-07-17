@@ -2,10 +2,10 @@ import express from "express"
 const router = express.Router();
 
 import { validation } from "../middleware/validation.middleware.js";
-import { userSchema } from "../validation/user.schema.js";
-import { UserController } from "../controller/user.controller.js";
-const controler = new UserController();
+import schema from "../validation/user.schema.js";
+import controler from "../controller/user.controller.js";
 
-router.post("/", validation.body(userSchema.create),controler.create)
+
+router.post("/", validation.body(schema.create),controler.create)
 
 export default router

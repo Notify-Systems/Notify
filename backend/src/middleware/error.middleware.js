@@ -1,5 +1,5 @@
-const { Prisma } = require("@prisma/client");
-const { AppError } = require("../errors");
+import { Prisma } from "@prisma/client";
+import AppError from "../errors/AppError.js";
 
 function errorHandler(err, req, res, next) {
   if (err instanceof AppError) {
