@@ -13,7 +13,7 @@ const userSchema = {
         .max(500, { message: "A biografia deve ter no máximo 500 caracteres." })
         .optional()
     },
-    { required_error: "A senha é obrigatória." },
+    { required_error: "Insira alguma mudança." },
   ),
 
   updateSenha: z.object({
