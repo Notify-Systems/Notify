@@ -9,5 +9,13 @@ class UserService{
             throw new NotFoundError("Usuario não encontrado")
         return userSafe(user)
     }
+    async delete(id){
+        const user = await repository.delete(id)
+        if (!user) 
+            throw new NotFoundError("Usuario não encontrado");
+        const response = {message: `Usuario ${user.username} foi deletado`}
+        return response
+    }
+
 }
 export default new UserService()
