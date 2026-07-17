@@ -1,20 +1,18 @@
 class Validation {
   body(schema) {
     return (req, res, next) => {
-      const { success, error } = schema.safeParse(req.body);
-      if (!success) {
-        return res.status(400).json({
-          errors: error.issues.map((issue) => ({
-            field: issue.path[0],
-            message: issue.message,
-          })),
-        });
-        req.body = success.data
-      }
+      const result = schema.safeParse(req.body);
+      if (!result.success) {
+        const formattedErrors = result.error.issues.map((issue) => ({
+          field: issue.path[0],
+          message: issue.message,
+        }));
+        const validationError = new AppError( "Erro de validação nos campos", 400, formattedErrors );
 
+        return next(validationError);
+      }
+      req.body = result.data;
       next();
     };
   }
 }
-
-export const validation = new Validation()
