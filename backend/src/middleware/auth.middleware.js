@@ -1,7 +1,6 @@
-import AppError from "../errors/AppError";
+import AppError from "../errors/AppError.js";
 import { UnauthorizedError } from "../errors/errorIndex.js";
-
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken"
 
 function auth(req, res, next) {
   const authHeader = req.headers.authorization;
