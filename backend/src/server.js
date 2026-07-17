@@ -5,11 +5,14 @@ dotenv.config()
 const app = express()
 
 import userRoute from "./routes/user.route.js"
+import errorHandler from "./middleware/error.middleware.js"
 
 app.use(express.json())
 
 
 app.use("/user", userRoute)
+
+app.use(errorHandler)
 
 const PORT = 8080
 app.listen(PORT, ()=>{
