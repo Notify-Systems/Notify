@@ -16,3 +16,5 @@ class Validation {
     };
   }
 }
+
+export default new Validation()
