@@ -7,26 +7,209 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum Tema{
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model Friendship {
+  senderId      String                 @db.Uuid @map("id_usuario_remetente")
+  receiverId    String                 @db.Uuid @map("id_usuario_destinatario")
+  invitationAt  DateTime?              @default(now()) @db.Timestamp(6) @map("data_convite")
+  status        FriendshipStatus?      @default(pendente)
+
+  sender   User @relation("SentFriendRequests", fields: [senderId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  receiver User @relation("ReceivedFriendRequests", fields: [receiverId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([senderId, receiverId])
+  @@map("tb_amizades")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model Note {
+  id            String              @id @default(uuid()) @db.Uuid @map("id_anotacao")
+  name          String              @db.VarChar(100) @map("nome")
+  description   String?             @db.VarChar(1000) @map("descricao")
+  visibility    Visibility          @default(private) @map("visibilidade")
+  createdAt     DateTime?           @default(now()) @db.Timestamp(6) @map("data_criacao")
+  themeColor    String              @default("#3B82F6") @db.Char(7) @map("cor_tematica")
+
+  collectionId  String              @db.Uuid @map("id_conjunto")
+  sectionId     String?             @db.Uuid @map("id_secao")
+  creatorId     String              @db.Uuid @map("id_criador")
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  section    Section?   @relation(fields: [sectionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  creator    User       @relation(fields: [creatorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("tb_anotacao")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model Collection {
+  id          String              @id @default(uuid()) @db.Uuid @map("id_conjunto")
+  name        String              @db.VarChar(100) @map("nome_conjunto")
+  description String?             @db.VarChar(1000) @map("descricao")
+  visibility  Visibility          @default(private) @map("visibilidade")
+  createdAt   DateTime            @default(now()) @db.Timestamp(6) @map("data_de_criacao")
+  themeColor  String              @default("#3B82F6") @db.Char(7) @map("cor_tematica")
+
+  creatorId   String              @db.Uuid @map("id_criador")
+
+  creator User @relation(fields: [creatorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  notes    Note[]
+  sections Section[]
+  tasks    Task[]
+
+  @@map("tb_conjunto")
+}
+
+model Language {
+  id     String @id @default(uuid()) @db.Uuid @map("id_idioma")
+  name   String @unique @db.VarChar(50) @map("nome")
+  code   String @unique @db.VarChar(5) @map("sigla")
+
+  users User[]
+
+  @@map("tb_idioma")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model TaskNote {
+  id        String    @id @default(uuid()) @db.Uuid @map("id_nota")
+  content   String    @map("conteudo")
+  createdAt DateTime? @default(now()) @db.Timestamp(6) @map("data_criacao")
+
+  taskId    String @db.Uuid @map("id_tarefa")
+  authorId  String @db.Uuid @map("id_autor")
+
+  task   Task @relation(fields: [taskId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  author User @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("tb_notas_tarefa")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model Section {
+  id          String            @id @default(uuid()) @db.Uuid @map("id_secao")
+  name        String            @db.VarChar(100) @map("nome")
+  description String?           @db.VarChar(1000) @map("descricao")
+  visibility  Visibility        @default(private) @map("visibilidade")
+  createdAt   DateTime?         @default(now()) @db.Timestamp(6) @map("data_criacao")
+  themeColor  String            @default("#3B82F6") @db.Char(7) @map("cor_tematica")
+
+  collectionId String @db.Uuid @map("id_conjunto")
+  creatorId    String @db.Uuid @map("id_criador")
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  creator    User       @relation(fields: [creatorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  notes Note[]
+  tasks Task[]
+
+  @@map("tb_secao")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model Follower {
+  followerId   String    @db.Uuid @map("id_seguidor")
+  followingId  String    @db.Uuid @map("id_seguido")
+  followedAt   DateTime? @default(now()) @db.Timestamp(6) @map("data_convite")
+
+  follower  User @relation("Following", fields: [followerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  following User @relation("Followers", fields: [followingId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([followerId, followingId])
+  @@map("tb_seguidores")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model Task {
+  id          String              @id @default(uuid()) @db.Uuid @map("id_tarefa")
+  name        String              @db.VarChar(100) @map("nome_tarefa")
+  description String?             @db.VarChar(1000) @map("descricao")
+  visibility  Visibility          @default(private) @map("visibilidade")
+  createdAt   DateTime            @default(now()) @db.Timestamp(6) @map("data_de_criacao")
+  themeColor  String              @default("#3B82F6") @db.Char(7) @map("cor_tematica")
+  dueDate     DateTime            @db.Timestamp(6) @map("prazo")
+  status      TaskStatus          @default(pending)
+
+  collectionId String  @db.Uuid @map("id_conjunto")
+  sectionId    String? @db.Uuid @map("id_secao")
+  creatorId    String  @db.Uuid @map("id_criador")
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  section    Section?   @relation(fields: [sectionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  creator    User       @relation(fields: [creatorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  notes TaskNote[]
+
+  @@map("tb_tarefa")
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model User {
+  id           String            @id @default(uuid()) @db.Uuid @map("id_usuario")
+  username     String            @unique @db.VarChar(30)
+  nickname     String?           @db.VarChar(50)
+  biography    String?           @db.VarChar(500) @map("biografia")
+  createdAt    DateTime?         @default(now()) @db.Timestamp(6) @map("data_cadastro")
+  email        String            @unique @db.VarChar(255)
+  password     String            @db.VarChar(255) @map("senha")
+  profilePhoto String?           @db.VarChar(255) @map("foto_perfil")
+  theme        Theme?            @default(auto) @map("tema_de_tela")
+  languageId   String            @db.Uuid @map("idioma")
+  refreshToken String?           @db.VarChar(500) @map("refresh_token")
+  role         Role?             @default(user) @map("role_")
+
+  language Language @relation(fields: [languageId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  collections Collection[]
+  sections    Section[]
+  tasks       Task[]
+  notes       Note[]
+  taskNotes   TaskNote[]
+
+  sentFriendRequests     Friendship[] @relation("SentFriendRequests")
+  receivedFriendRequests Friendship[] @relation("ReceivedFriendRequests")
+
+  following Follower[] @relation("Following")
+  followers Follower[] @relation("Followers")
+
+  @@map("tb_usuario")
+}
+
+enum Theme {
   light
   dark
   auto
+
+  @@map("tela_tema_enum")
 }
 
-enum Role{
-  user
+enum Role {
   admin
+  user
+
+  @@map("role_enum")
 }
 
-model User{
-  id String @id @default(uuid())
-  username String @unique
-  nickname String?
-  biografia String?
-  dataCad DateTime @default(now())
-  email String @unique
-  senha String 
-  tema Tema @default(auto)
-  refreshToken String?
-  role Role @default(user)
+enum Visibility {
+  private
+  public
+
+  @@map("visibilidade_enum")
+}
+
+enum TaskStatus {
+  pending
+  in_progress
+  done
+
+  @@map("status_tarefa_enum")
+}
+
+enum FriendshipStatus {
+  pendente
+  aceito
+  recusado
+
+  @@map("status_amizade_enum")
 }
