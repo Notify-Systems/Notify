@@ -59,10 +59,7 @@ class AuthService{
         {expiresIn: "30d"}
       )
 
-      await repository.update(
-        { id: user.id },
-        { refreshToken: refreshToken },
-      );
+      await repository.update( user.id, { refreshToken: refreshToken }); 
 
       const result = {
         message: `Usuario logado com sucesso`,
@@ -96,7 +93,7 @@ class AuthService{
         { expiresIn: "30d" },
       );
 
-      await repository.update({ id: user.id }, { refreshToken: refreshToken });
+      await repository.update(user.id, { refreshToken: refreshToken });
 
       const result = {
         message: `Usuario logado com sucesso`,
