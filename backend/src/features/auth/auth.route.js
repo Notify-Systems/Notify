@@ -1,9 +1,9 @@
 import express from "express"
 const router = express.Router();
 
-import validation from "../middleware/validation.middleware.js";
-import schema from "../validation/auth.schema.js";
-import controler from "../controller/auth.controller.js";
+import validation from "../../middleware/validation.middleware.js";
+import schema from "./auth.schema.js";
+import controler from "./auth.controller.js";
 
 
 router.post("/", validation.body(schema.create),controler.create)

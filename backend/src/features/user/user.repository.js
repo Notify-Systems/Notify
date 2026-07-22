@@ -1,4 +1,4 @@
-import { prisma } from "../lib/db.js";
+import { prisma } from "../../lib/db.js";
 
 class UserRepository{
     async findByEmail(email){

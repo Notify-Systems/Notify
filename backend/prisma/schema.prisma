@@ -155,7 +155,7 @@ model User {
   password     String            @db.VarChar(255) @map("senha")
   profilePhoto String?           @db.VarChar(255) @map("foto_perfil")
   theme        Theme?            @default(auto) @map("tema_de_tela")
-  languageId   String            @db.Uuid @map("idioma")
+  languageId   String            @default("00c59c0c-5d7a-43ad-a905-ef8ff1985310")  @db.Uuid @map("idioma")
   refreshToken String?           @db.VarChar(500) @map("refresh_token")
   role         Role?             @default(user) @map("role_")
 

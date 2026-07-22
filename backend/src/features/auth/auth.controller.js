@@ -1,4 +1,4 @@
-import service from "../service/auth.service.js";
+import service from "./auth.service.js";
 
 class AuthController{
     async create(req, res){

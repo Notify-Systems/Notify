@@ -1,8 +1,10 @@
 import express from "express";
 const router = express.Router();
 
-import controler from "../controller/user.controller.js";
-import auth from "../middleware/auth.middleware.js";
+import valdation from "../../middleware/validation.middleware.js"
+import controler from "./user.controller.js";
+import schema from "./user.schema.js";
+import auth from "../../middleware/auth.middleware.js";
 
 router.use(auth)
 

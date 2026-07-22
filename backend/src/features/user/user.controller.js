@@ -1,4 +1,4 @@
-import service from "../service/user.service.js"
+import service from "./user.service.js"
 
 class UserController{
     async view(req, res){

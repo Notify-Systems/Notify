@@ -1,39 +1,39 @@
-import { ConflictError, NotFoundError, UnauthorizedError } from "../errors/errorIndex.js";
-import repository from "../repository/user.repository.js";
+import { ConflictError, NotFoundError, UnauthorizedError } from "../../errors/errorIndex.js";
+import repository from "../user/user.repository.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
 class AuthService{
     async create(data){
-        const {senhaconfirm, ...dataUser} = data
+        const {passwordConfirm, ...dataUser} = data
         const emailExist = await repository.findByEmail(dataUser.email)
         if (emailExist)
           throw new ConflictError("Email já cadastrado")
         const usernameExist = await repository.findByUsername(dataUser.username)
         if (usernameExist)
           return res.status(400).json({ message: "Username já existente" });
-        dataUser.senha = await bcrypt.hash(dataUser.senha, 10);
-        const novoUsuario = await repository.create(dataUser)
+        dataUser.password = await bcrypt.hash(dataUser.password, 10);
+        const newUser = await repository.create(dataUser)
 
         const accessToken = jwt.sign(
-          { id: novoUsuario.id, role: novoUsuario.role },
+          { id: newUser.id, role: newUser.role },
           process.env.ACCESS_SECRET,
           { expiresIn: "15min" },
         );
 
         const refreshToken = jwt.sign(
-          { id: novoUsuario.id },
+          { id: newUser.id },
           process.env.REFRESH_SECRET,
           { expiresIn: "30d" }
         );
 
         await repository.update(
-            {id: novoUsuario.id },
+            newUser.id,
             { refreshToken: refreshToken }
         );
 
         const result = {
-          message: `Usuario ${dataUser.username} cadastrado com sucesso`,
+          message: `Usuario ${newUser.username} cadastrado com sucesso`,
           acessToken: accessToken,
           refreshToken: refreshToken,
         };
@@ -41,12 +41,12 @@ class AuthService{
     }
 
     async login(data){
-      const {email, senha} = data
+      const {email, password} = data
       const user = await repository.findByEmail(email)
       if(!user)
         throw new NotFoundError("Credenciais invalidas")
-      const senhaValida = await bcrypt.compare(senha, user.senha)
-      if(!senhaValida) 
+      const passwordValid = await bcrypt.compare(password, user.password)
+      if(!passwordValid) 
         throw new NotFoundError("Credenciais invalidas");
       const accessToken = jwt.sign(
         {id: user.id, role: user.role},

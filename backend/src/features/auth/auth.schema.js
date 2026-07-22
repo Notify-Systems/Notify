@@ -32,15 +32,15 @@ const authSchema = {
         .email({ message: "Informe um e-mail válido." })
         .max(255, { message: "O e-mail deve ter no máximo 255 caracteres." }),
 
-      senha: z
+      password: z
         .string({ required_error: "A senha é obrigatória." })
         .min(6, { message: "A senha deve ter no mínimo 6 caracteres." })
         .max(70, { message: "A senha é muito longa." }),
 
-      senhaconfirm: z.string({ required_error: "Confirme sua senha." }),
+      passwordConfirm: z.string({ required_error: "Confirme sua senha." }),
     })
 
-    .refine((data) => data.senha === data.senhaconfirm, {
+    .refine((data) => data.password === data.passwordConfirm, {
       message: "As senhas não coincidem.",
       path: ["senhaconfirm"],
     }),
@@ -52,7 +52,7 @@ const authSchema = {
       .email({ message: "Informe um e-mail válido." })
       .max(255, { message: "O e-mail deve ter no máximo 255 caracteres." }),
 
-    senha: z
+    password: z
       .string({ required_error: "A senha é obrigatória." })
       .min(6, { message: "A senha deve ter no mínimo 6 caracteres." })
       .max(70, { message: "A senha é muito longa." }),

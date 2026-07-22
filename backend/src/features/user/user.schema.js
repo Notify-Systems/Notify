@@ -16,18 +16,18 @@ const userSchema = {
     { required_error: "Insira alguma mudança." },
   ),
 
-  updateSenha: z.object({
-    senhaAtual: z
+  updatePassword: z.object({
+    currentPassword: z
       .string({ required_error: "A senha é obrigatória." })
       .min(6, { message: "A senha tem no minmo 6 caracteres" })
       .max(70, { message: "A senha não ultrapassa 70 caracteres" }),
-    novaSenha: z
+    newPassword: z
       .string({ required_error: "A nova senha é obrigatória." })
       .min(6, { message: "A senha deve ter no mínimo 6 caracteres." })
       .max(70, { message: "A senha é muito longa." }),
   }),
 
-  changeTema:z.enum([light, dark, auto], {message: "O tema precisa ser entre light, dark ou auto"})
+  changeTema:z.enum(["light", "dark", "auto"], {message: "O tema precisa ser entre light, dark ou auto"})
 };
 
 export default userSchema
