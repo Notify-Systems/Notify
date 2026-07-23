@@ -1,7 +1,7 @@
 function showUser(user){
     const{
         
-        senha,
+        password,
         refreshToken,
         ...userSafe
     } = user

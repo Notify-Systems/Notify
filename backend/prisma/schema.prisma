@@ -48,7 +48,7 @@ model Collection {
   description String?             @db.VarChar(1000) @map("descricao")
   visibility  Visibility          @default(private) @map("visibilidade")
   createdAt   DateTime            @default(now()) @db.Timestamp(6) @map("data_de_criacao")
-  themeColor  String              @default("#3B82F6") @db.Char(7) @map("cor_tematica")
+  themeColor  String              @default("3B82F6") @db.Char(6) @map("cor_tematica")
 
   creatorId   String              @db.Uuid @map("id_criador")
 

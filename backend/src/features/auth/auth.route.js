@@ -3,11 +3,11 @@ const router = express.Router();
 
 import validation from "../../middleware/validation.middleware.js";
 import schema from "./auth.schema.js";
-import controler from "./auth.controller.js";
+import controller from "./auth.controller.js";
 
 
-router.post("/", validation.body(schema.create),controler.create)
-router.post("/login", validation.body(schema.login), controler.login)
-router.get("/refresh", controler.refresh)
+router.post("/", validation.body(schema.create),controller.create)
+router.post("/login", validation.body(schema.login), controller.login)
+router.get("/refresh", controller.refresh)
 
 export default router
