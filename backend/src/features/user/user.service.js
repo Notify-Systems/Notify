@@ -2,7 +2,6 @@ import AppError from "../../errors/AppError.js"
 import { NotFoundError } from "../../errors/errorIndex.js"
 import repository from "./user.repository.js"
 import userSafe from "../../utils/showUser.js"
-import userExist from "../../utils/userExist.js";
 
 class UserService{
     async view(id){
@@ -17,7 +16,6 @@ class UserService{
         return response
     }
     async updateProfile(id, data){
-        const user = await userExist(id)
         if(!data.biografia || data.biografia == user.biografia){
             if(!data.nickname || data.nickname == user.nickname){
                 throw new AppError("Insira alguma mudança");

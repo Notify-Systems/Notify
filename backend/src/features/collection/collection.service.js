@@ -4,12 +4,20 @@ import userExist from "../../utils/userExist.js";
 
 class CollectionService{
     async create(userId, data){
-        await userExist(userId);
-        
         data.creatorId = userId
         const newCollection = await repository.create(data);
         return newCollection;
-    };
+    }
+    async read(userId, collectionId){
+        const collection = await repository.findById(collectionId);
+
+        if(!collection)
+            throw new NotFoundError("Coleção não encontrada");
+        if(collection.creatorId !== userId)
+            throw new NotFoundError("Coleção não encontrada");
+
+        return collection;
+    }
 }
 
 export default new CollectionService();
