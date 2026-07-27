@@ -25,7 +25,22 @@ const collectionSchema= {
     .length(6, { message: "A cor temática deve conter 6 caracteres." })
     .default("3B82F6"),
 
-})
+}),
+update: z.object({
+  name: z
+    .string()
+    .trim()
+    .min(1, { message: "O nome é obrigatório." })
+    .max(100, { message: "O nome deve ter no máximo 100 caracteres." })
+    .optional(),
+
+  description: z
+    .string()
+    .trim()
+    .max(1000, { message: "A descrição deve ter no máximo 1000 caracteres." })
+    .optional(),
+},{message: "Você deve inserir alguma mudança"})
+
 }
 
 export default collectionSchema

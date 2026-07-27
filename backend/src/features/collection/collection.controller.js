@@ -9,6 +9,14 @@ class CollectionController{
         const collection = await service.read(req.userId, req.params.id);
         res.status(200).json(collection);
     }
+    async update(req, res){
+        const collection = await service.update(req.userId, req.body, req.params.id);
+        res.status(200).json(collection);
+    }
+    async delete(req, res){
+        const result = await service.delete(req.userId, req.params.id);
+        return result;
+    }
 }
 
 export default new CollectionController();

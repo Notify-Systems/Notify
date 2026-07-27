@@ -1,6 +1,5 @@
 function showUser(user){
     const{
-        
         password,
         refreshToken,
         ...userSafe

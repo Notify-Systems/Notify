@@ -13,7 +13,7 @@ class AuthService{
         if (usernameExist)
           return res.status(400).json({ message: "Username já existente" });
         dataUser.password = await bcrypt.hash(dataUser.password, 10);
-        const newUser = await repository.create(dataUser)
+        const newUser = await repository.create(dataUser);
 
         const accessToken = jwt.sign(
           { id: newUser.id, role: newUser.role },
