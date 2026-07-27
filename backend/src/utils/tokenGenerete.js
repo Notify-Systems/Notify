@@ -1,5 +1,5 @@
-import repository from "../features/user/user.repository";
-import jwt from "zod";
+import repository from "../features/user/user.repository.js";
+import jwt from "jsonwebtoken";
 
 async function tokenGenerete(id, role) {
   const accessToken = jwt.sign(

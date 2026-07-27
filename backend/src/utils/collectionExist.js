@@ -1,8 +1,8 @@
 import repository from "../features/collection/collection.repository.js";
 import { NotFoundError } from "../errors/errorIndex.js";
 
-function collectionExist(colletionId, userId){
-    const collection = await repository.findById(collectionId);
+async function collectionExist(colletionId, userId){
+    const collection = await repository.findById(colletionId);
     
     if(!collection)
        throw new NotFoundError("Coleção não encontrada");

@@ -10,7 +10,7 @@ class CollectionService{
         return collection;
     }
     async read(userId, collectionId){
-        const collection = await collectionExist(collectionId);
+        const collection = await collectionExist(collectionId, userId);
         return collection;
     }
     async readAll(userId){

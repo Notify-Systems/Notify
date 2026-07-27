@@ -2,6 +2,7 @@ import { ConflictError, NotFoundError, UnauthorizedError } from "../../errors/er
 import repository from "../user/user.repository.js";
 import bcrypt from "bcrypt"
 import tokenGenerete from "../../utils/tokenGenerete.js";
+import jwt from "jsonwebtoken"
 
 class AuthService{
     async create(data){
@@ -11,11 +12,11 @@ class AuthService{
           throw new ConflictError("Email já cadastrado")
         const usernameExist = await repository.findByUsername(dataUser.username)
         if (usernameExist)
-          return res.status(400).json({ message: "Username já existente" });
+          throw new ConflictError("Username já existente");
         dataUser.password = await bcrypt.hash(dataUser.password, 10);
         const newUser = await repository.create(dataUser);
 
-        const {refreshToken, accessToken} = tokenGenerete(newUser.id, newUser.role)
+        const {refreshToken, accessToken} = await tokenGenerete(newUser.id, newUser.role)
 
         const result = {
           message: `Usuario ${newUser.username} cadastrado com sucesso`,
@@ -34,7 +35,7 @@ class AuthService{
       if(!passwordValid) 
         throw new NotFoundError("Credenciais invalidas");
       
-      const { refreshToken, accessToken } = tokenGenerete(user.id, user.role);
+      const { refreshToken, accessToken } = await tokenGenerete(user.id, user.role);
 
       const result = {
         message: `Usuario logado com sucesso`,
@@ -57,7 +58,7 @@ class AuthService{
       if(!user || token !== user.refreshToken)
         throw new UnauthorizedError("Token invalido");
 
-      const { refreshToken, accessToken } = tokenGenerete(user.id, user.role);
+      const { refreshToken, accessToken } = await tokenGenerete(user.id, user.role);
 
       const result = {
         message: `Usuario logado com sucesso`,

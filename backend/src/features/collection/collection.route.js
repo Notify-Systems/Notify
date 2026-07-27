@@ -13,8 +13,8 @@ router.use(auth);
 router.post("/", validation.body(schema.create), controller.create);
 router.get("/:id", validation.params(idSchema), controller.read);
 router.get("/", controller.readAll);
-router.update("/", validation.body(schema.update), validation.params(idSchema), controller.update);
-router.update("/color", validation.body(colorSchema), validation.params(idSchema), controller.update);
-router.update("/visibility", validation.body(schema.visibility), validation.params(idSchema), controller.update);
+router.patch("/:id", validation.body(schema.update), validation.params(idSchema), controller.update);
+router.patch("/color/:id", validation.body(colorSchema), validation.params(idSchema), controller.update);
+router.patch("/visibility/:id", validation.body(schema.visibility), validation.params(idSchema), controller.update);
 
 export default router;

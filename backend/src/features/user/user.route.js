@@ -10,6 +10,6 @@ router.use(auth)
 
 router.get("/me", controller.view)
 router.delete("/me", controller.delete)
-router.patch("/me", valdation.body(schema.updateProfile), controller.updateProfile)
+router.patch("/me", valdation.body(schema.updateProfile), controller.update)
 
 export default router;
