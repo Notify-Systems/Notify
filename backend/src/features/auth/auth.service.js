@@ -1,7 +1,7 @@
 import { ConflictError, NotFoundError, UnauthorizedError } from "../../errors/errorIndex.js";
 import repository from "../user/user.repository.js";
 import bcrypt from "bcrypt"
-import jwt from "jsonwebtoken"
+import tokenGenerete from "../../utils/tokenGenerete.js";
 
 class AuthService{
     async create(data){
@@ -15,22 +15,7 @@ class AuthService{
         dataUser.password = await bcrypt.hash(dataUser.password, 10);
         const newUser = await repository.create(dataUser);
 
-        const accessToken = jwt.sign(
-          { id: newUser.id, role: newUser.role },
-          process.env.ACCESS_SECRET,
-          { expiresIn: "15min" },
-        );
-
-        const refreshToken = jwt.sign(
-          { id: newUser.id },
-          process.env.REFRESH_SECRET,
-          { expiresIn: "30d" }
-        );
-
-        await repository.update(
-            newUser.id,
-            { refreshToken: refreshToken }
-        );
+        const {refreshToken, accessToken} = tokenGenerete(newUser.id, newUser.role)
 
         const result = {
           message: `Usuario ${newUser.username} cadastrado com sucesso`,
@@ -48,18 +33,8 @@ class AuthService{
       const passwordValid = await bcrypt.compare(password, user.password)
       if(!passwordValid) 
         throw new NotFoundError("Credenciais invalidas");
-      const accessToken = jwt.sign(
-        {id: user.id, role: user.role},
-        process.env.ACCESS_SECRET,
-        {expiresIn: "15min"}
-      )
-      const refreshToken = jwt.sign(
-        {id: user.id},
-        process.env.REFRESH_SECRET,
-        {expiresIn: "30d"}
-      )
-
-      await repository.update( user.id, { refreshToken: refreshToken }); 
+      
+      const { refreshToken, accessToken } = tokenGenerete(user.id, user.role);
 
       const result = {
         message: `Usuario logado com sucesso`,
@@ -82,18 +57,7 @@ class AuthService{
       if(!user || token !== user.refreshToken)
         throw new UnauthorizedError("Token invalido");
 
-      const accessToken = jwt.sign(
-        { id: user.id, role: user.role },
-        process.env.ACCESS_SECRET,
-        { expiresIn: "15min" },
-      );
-      const refreshToken = jwt.sign(
-        { id: user.id },
-        process.env.REFRESH_SECRET,
-        { expiresIn: "30d" },
-      );
-
-      await repository.update(user.id, { refreshToken: refreshToken });
+      const { refreshToken, accessToken } = tokenGenerete(user.id, user.role);
 
       const result = {
         message: `Usuario logado com sucesso`,
