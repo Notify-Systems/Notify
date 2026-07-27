@@ -39,8 +39,12 @@ update: z.object({
     .trim()
     .max(1000, { message: "A descrição deve ter no máximo 1000 caracteres." })
     .optional(),
-},{message: "Você deve inserir alguma mudança"})
-
+},{message: "Você deve inserir alguma mudança"}),
+visibility: z
+    .enum(["private", "public"], {
+      message: "A visibilidade deve ser 'private' ou 'public'.",
+    })
+    .default("private")
 }
 
 export default collectionSchema

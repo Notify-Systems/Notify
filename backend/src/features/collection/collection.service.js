@@ -13,6 +13,10 @@ class CollectionService{
         const collection = await collectionExist(collectionId);
         return collection;
     }
+    async readAll(userId){
+        const collations = await repository.findByUserId(userId)
+        return collations
+    }
     async update(userId, data, collectionId){
         await collectionExist(collectionId, userId)
 

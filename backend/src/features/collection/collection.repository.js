@@ -9,6 +9,10 @@ class ColletionRepository{
         const collection = await prisma.collection.findUnique({where: {id : id}});
         return collection;
     }
+    async findByUserId(userId){
+        const collections = await prisma.collection.findMany({where: {creatorId: userId}})
+        return collections
+    }
     async update(id, data){
         const collection = await prisma.collection.update({where: {id:id}, data:data});
         return collection;
