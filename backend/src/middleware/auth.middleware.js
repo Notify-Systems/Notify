@@ -1,7 +1,6 @@
 import AppError from "../errors/AppError.js";
 import { UnauthorizedError } from "../errors/errorIndex.js";
 import jwt from "jsonwebtoken"
-import userExist from "../utils/userExist.js";
 
 async function auth(req, res, next) {
   const authHeader = req.headers.authorization;
@@ -13,7 +12,6 @@ async function auth(req, res, next) {
     const decoded = jwt.verify(token, process.env.ACCESS_SECRET);
     req.userId = decoded.id;
     req.userRole = decoded.role;
-    await userExist(req.userId);
 
     next();
   } catch (error) {

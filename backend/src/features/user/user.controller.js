@@ -2,7 +2,7 @@ import service from "./user.service.js"
 
 class UserController{
     async view(req, res){
-        const user = await service.view(req.userId)
+        const user = await service.view(req.user)
         res.status(200).json(user)
     }
     async delete(req, res){

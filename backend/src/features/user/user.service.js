@@ -2,11 +2,9 @@ import AppError from "../../errors/AppError.js"
 import { NotFoundError } from "../../errors/errorIndex.js"
 import repository from "./user.repository.js"
 import userSafe from "../../utils/showUser.js"
-import userExist from "../../utils/userExist.js"
 
 class UserService{
-    async view(id){
-        const user = await userExist(id)
+    async view(user){
         return userSafe(user)
     }
     async delete(id){

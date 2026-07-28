@@ -6,7 +6,7 @@ class CollectionController{
         res.status(201).json(collection);
     }
     async read(req, res){
-        const collection = await service.read(req.userId, req.params.id);
+        const collection = await service.read(req.collection);
         res.status(200).json(collection);
     }
     async readAll(req, res){
@@ -14,11 +14,11 @@ class CollectionController{
         res.status(200).json(collections)
     }
     async update(req, res){
-        const collection = await service.update(req.userId, req.body, req.params.id);
+        const collection = await service.update(req.body, req.params.id);
         res.status(200).json(collection);
     }
     async delete(req, res){
-        const result = await service.delete(req.userId, req.params.id);
+        const result = await service.delete(req.params.id);
         return result;
     }
 }

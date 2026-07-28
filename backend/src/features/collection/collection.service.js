@@ -1,7 +1,5 @@
 import repository from "./collection.repository.js"
 import userRepository from "../user/user.repository.js"
-import userExist from "../../utils/userExist.js";
-import collectionExist from "../../utils/collectionExist.js";
 
 class CollectionService{
     async create(userId, data){
@@ -9,22 +7,18 @@ class CollectionService{
         const collection = await repository.create(data);
         return collection;
     }
-    async read(userId, collectionId){
-        const collection = await collectionExist(collectionId, userId);
+    async read(collection){
         return collection;
     }
     async readAll(userId){
         const collations = await repository.findByUserId(userId)
         return collations
     }
-    async update(userId, data, collectionId){
-        await collectionExist(collectionId, userId)
-
+    async update(data, collectionId){
         const collection = await repository.update(collectionId, data);
         return collection
     }
-    async delete(userId, collectionId){
-        await collectionExist(collectionId, userId);
+    async delete(collectionId){
         const collection = await repository.delete(collectionExist);
         const response = {message: `Coleção ${collection.name} foi deletado`}
         return response
