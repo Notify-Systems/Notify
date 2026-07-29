@@ -1,5 +1,6 @@
 import userRepository from "../features/user/user.repository.js";
 import collectionRepository from "../features/collection/collection.repository.js";
+import sectionRepository from "../features/section/section.repository.js";
 import { NotFoundError } from "../errors/errorIndex.js";
 class TableExist {
   async user(req, res, next) {
@@ -10,16 +11,28 @@ class TableExist {
   }
   async collection(req, res, next) {
     if (req.body.collectionId) {
-      const collection = await collectionRepository.findById(
+      var collection = await collectionRepository.findById(
         req.body.collectionId,
       );
     } else {
-      const collection = await collectionRepository.findById(req.params.id);
+      var collection = await collectionRepository.findById(req.params.id);
     }
-    if (!collection) throw new NotFoundError("Coleção não encontrada");
-    if (collection.creatorId !== req.userId)
+    if (!collection || collection.creatorId !== req.userId)
       throw new NotFoundError("Coleção não encontrada");
     req.collection = collection;
+
+    next()
+  }
+  async section(req, res, next) {
+    if (req.body.sectionId) {
+      var section = await sectionRepository.findById(req.body.sectionId);
+    } else {
+      var section = await sectionRepository.findById(req.params.id)
+    }
+    if(!section || section.creatorId !== req.userId)
+      throw new NotFoundError("Seção não encontrada");
+    req.section = section
+     next()
   }
 }
 
