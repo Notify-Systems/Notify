@@ -2,7 +2,9 @@ import userRepository from "../features/user/user.repository.js";
 import collectionRepository from "../features/collection/collection.repository.js";
 import sectionRepository from "../features/section/section.repository.js";
 import taskRepository from "../features/task/task.repository.js";
+import taskNoteRepository from "../features/taskNote/taskNote.repository.js";
 import { NotFoundError } from "../errors/errorIndex.js";
+
 class TableExist {
   async user(req, res, next) {
     const user = await userRepository.findById(req.userId);
@@ -44,6 +46,17 @@ class TableExist {
     if(!task || task.creatorId !== req.userId)
       throw new NotFoundError("Tarefa não encontrada");
     req.task = task
+    next()
+  }
+  async taskNote(req, res, next) {
+    if (req.body?.taskNoteId) {
+      var taskNote = await taskNoteRepository.findById(req.body.taskNoteId);
+    } else {
+      var taskNote = await taskNoteRepository.findById(req.params.id)
+    }
+    if(!taskNote || taskNote.authorId !== req.userId)
+      throw new NotFoundError("Nota não encontrada");
+    req.taskNote = taskNote
     next()
   }
 }
