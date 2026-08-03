@@ -28,7 +28,7 @@ model Note {
   description   String?             @db.VarChar(1000) @map("descricao")
   visibility    Visibility          @default(private) @map("visibilidade")
   createdAt     DateTime?           @default(now()) @db.Timestamp(6) @map("data_criacao")
-  themeColor    String              @default("#3B82F6") @db.Char(7) @map("cor_tematica")
+  themeColor    String              @default("#3B82F6") @db.Char(6) @map("cor_tematica")
 
   collectionId  String              @db.Uuid @map("id_conjunto")
   sectionId     String?             @db.Uuid @map("id_secao")
@@ -93,7 +93,7 @@ model Section {
   description String?           @db.VarChar(1000) @map("descricao")
   visibility  Visibility        @default(private) @map("visibilidade")
   createdAt   DateTime?         @default(now()) @db.Timestamp(6) @map("data_criacao")
-  themeColor  String            @default("#3B82F6") @db.Char(7) @map("cor_tematica")
+  themeColor  String            @default("#3B82F6") @db.Char(6) @map("cor_tematica")
 
   collectionId String @db.Uuid @map("id_conjunto")
   creatorId    String @db.Uuid @map("id_criador")
@@ -127,7 +127,7 @@ model Task {
   description String?             @db.VarChar(1000) @map("descricao")
   visibility  Visibility          @default(private) @map("visibilidade")
   createdAt   DateTime            @default(now()) @db.Timestamp(6) @map("data_de_criacao")
-  themeColor  String              @default("#3B82F6") @db.Char(7) @map("cor_tematica")
+  themeColor  String              @default("#3B82F6") @db.Char(6) @map("cor_tematica")
   dueDate     DateTime            @db.Timestamp(6) @map("prazo")
   status      TaskStatus          @default(pending)
 

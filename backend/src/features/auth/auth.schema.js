@@ -20,7 +20,7 @@ const authSchema = {
         .min(3, { message: "O apelido deve ter no minimo 3 caracteres." })
         .optional(),
 
-      biografia: z
+      biography: z
         .string()
         .trim()
         .max(500, { message: "A biografia deve ter no máximo 500 caracteres." })
@@ -42,7 +42,7 @@ const authSchema = {
 
     .refine((data) => data.password === data.passwordConfirm, {
       message: "As senhas não coincidem.",
-      path: ["senhaconfirm"],
+      path: ["passwordConfirm"],
     }),
 
   login: z.object({

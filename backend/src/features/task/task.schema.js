@@ -49,8 +49,11 @@ const taskSchema = {
         dueDate: z
             .coerce.date({ message: "O prazo deve ser uma data válida" })
             .optional()
-            .refine((date) => date > new Date(), { message: "O prazo deve ser uma data futura." }),
-    }, { message: "Você deve inserir alguma mudança" }),
+            .refine((date) => { 
+                if (date === undefined) return true;
+                return date > new Date();
+            })},
+             { message: "Você deve inserir alguma mudança" }),
     visibility: z.object({
         visibility: z
             .enum(["private", "public"], {

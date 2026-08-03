@@ -19,7 +19,7 @@ class CollectionController{
     }
     async delete(req, res){
         const result = await service.delete(req.params.id);
-        return result;
+        res.status(200).json(result);
     }
 }
 

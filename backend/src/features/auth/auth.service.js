@@ -20,7 +20,7 @@ class AuthService{
 
         const result = {
           message: `Usuario ${newUser.username} cadastrado com sucesso`,
-          acessToken: accessToken,
+          accessToken: accessToken,
           refreshToken: refreshToken,
         };
         return result
@@ -39,7 +39,7 @@ class AuthService{
 
       const result = {
         message: `Usuario logado com sucesso`,
-        acessToken: accessToken,
+        accessToken: accessToken,
         refreshToken: refreshToken,
       };
       return result;
@@ -62,7 +62,7 @@ class AuthService{
 
       const result = {
         message: `Usuario logado com sucesso`,
-        acessToken: accessToken,
+        accessToken: accessToken,
         refreshToken: refreshToken,
       };
       return result;

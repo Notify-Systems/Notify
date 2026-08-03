@@ -12,7 +12,7 @@ import colorSchema from "../../schema/color.schema.js";
 router.use(auth);
 router.use(tableExist.user)
 
-router.post("/", validation.body(schema.create), controller.create);
+router.post("/", validation.body(schema.create),tableExist.collection ,controller.create);
 router.get("/:id", validation.params(idSchema), tableExist.section, controller.read)
 router.get("/collection/:id", validation.params(idSchema), tableExist.collection, controller.readAll)
 router.patch("/:id", validation.body(schema.update), validation.params(idSchema), tableExist.section, controller.update);

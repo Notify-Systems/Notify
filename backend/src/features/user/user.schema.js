@@ -8,10 +8,10 @@ const userSchema = {
         .max(50, { message: "O apelido deve ter no máximo 50 caracteres." })
         .min(3, { message: "O apelido deve ter no minimo 3 caracteres." })
         .optional(),
-      bio: z
+      biography: z
         .string()
         .max(500, { message: "A biografia deve ter no máximo 500 caracteres." })
-        .optional()
+        .optional(),
     },
     { required_error: "Insira alguma mudança." },
   ),
@@ -27,7 +27,9 @@ const userSchema = {
       .max(70, { message: "A senha é muito longa." }),
   }),
 
-  changeTema:z.enum(["light", "dark", "auto"], {message: "O tema precisa ser entre light, dark ou auto"})
+  changeTema: z.enum(["light", "dark", "auto"], {
+    message: "O tema precisa ser entre light, dark ou auto",
+  }),
 };
 
 export default userSchema

@@ -19,7 +19,7 @@ class CollectionService{
         return collection
     }
     async delete(collectionId){
-        const collection = await repository.delete(collectionExist);
+        const collection = await repository.delete(collectionId);
         const response = {message: `Coleção ${collection.name} foi deletado`}
         return response
     }
