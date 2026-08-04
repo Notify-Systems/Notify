@@ -13,6 +13,17 @@ class ColletionRepository{
         const collections = await prisma.collection.findMany({where: {creatorId: userId}})
         return collections
     }
+    async findAll(userId){
+        const publicColletions = await prisma.collection.findMany({where: {visibility: "public"}})
+        const privateColletions = await prisma.collection.findMany({where: {visibility: "private", creatorId: userId}})
+        const sharedColletions = await prisma.collectionMember.findMany({
+            where: 
+                {userId: userId, role:{not: "owner"}}, 
+                include:{collection: true}
+            })
+        const colletions = { publicColletions, privateColletions, sharedColletions}
+        return colletions
+    }
     async update(id, data){
         const collection = await prisma.collection.update({where: {id:id}, data:data});
         return collection;

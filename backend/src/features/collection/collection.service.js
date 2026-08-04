@@ -10,8 +10,12 @@ class CollectionService{
     async read(collection){
         return collection;
     }
-    async readAll(userId){
+    async readAllMe(userId){
         const collations = await repository.findByUserId(userId)
+        return collations
+    }
+    async readAll(userId){
+        const collations = await repository.findAll(userId)
         return collations
     }
     async update(data, collectionId){

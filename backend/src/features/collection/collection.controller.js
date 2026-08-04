@@ -9,9 +9,13 @@ class CollectionController{
         const collection = await service.read(req.collection);
         res.status(200).json(collection);
     }
-    async readAll(req, res){
-        const collections = await service.readAll(req.userId)
+    async readAllMe(req, res){
+        const collections = await service.readAllMe(req.userId)
         res.status(200).json(collections)
+    }
+    async readAll(req, res){
+        const collections = await service.readAll(req.userId);
+        res.status(200).json(collections);
     }
     async update(req, res){
         const collection = await service.update(req.body, req.params.id);
