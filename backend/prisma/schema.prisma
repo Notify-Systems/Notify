@@ -37,6 +37,8 @@ model Note {
   collection Collection @relation(fields: [collectionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   section    Section?   @relation(fields: [sectionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   creator    User       @relation(fields: [creatorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  
+  members NoteMember[]
 
   @@map("tb_anotacao")
 }
@@ -57,6 +59,7 @@ model Collection {
   notes    Note[]
   sections Section[]
   tasks    Task[]
+  members CollectionMember[]
 
   @@map("tb_conjunto")
 }
@@ -103,6 +106,7 @@ model Section {
 
   notes Note[]
   tasks Task[]
+  members SectionMember[]
 
   @@map("tb_secao")
 }
@@ -140,6 +144,7 @@ model Task {
   creator    User       @relation(fields: [creatorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   notes TaskNote[]
+  members TaskMember[]
 
   @@map("tb_tarefa")
 }
@@ -173,7 +178,66 @@ model User {
   following Follower[] @relation("Following")
   followers Follower[] @relation("Followers")
 
+  collectionMembers CollectionMember[]
+  sectionMembers    SectionMember[]
+  taskMembers       TaskMember[]
+  noteMembers       NoteMember[]
+
   @@map("tb_usuario")
+}
+
+model NoteMember {
+  noteId String     @map("id_anotacao") @db.Uuid
+  userId String     @map("id_usuario") @db.Uuid
+  role   MemberRole @default(viewer) @map("cargo")
+
+  note Note @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([noteId, userId])
+  @@map("tb_membro_anotacao")
+}
+
+model TaskMember {
+  taskId String     @map("id_tarefa") @db.Uuid
+  userId String     @map("id_usuario") @db.Uuid
+  role   MemberRole @default(viewer) @map("cargo")
+
+  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([taskId, userId])
+  @@map("tb_membro_tarefa")
+}
+
+model SectionMember {
+  sectionId String     @map("id_secao") @db.Uuid
+  userId    String     @map("id_usuario") @db.Uuid
+  role      MemberRole @default(viewer) @map("cargo")
+
+  section Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([sectionId, userId])
+  @@map("tb_membro_secao")
+}
+
+model CollectionMember {
+  collectionId String     @map("id_conjunto") @db.Uuid
+  userId       String     @map("id_usuario") @db.Uuid
+  role         MemberRole @default(viewer) @map("cargo")
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([collectionId, userId])
+  @@map("tb_membro_conjunto")
+}
+
+enum MemberRole {
+  owner
+  editor
+  viewer
 }
 
 enum Theme {
@@ -194,6 +258,7 @@ enum Role {
 enum Visibility {
   private
   public
+  shared
 
   @@map("visibilidade_enum")
 }
