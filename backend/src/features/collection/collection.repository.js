@@ -32,5 +32,8 @@ class ColletionRepository{
         const collection = await prisma.collection.delete({where: {id:id}});
         return collection;
     }
+    async deleteShares(id){
+        await prisma.collectionMember.deleteMany({where: {collectionId: id}})
+    }
 }
 export default new ColletionRepository()

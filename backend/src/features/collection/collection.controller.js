@@ -21,6 +21,10 @@ class CollectionController{
         const collection = await service.update(req.body, req.params.id);
         res.status(200).json(collection);
     }
+    async updateVisibility(req, res){
+        const collection = await service.update(req.body, req.params.id, req.collection);
+        res.status(200).json(collection);
+    }
     async delete(req, res){
         const result = await service.delete(req.params.id);
         res.status(200).json(result);

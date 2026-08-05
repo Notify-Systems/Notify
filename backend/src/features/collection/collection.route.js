@@ -19,6 +19,6 @@ router.get("/:id", validation.params(idSchema), tableExist.collection, controlle
 router.get("/", controller.readAll)
 router.patch("/:id", validation.body(schema.update), validation.params(idSchema), tableExist.collection, controller.update);
 router.patch("/color/:id", validation.body(colorSchema), validation.params(idSchema), tableExist.collection, controller.update);
-router.patch("/visibility/:id", validation.body(schema.visibility), validation.params(idSchema), tableExist.collection, controller.update);
+router.patch("/visibility/:id", validation.body(schema.visibility), validation.params(idSchema), tableExist.collection, controller.updateVisibility);
 
 export default router;
