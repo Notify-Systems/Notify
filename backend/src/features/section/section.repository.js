@@ -9,6 +9,10 @@ class SectionRepository {
     const section = await prisma.section.findUnique({ where: { id: id } });
     return section;
   }
+  async findSectionShared(userId, sectionId){
+        const section = await prisma.sectionMember.findFirst({where: {sectionId: sectionId, userId: userId}})
+        return section
+    }
   async findByCollection(collectionId) {
     const sections = await prisma.section.findMany({
       where: { collectionId: collectionId },
