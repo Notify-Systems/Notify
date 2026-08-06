@@ -1,4 +1,4 @@
-import repository from "../features/user/user.repository.js";
+import repository from "../../features/user/user.repository.js";
 import jwt from "jsonwebtoken";
 
 async function tokenGenerete(id, role) {

@@ -15,7 +15,6 @@ async function auth(req, res, next) {
 
     next();
   } catch (error) {
-    console.log(error);
     if (error.name == "TokenExpiredError")
         throw new AppError("Token expirado, renove com refresh token", 401, error.name );
     throw new UnauthorizedError("Token invalido");

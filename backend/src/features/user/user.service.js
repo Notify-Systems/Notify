@@ -1,7 +1,7 @@
-import AppError from "../../errors/AppError.js"
-import { NotFoundError } from "../../errors/errorIndex.js"
+import AppError from "../../shared/errors/AppError.js";
+import { NotFoundError } from "../../shared/errors/errorIndex.js";
 import repository from "./user.repository.js"
-import userSafe from "../../utils/showUser.js"
+import userSafe from "../../shared/utils/showUser.js";
 
 class UserService{
     async view(user){

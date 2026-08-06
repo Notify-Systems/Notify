@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 
 import routes from "./index.route.js"
-import errorHandler from "./middleware/error.middleware.js";
+import errorHandler from "./shared/middleware/error.middleware.js";
 
 app.use(express.json());
 

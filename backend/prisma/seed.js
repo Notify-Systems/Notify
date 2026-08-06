@@ -1,4 +1,4 @@
-import { prisma } from "../src/lib/db.js";
+import { prisma } from "../src/shared/lib/db.js";
 
 async function seed() {
   try {

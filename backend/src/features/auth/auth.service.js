@@ -1,8 +1,8 @@
-import { ConflictError, NotFoundError, UnauthorizedError } from "../../errors/errorIndex.js";
+import { ConflictError, NotFoundError, UnauthorizedError } from "../../shared/errors/errorIndex.js";
 import repository from "../user/user.repository.js";
 import bcrypt from "bcrypt"
-import tokenGenerete from "../../utils/tokenGenerete.js";
 import jwt from "jsonwebtoken"
+import tokenGenerete from "../../shared/utils/tokenGenerete.js";
 
 class AuthService{
     async create(data){

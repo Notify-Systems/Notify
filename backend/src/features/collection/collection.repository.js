@@ -1,4 +1,4 @@
-import { prisma } from "../../lib/db.js"
+import { prisma } from "../../shared/lib/db.js"
 
 class ColletionRepository{
     async create(data){
@@ -23,6 +23,10 @@ class ColletionRepository{
             })
         const colletions = { publicColletions, privateColletions, sharedColletions}
         return colletions
+    }
+    async findCollectionShared(userId, collectionId){
+        const collection = await prisma.collectionMember.findFirst({where: {collectionId: collectionId, userId: userId}})
+        return collection
     }
     async update(id, data){
         const collection = await prisma.collection.update({where: {id:id}, data:data});
