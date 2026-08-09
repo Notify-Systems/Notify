@@ -7,23 +7,29 @@ function can(action, resource) {
     const resourceId = req.params.id ?? req.body[`${resource}Id`];
     switch (action) {
       case "view": {
-        resource = await permission[`${resource}View`](userId, resourceId);
-        if (resource == false)
+        req[resource] = await permission[`${resource}View`](userId, resourceId);
+        if (req[resource] == false)
           throw new NotFoundError("Colleção não encontrada");
-        req[resource] = resource;
         return next();
       }
       case "edit": {
-        resource = await permission[`${resource}Edit`](userId, resourceId);
-        if (resource == false)
+        req[resource] = await permission[`${resource}Edit`](userId, resourceId);
+        if (req[resource] == false)
           throw new ForbiddenError("Permissão de editar negada");
-        req[resource] = resource;
+        return next();
+      }
+      case "create":{
+        const sectionId = req.body.sectionId
+        const collectionId = req.body.collectionId
+        const allowed = await permission[`${resource}Create`](userId, sectionId, collectionId);
+        if (allowed == false)
+          throw new ForbiddenError("Permissão de criar negada");
         return next();
       }
       case "owner": {
-        resource = await permission[`${resource}Owner`](userId, resourceId);
-        if (resource == false) throw new ForbiddenError("Permissão negada");
-        req[resource] = resource;
+        req[resource] = await permission[`${resource}Owner`](userId, resourceId);
+        if (req[resource] == false)
+          throw new ForbiddenError("Permissão negada");
         return next();
       }
     }
