@@ -190,6 +190,7 @@ model NoteMember {
   noteId String     @map("id_anotacao") @db.Uuid
   userId String     @map("id_usuario") @db.Uuid
   role   MemberRole @default(viewer) @map("cargo")
+  valid Boolean     @map("valido")
 
   note Note @relation(fields: [noteId], references: [id], onDelete: Cascade)
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -202,6 +203,7 @@ model TaskMember {
   taskId String     @map("id_tarefa") @db.Uuid
   userId String     @map("id_usuario") @db.Uuid
   role   MemberRole @default(viewer) @map("cargo")
+  valid Boolean     @map("valido")
 
   task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -214,6 +216,7 @@ model SectionMember {
   sectionId String     @map("id_secao") @db.Uuid
   userId    String     @map("id_usuario") @db.Uuid
   role      MemberRole @default(viewer) @map("cargo")
+  valid Boolean     @map("valido")
 
   section Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -226,6 +229,7 @@ model CollectionMember {
   collectionId String     @map("id_conjunto") @db.Uuid
   userId       String     @map("id_usuario") @db.Uuid
   role         MemberRole @default(viewer) @map("cargo")
+  valid Boolean     @map("valido")
 
   collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
   user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -258,7 +262,6 @@ enum Role {
 enum Visibility {
   private
   public
-  shared
 
   @@map("visibilidade_enum")
 }

@@ -13,13 +13,8 @@ class Permission {
         return collection;
       case "private":
         if (collection.creatorId === userId) return collection;
-        break;
-      case "shared":
-        const member = await collectionRepository.findCollectionShared(
-          userId,
-          id,
-        );
-        if (member) return collection;
+        const member = await collectionRepository.findCollectionShared(userId, id);
+        if (member && member.valid == true) return collection;
     }
     return false;
   }
@@ -27,13 +22,8 @@ class Permission {
     const collection = await collectionRepository.findById(id);
     if (!collection) return false;
     if (collection.creatorId === userId) return collection;
-    if (collection.visibility === "shared") {
-      const member = await collectionRepository.findCollectionShared(
-        userId,
-        id,
-      );
-      if (member && member.role == "editor") return collection;
-    }
+      const member = await collectionRepository.findCollectionShared(userId, id);
+      if (member && member.role == "editor" && member.valid == true) return collection;
     return false;
   }
   async collectionOwner(userId, id) {
@@ -52,10 +42,8 @@ class Permission {
         return section;
       case "private":
         if (section.creatorId === userId) return section;
-        break;
-      case "shared":
         const member = await sectionRepository.findSectionShared(userId, id);
-        if (member) return section;
+        if (member && member.valid == true) return section;
     }
     const collection = await this.collectionView(userId, section.collectionId);
     if (collection) return section;
@@ -69,11 +57,9 @@ class Permission {
 
     if (section.creatorId === userId) return section;
 
-    if (section.visibility === "shared") {
-      const member = await sectionRepository.findSectionShared(userId, id);
-
-      if (member && member.role === "editor") return section;
-    }
+    const member = await sectionRepository.findSectionShared(userId, id);
+    if (member && member.valid == true && member.role === "editor")
+      return section;
 
     const collection = await this.collectionEdit(userId, section.collectionId);
     if (collection) return section;
@@ -104,12 +90,8 @@ class Permission {
 
       case "private":
         if (task.creatorId === userId) return task;
-        break;
-
-      case "shared":
         const member = await taskRepository.findTaskShared(userId, id);
-
-        if (member) return task;
+        if (member && member.valid) return task;
     }
 
     const collection = await this.collectionView(userId, task.collectionId);
@@ -127,13 +109,8 @@ class Permission {
 
     if (task.creatorId === userId) return task;
 
-    if (task.visibility === "shared") {
-      const member = await taskRepository.findTaskShared(userId, id);
-
-      if (member && member.role === "editor") {
-        return task;
-      }
-    }
+    const member = await taskRepository.findTaskShared(userId, id);
+    if (member && member.valid == true && member.role === "editor") return task;
 
     const collection = await this.collectionEdit(userId, task.collectionId);
     if (collection) return task;
