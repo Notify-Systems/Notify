@@ -9,7 +9,11 @@ class Validation {
           field: issue.path[0],
           message: issue.message,
         }));
-        const validationError = new AppError( "Erro de validação nos campos", 400, formattedErrors );
+        const validationError = new AppError(
+          "Erro de validação nos campos",
+          400,
+          formattedErrors,
+        );
 
         return next(validationError);
       }
@@ -17,7 +21,7 @@ class Validation {
       next();
     };
   }
- params(schema) {
+  params(schema) {
     return (req, res, next) => {
       const result = schema.safeParse(req.params);
 
@@ -26,7 +30,11 @@ class Validation {
           field: issue.path[0],
           message: issue.message,
         }));
-         const validationError = new AppError( "Erro de validação nos campos", 400, formattedErrors );
+        const validationError = new AppError(
+          "Erro de validação nos campos",
+          400,
+          formattedErrors,
+        );
 
         return next(validationError);
       }
@@ -37,4 +45,4 @@ class Validation {
   }
 }
 
-export default new Validation()
+export default new Validation();

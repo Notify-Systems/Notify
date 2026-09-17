@@ -10,7 +10,7 @@ class SectionController{
         res.status(200).json(section)
     }
     async readAll(req, res){
-        const sections = await service.readAll(req.params.id)
+        const sections = await service.readAll(req.userId, req.params.id)
         res.status(200).json(sections)
     }
     async update(req, res){

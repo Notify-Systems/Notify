@@ -10,11 +10,11 @@ class TaskController {
     res.status(200).json(tasks);
   }
   async readByCollection(req, res) {
-    const tasks = await service.readByCollection(req.params.id);
+    const tasks = await service.readByCollection(req.userId, req.params.id);
     res.status(200).json(tasks);
   }
   async readBySection(req, res) {
-    const tasks = await service.readBySection(req.params.id);
+    const tasks = await service.readBySection(req.userId, req.params.id);
     res.status(200).json(tasks);
   }
   async update(req, res) {
