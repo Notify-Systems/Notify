@@ -3,13 +3,12 @@ import userRepository from "../user/user.repository.js"
 import repository from "./share.repository.js"
 
 class ShareService{
-    async shareCollection(userId, data, collection){
+    async share(userId, data, shareitem, item){
         const user = await userRepository.findById(data.userId)
         if(!user) throw new NotFoundError("Usuario não encontrado")
-        if(data.role == "editor" && collection.creatorId !== userId)
+        if(data.role == "editor" && item.creatorId !== userId)
             throw new ForbiddenError ("Você não tem permissão pra dar esse cargo a alguem")
-        data.collectionId = collection.id
-        const share = await repository.shareColletion(data)
+        const share = await repository[`share${shareitem}`](data, shareitem);
         return{message: "Conjunto compartilhado com sucesso"}
     }
 }
