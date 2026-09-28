@@ -29,13 +29,16 @@ class ShareRepository {
     return share;
   }
   async revokeShare(userId, shareItem, resourceId) {
-    const share = await prisma[`${shareItem}Member`].delete({
+    const share = await prisma[`${shareItem}Member`].update({
       where: {
         [`${shareItem}Id_userId`]: {
           [`${shareItem}Id`]: resourceId,
           userId: userId,
         },
       },
+      data: {
+        valid: false
+      }
     });
     return share;
   }
