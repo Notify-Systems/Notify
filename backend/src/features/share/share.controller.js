@@ -12,5 +12,27 @@ class ShareController {
       res.status(201).json(result);
     };
   }
+  updateShare(shareItem) {
+    return async (req, res) => {
+      const result = await service.updateShare(
+        req.userId,
+        req.body,
+        shareItem,
+        req[shareItem],
+      );
+      res.status(201).json(result);
+    };
+  }
+  revokeShare(shareItem) {
+    return async (req, res) => {
+      const result = await service.revokeShare(
+        req.userId,
+        req.body,
+        shareItem,
+        req[shareItem],
+      );
+      res.status(201).json(result);
+    };
+  }
 }
 export default new ShareController();
