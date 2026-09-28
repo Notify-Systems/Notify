@@ -1,4 +1,4 @@
-import { ForbiddenError, NotFoundError } from "../../shared/errors/errorIndex.js"
+import { ForbiddenError, NotFoundError, UnauthorizedError } from "../../shared/errors/errorIndex.js"
 import userRepository from "../user/user.repository.js"
 import repository from "./share.repository.js"
 
@@ -10,6 +10,7 @@ class ShareService {
       throw new ForbiddenError(
         "Você não tem permissão pra dar esse cargo a alguem",
       );
+    data.grantedById = userId
     const shareExist = await repository.searchShare(data.userId, shareItem, item.id)
     if(!shareExist){
       await repository.share(data, shareItem);
@@ -27,6 +28,8 @@ class ShareService {
     if (!user) throw new NotFoundError("Usuario não encontrado");
     const shareExist = await repository.searchShare(data.userId, shareItem, item.id)
     if(!shareExist || shareExist.valid == false) throw new NotFoundError ("Compartilhamento não encontrado")
+    if (shareExist.grantedById !== userId && item.creatorId !== userId)
+       throw new ForbiddenError("Você não pode modificar essa permissão")
     if (data.role == "editor" && item.creatorId !== userId)
       throw new ForbiddenError(
         "Você não tem permissão pra dar esse cargo a alguem",
@@ -39,9 +42,11 @@ class ShareService {
     if(!user) throw new NotFoundError("Usuario não encontrado")
     const share = await repository.searchShare(data.userId, shareItem, item.id)
     if(!share || share.valid == false) throw new NotFoundError("Compartilhamento não encontrado")
+      if (shareExist.grantedById !== userId && item.creatorId !== userId)
+        throw new ForbiddenError("Você não pode revogar essa compartilhamento");
     if (share.role == "editor" && item.creatorId !== userId)
       throw new ForbiddenError(
-        "Você não tem permissão pra tirar esse cargo de alguem",
+        "Você não tem permissão pra tirar esse compartilhamento de alguem",
       );
     await repository.revokeShare(data.userId, shareItem, item.id)
     return {message: `Permissões do usuario ${user.username} foi revogada`}
