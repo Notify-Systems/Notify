@@ -178,48 +178,62 @@ model User {
   following Follower[] @relation("Following")
   followers Follower[] @relation("Followers")
 
-  collectionMembers CollectionMember[]
-  sectionMembers    SectionMember[]
-  taskMembers       TaskMember[]
-  noteMembers       NoteMember[]
+  collectionMembers CollectionMember[] @relation("CollectionMemberUser")
+  sectionMembers    SectionMember[]    @relation("SectionMemberUser")
+  taskMembers       TaskMember[]       @relation("TaskMemberUser")
+  noteMembers       NoteMember[]       @relation("NoteMemberUser")
+
+  collectionPermissionsGiven CollectionMember[] @relation("CollectionMemberGrantedBy")
+  sectionPermissionsGiven    SectionMember[]    @relation("SectionMemberGrantedBy")
+  taskPermissionsGiven       TaskMember[]       @relation("TaskMemberGrantedBy")
+  notePermissionsGiven       NoteMember[]       @relation("NoteMemberGrantedBy")
 
   @@map("tb_usuario")
 }
 
 model NoteMember {
-  noteId String     @map("id_anotacao") @db.Uuid
-  userId String     @map("id_usuario") @db.Uuid
-  role   MemberRole @default(viewer) @map("cargo")
-  valid Boolean     @default(true) @map("valido")
+  noteId      String     @map("id_anotacao") @db.Uuid
+  userId      String     @map("id_usuario") @db.Uuid
+  grantedById String     @map("id_concedido_por") @db.Uuid
 
-  note Note @relation(fields: [noteId], references: [id], onDelete: Cascade)
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role        MemberRole @default(viewer) @map("cargo")
+  valid       Boolean    @default(true) @map("valido")
+
+  note      Note @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  user      User @relation("NoteMemberUser", fields: [userId], references: [id], onDelete: Cascade)
+  grantedBy User @relation("NoteMemberGrantedBy", fields: [grantedById], references: [id], onDelete: NoAction)
 
   @@id([noteId, userId])
   @@map("tb_membro_anotacao")
 }
 
 model TaskMember {
-  taskId String     @map("id_tarefa") @db.Uuid
-  userId String     @map("id_usuario") @db.Uuid
-  role   MemberRole @default(viewer) @map("cargo")
-  valid Boolean     @default(true) @map("valido")
+  taskId      String     @map("id_tarefa") @db.Uuid
+  userId      String     @map("id_usuario") @db.Uuid
+  grantedById String     @map("id_concedido_por") @db.Uuid
 
-  task Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role        MemberRole @default(viewer) @map("cargo")
+  valid       Boolean    @default(true) @map("valido")
+
+  task      Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  user      User @relation("TaskMemberUser", fields: [userId], references: [id], onDelete: Cascade)
+  grantedBy User @relation("TaskMemberGrantedBy", fields: [grantedById], references: [id], onDelete: NoAction)
 
   @@id([taskId, userId])
   @@map("tb_membro_tarefa")
 }
 
 model SectionMember {
-  sectionId String     @map("id_secao") @db.Uuid
-  userId    String     @map("id_usuario") @db.Uuid
-  role      MemberRole @default(viewer) @map("cargo")
-  valid Boolean     @default(true) @map("valido")
+  sectionId   String     @map("id_secao") @db.Uuid
+  userId      String     @map("id_usuario") @db.Uuid
+  grantedById String     @map("id_concedido_por") @db.Uuid
 
-  section Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
-  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role        MemberRole @default(viewer) @map("cargo")
+  valid       Boolean    @default(true) @map("valido")
+
+  section   Section @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  user      User    @relation("SectionMemberUser", fields: [userId], references: [id], onDelete: Cascade)
+  grantedBy User    @relation("SectionMemberGrantedBy", fields: [grantedById], references: [id], onDelete: NoAction)
 
   @@id([sectionId, userId])
   @@map("tb_membro_secao")
@@ -228,11 +242,14 @@ model SectionMember {
 model CollectionMember {
   collectionId String     @map("id_conjunto") @db.Uuid
   userId       String     @map("id_usuario") @db.Uuid
+  grantedById  String     @map("id_concedido_por") @db.Uuid
+
   role         MemberRole @default(viewer) @map("cargo")
-  valid Boolean           @default(true) @map("valido") 
+  valid        Boolean    @default(true) @map("valido")
 
   collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
-  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user       User       @relation("CollectionMemberUser", fields: [userId], references: [id], onDelete: Cascade)
+  grantedBy  User       @relation("CollectionMemberGrantedBy", fields: [grantedById], references: [id], onDelete: NoAction)
 
   @@id([collectionId, userId])
   @@map("tb_membro_conjunto")
