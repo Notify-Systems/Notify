@@ -9,6 +9,7 @@ import sectionRoutes from "./features/section/section.route.js";
 import taskRoutes from "./features/task/task.route.js";
 import taskNoteRoutes from "./features/taskNote/taskNote.route.js";
 import shareRoutes from "./features/share/share.route.js"
+import friendshipRoutes from "./features/friendship/friendship.route.js"
 
 router.get("/health", (req, res) => res.status(200).json({ status: "ok" }));
 
@@ -19,5 +20,6 @@ router.use("/section", sectionRoutes);
 router.use("/task", taskRoutes);
 router.use("/task/note", taskNoteRoutes);
 router.use("/share", shareRoutes)
+router.use("/friendship", friendshipRoutes)
 
 export default router;
