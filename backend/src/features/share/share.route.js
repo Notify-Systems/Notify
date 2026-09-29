@@ -13,7 +13,7 @@ router.use(auth);
 router.use(userExist)
 
 
-router.post("/collection/:id", validation.body(schema.share), validation.params(idSchema),can("edit", "collection") ,controller.share('collection'));
+router.post("/collection/:id", can("edit", "collection"), validation.body(schema.share), validation.params(idSchema),controller.share('collection'));
 router.post("/section/:id", validation.body(schema.share), validation.params(idSchema),can("edit", "section") ,controller.share('section'));
 router.post("/task/:id", validation.body(schema.share), validation.params(idSchema),can("edit", "task") ,controller.share('task'));
 router.post("/note/:id", validation.body(schema.share), validation.params(idSchema),can("edit", "note") ,controller.share('note'));
