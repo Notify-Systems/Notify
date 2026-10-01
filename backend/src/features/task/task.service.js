@@ -1,4 +1,3 @@
-import { boolean } from "zod";
 import { NotFoundError } from "../../shared/errors/errorIndex.js";
 import repository from "./task.repository.js";
 
@@ -19,13 +18,13 @@ class TaskService {
         if (task.creatorId == userId) {
           return task;
         }
-        if (task.visibility == "public") return;
+        if (task.visibility == "public") return task;
 
         const allowed = await repository.findTaskShared(userId, task.id);
         if (allowed) return task;
       }),
     );
-    return tasksAllowed.filter(boolean);
+    return tasksAllowed.filter(Boolean);
   }
   async readBySection(userId, sectionId) {
     const tasks = await repository.findBySection(sectionId);
@@ -35,13 +34,13 @@ class TaskService {
         if (task.creatorId == userId) {
           return task;
         }
-        if (task.visibility == "public") return;
+        if (task.visibility == "public") return task;
 
         const allowed = await repository.findTaskShared(userId, task.id);
         if (allowed) return task;
       }),
     );
-    return tasksAllowed.filter(boolean);
+    return tasksAllowed.filter(Boolean);
   }
   async update(id, data) {
     const newTask = await repository.update(id, data);

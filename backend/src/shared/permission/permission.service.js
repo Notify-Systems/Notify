@@ -13,7 +13,10 @@ class Permission {
         return collection;
       case "private":
         if (collection.creatorId === userId) return collection;
-        const member = await collectionRepository.findCollectionShared(userId, id);
+        const member = await collectionRepository.findCollectionShared(
+          userId,
+          id,
+        );
         if (member && member.valid == true) return collection;
     }
     return false;
@@ -22,8 +25,9 @@ class Permission {
     const collection = await collectionRepository.findById(id);
     if (!collection) return false;
     if (collection.creatorId === userId) return collection;
-      const member = await collectionRepository.findCollectionShared(userId, id);
-      if (member && member.role == "editor" && member.valid == true) return collection;
+    const member = await collectionRepository.findCollectionShared(userId, id);
+    if (member && member.role == "editor" && member.valid == true)
+      return collection;
     return false;
   }
   async collectionOwner(userId, id) {
@@ -78,7 +82,7 @@ class Permission {
 
     return false;
   }
-  
+
   async taskView(userId, id) {
     const task = await taskRepository.findById(id);
     if (!task) return false;
@@ -94,11 +98,12 @@ class Permission {
         if (member && member.valid) return task;
     }
 
+    if (task.sectionId) {
+      const section = await this.sectionView(userId, task.sectionId);
+      if (section) return task;
+    }
     const collection = await this.collectionView(userId, task.collectionId);
     if (collection) return task;
-
-    const section = await this.sectionView(userId, task.sectionId);
-    if (section) return task;
 
     return false;
   }
@@ -112,18 +117,19 @@ class Permission {
     const member = await taskRepository.findTaskShared(userId, id);
     if (member && member.valid == true && member.role === "editor") return task;
 
+    if (task.sectionId) {
+      const section = await this.sectionEdit(userId, task.sectionId);
+      if (section) return task;
+    }
     const collection = await this.collectionEdit(userId, task.collectionId);
     if (collection) return task;
 
-    const section = await this.sectionEdit(userId, task.sectionId);
-    if (section) return task;
-
     return false;
   }
-  async taskCreate(userId, sectionId, collectionId){
-    if(sectionId){
-        const section = await this.sectionEdit(userId, sectionId);
-        if (section) return true;
+  async taskCreate(userId, sectionId, collectionId) {
+    if (sectionId) {
+      const section = await this.sectionEdit(userId, sectionId);
+      if (section) return true;
     }
     const collection = await this.collectionEdit(userId, collectionId);
     if (collection) return true;
@@ -137,14 +143,16 @@ class Permission {
 
     if (task.creatorId === userId) return task;
 
+    if (task.sectionId) {
+      const section = await this.sectionOwner(userId, task.sectionId);
+      if (section) return task;
+    }
+
     const collection = await this.collectionOwner(userId, task.collectionId);
     if (collection) return task;
-
-    const section = await this.sectionOwner(userId, task.sectionId);
-    if (section) return task;
 
     return false;
   }
 }
 
-export default new Permission()
+export default new Permission();

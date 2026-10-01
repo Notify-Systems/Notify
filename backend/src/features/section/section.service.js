@@ -1,4 +1,3 @@
-import { boolean } from "zod";
 import { NotFoundError } from "../../shared/errors/errorIndex.js";
 import repository from "./section.repository.js";
 
@@ -22,12 +21,12 @@ class SectionService {
       }
       if(section.visibility == "public") return section
 
-      const allowed = await repository.findSectionShared(userId, section)
+      const allowed = await repository.findSectionShared(userId, section.id)
       if (allowed) return section
     })
   )
     
-    return sectionsAllowed.filter(boolean);
+    return sectionsAllowed.filter(Boolean);
   }
   async update(id, data) {
     const newSection = await repository.update(id, data);
