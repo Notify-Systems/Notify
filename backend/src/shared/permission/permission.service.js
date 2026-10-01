@@ -153,6 +153,67 @@ class Permission {
 
     return false;
   }
+  async collectionShare(userId, id, role) {
+    const collection = await collectionRepository.findById(id);
+    if (!collection) return false;
+
+    if (collection.creatorId === userId) return true;
+
+    if (role == "view") {
+      const allowed = this.collectionEdit(userId, id);
+      if (allowed) return true;
+      return false;
+    }
+    return false;
+  }
+
+  async sectionShare(userId, id, role) {
+    const section = await sectionRepository.findById(id);
+    if (!section) return false;
+
+    if (section.creatorId === userId) return true;
+
+    if (role == "view") {
+      const allowed = this.sectionEdit(userId, id);
+      if (allowed) return true;
+      return false;
+    }
+    if (role == "edit") {
+      const allowed = this.collectionEdit(userId, section.collectionId);
+      if (allowed) return true;
+      return false;
+    }
+    return false;
+  }
+
+  async taskShare(userId, id, role) {
+    const task = await taskRepository.findById(id);
+
+    if (!task) return false;
+
+    if (task.creatorId === userId) return true;
+
+    if (role === "view") {
+      const allowed = await this.taskEdit(userId, id);
+
+      if (allowed) return true;
+
+      return false;
+    }
+
+    if (role === "edit") {
+      if (task.sectionId) {
+        const allowed = await this.sectionEdit(userId, task.sectionId);
+
+        if (allowed) return true;
+      }
+      const allowed = await this.collectionEdit(userId, task.collectionId);
+
+      if (allowed) return true;
+    }
+
+    return false;
+  }
 }
 
 export default new Permission();

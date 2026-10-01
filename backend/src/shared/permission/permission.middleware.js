@@ -26,6 +26,13 @@ function can(action, resource) {
           throw new ForbiddenError("Permissão de criar negada");
         return next();
       }
+      case "share": {
+        const role = req.body.role
+        const permission = await permission[`${resource}Share`](userId, resourceId, role)
+
+        if(permission) return next()
+        throw new ForbiddenError("Permissão de compartilhar negada");
+      }
       case "owner": {
         req[resource] = await permission[`${resource}Owner`](userId, resourceId);
         if (req[resource] == false)
