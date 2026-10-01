@@ -42,7 +42,7 @@ class ShareService {
     if(!user) throw new NotFoundError("Usuario não encontrado")
     const share = await repository.searchShare(data.userId, shareItem, item.id)
     if(!share || share.valid == false) throw new NotFoundError("Compartilhamento não encontrado")
-      if (shareExist.grantedById !== userId && item.creatorId !== userId)
+      if (share.grantedById !== userId && item.creatorId !== userId)
         throw new ForbiddenError("Você não pode revogar essa compartilhamento");
     if (share.role == "editor" && item.creatorId !== userId)
       throw new ForbiddenError(

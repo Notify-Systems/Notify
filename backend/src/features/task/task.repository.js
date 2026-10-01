@@ -25,6 +25,7 @@ class TaskRepository {
     const tasks = await prisma.taskMember.findMany({
       where:{taskId: id, userId: userId}
     })
+    return tasks
   }
   async update(id, data) {
     const newTask = await prisma.task.update({ where: { id: id }, data: data });
