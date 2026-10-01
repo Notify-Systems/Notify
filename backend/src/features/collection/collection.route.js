@@ -22,6 +22,6 @@ router.get("/:id", validation.params(idSchema), can("view", "collection"),contro
 router.get("/", controller.readAll)
 router.patch("/:id", validation.body(schema.update), validation.params(idSchema), can("edit", "collection"), controller.update);
 router.patch("/color/:id", validation.body(colorSchema), validation.params(idSchema), can("edit", "collection"), controller.update);
-router.patch("/visibility/:id", validation.body(schema.visibility), validation.params(idSchema), can("owner", "collection"), controller.updateVisibility);
+router.patch("/visibility/:id", validation.body(schema.visibility), validation.params(idSchema), can("owner", "collection"), controller.update);
 
 export default router;
