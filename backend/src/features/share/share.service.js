@@ -11,6 +11,7 @@ class ShareService {
         "Você não tem permissão pra dar esse cargo a alguem",
       );
     data.grantedById = userId
+    data[`${shareItem}Id`] = item.id
     const shareExist = await repository.searchShare(data.userId, shareItem, item.id)
     if(!shareExist){
       await repository.share(data, shareItem);

@@ -22,10 +22,10 @@ class TaskRepository {
     return tasks;
   }
   async findTaskShared(userId, id){
-    const tasks = await prisma.taskMember.findMany({
+    const member = await prisma.taskMember.findFirst({
       where:{taskId: id, userId: userId}
     })
-    return tasks
+    return member
   }
   async update(id, data) {
     const newTask = await prisma.task.update({ where: { id: id }, data: data });
