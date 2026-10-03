@@ -1,6 +1,7 @@
 import collectionRepository from "../../features/collection/collection.repository.js";
 import sectionRepository from "../../features/section/section.repository.js";
 import taskRepository from "../../features/task/task.repository.js";
+import noteRepository from "../../features/note/note.repository.js";
 
 class Permission {
   // Permições dos conjuntos
@@ -154,6 +155,102 @@ class Permission {
 
     return false;
   }
+
+  async noteView(userId, id) {
+    const note = await noteRepository.findById(id);
+    if (!note) return false;
+
+    if (note.visibility === "public") return note;
+    if (note.creatorId === userId) return note;
+
+    const member = await noteRepository.findNoteShared(userId, id);
+    if (member && member.valid) return note;
+
+    if (note.sectionId) {
+      const section = await this.sectionEdit(userId, note.sectionId);
+      if (section) return note;
+      return false;
+    }
+
+    const collection = await this.collectionEdit(userId, note.collectionId);
+    if (collection) return note;
+
+    return false;
+  }
+
+  async noteEdit(userId, id) {
+    const note = await noteRepository.findById(id);
+    if (!note) return false;
+
+    if (note.creatorId === userId) return note;
+
+    const member = await noteRepository.findNoteShared(userId, id);
+    if (member && member.valid && member.role === "editor") return note;
+
+    if (note.sectionId) {
+      const section = await this.sectionEdit(userId, note.sectionId);
+      if (section) return note;
+    }
+
+    const collection = await this.collectionEdit(userId, note.collectionId);
+    if (collection) return note;
+
+    return false;
+  }
+
+  async noteCreate(userId, sectionId, collectionId) {
+    if (sectionId) {
+      const section = await this.sectionEdit(userId, sectionId);
+      if (section) return true;
+    }
+
+    const collection = await this.collectionEdit(userId, collectionId);
+    if (collection) return true;
+
+    return false;
+  }
+
+  async noteOwner(userId, id) {
+    const note = await noteRepository.findById(id);
+    if (!note) return false;
+
+    if (note.creatorId === userId) return note;
+
+    if (note.sectionId) {
+      const section = await this.sectionOwner(userId, note.sectionId);
+      if (section) return note;
+    }
+
+    const collection = await this.collectionOwner(userId, note.collectionId);
+    if (collection) return note;
+
+    return false;
+  }
+
+  async noteShare(userId, id, role) {
+    const note = await noteRepository.findById(id);
+    if (!note) return false;
+
+    if (note.creatorId === userId) return true;
+
+    if (role === "view") {
+      const allowed = await this.noteEdit(userId, id);
+      return Boolean(allowed);
+    }
+
+    if (role === "edit") {
+      if (note.sectionId) {
+        const allowed = await this.sectionEdit(userId, note.sectionId);
+        if (allowed) return true;
+      }
+
+      const allowed = await this.collectionEdit(userId, note.collectionId);
+      if (allowed) return true;
+    }
+
+    return false;
+  }
+
   async collectionShare(userId, id, role) {
     const collection = await collectionRepository.findById(id);
     if (!collection) return false;
