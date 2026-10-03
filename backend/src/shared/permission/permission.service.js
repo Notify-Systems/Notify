@@ -49,7 +49,7 @@ class Permission {
         const member = await sectionRepository.findSectionShared(userId, id);
         if (member && member.valid == true) return section;
     }
-    const collection = await this.collectionView(userId, section.collectionId);
+    const collection = await this.collectionEdit(userId, section.collectionId);
     if (collection) return section;
 
     return false;
@@ -99,10 +99,11 @@ class Permission {
     }
 
     if (task.sectionId) {
-      const section = await this.sectionView(userId, task.sectionId);
+      const section = await this.sectionEdit(userId, task.sectionId);
       if (section) return task;
+      return false
     }
-    const collection = await this.collectionView(userId, task.collectionId);
+    const collection = await this.collectionEdit(userId, task.collectionId);
     if (collection) return task;
 
     return false;
